@@ -1,0 +1,5 @@
+<h1>Cool Vintage Items Go Here</h1>
+
+<% items.each(function (item) { %>
+  <span><%= item.escape("title") %>: $<%= item.get("price") %></span>
+<% }); %>
