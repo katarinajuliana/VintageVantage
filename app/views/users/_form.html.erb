@@ -30,6 +30,16 @@
      value="<%= @user.username %>">
   <br>
   
+  <% unless @user.persisted? %>
+    <br>
+    <label for="user_password">Password</label>
+    <input
+       id="user_password"
+       name="user[password]"
+       type="password">
+    <br>
+  <% end %>
+  
   <br>
   <label for="user_about">About</label>
   <br>
