@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible :about_me, :email, :password, :username, :zip_code
+  attr_accessible :about, :email, :password, :username, :zipcode
   attr_reader :password
   
   validates :email,
             :password_digest,
             :username,
-            :zip_code,
+            :zipcode,
             :session_token,
             :presence => true
             
@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
   
   has_one :shop,
-          :foreign_key => :owner_id
+          :foreign_key => :owner_id,
+          :dependent   => :destroy
 
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)

@@ -8,7 +8,23 @@ class UsersController < ApplicationController
       self.current_user = @user
       redirect_to root_url
     else
-      render :json => @user.errors.full_messages
+      render :new
+    end
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    
+    redirect_to root_url
+  end
+  
+  def edit
+    if current_user.id == params[:id].to_i
+      @user = User.find(params[:id])
+      render :edit
+    else
+      redirect_to root_url
     end
   end
 
@@ -18,5 +34,19 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    
+    unless current_user.id == params[:id].to_i
+      redirect_to root_url
+    end
+    
+    if @user.update_attributes(params[:user])
+      redirect_to user_url(@user)
+    else
+      render :edit
+    end
   end
 end

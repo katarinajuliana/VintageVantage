@@ -1,0 +1,5 @@
+<h1>TODO: ShopStuff</h1>
+
+<% if current_user && (current_user.id == @shop.owner_id) %>
+  <%= link_to "Edit Shop", edit_shop_url(@shop) %>
+<% end %>

@@ -1,0 +1,6 @@
+<h1>Your Profile</h1>
+
+<%= render 'form', :locals => { :user => @user }%>
+
+<br>
+<%= button_to "Delete", user_url(@user), :method => :delete %>

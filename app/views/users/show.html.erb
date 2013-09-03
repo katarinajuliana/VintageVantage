@@ -1,0 +1,5 @@
+<h1>TODO: UserStuff</h1>
+
+<% if current_user && (current_user.id == @user.id) %>
+  <%= link_to "Edit Profile", edit_user_url(@user) %>
+<% end %>

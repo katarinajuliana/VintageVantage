@@ -1,6 +1,6 @@
 <% action = (@user.persisted? ? user_url(@user) : users_url) %>
 <% method = (@user.persisted? ? "put" : "post") %>
-<% message = (@user.persisted? ? "Update user" : "Create user") %>
+<% message = (@user.persisted? ? "Update" : "Sign Up") %>
 
 <form action="<%= action %>" method="post">
   <input
@@ -17,28 +17,37 @@
   <input
     id="user_email"
     name="user[email]"
-    type="text">
+    type="text"
+    value="<%= @user.persisted? ? @user.email : nil %>">
   <br>
 
+  <br>
   <label for="user_username">Username</label>
   <input
      id="user_username"
      name="user[username]"
-     type="text">
-  <br>
-
-  <label for="user_password">Password</label>
-  <input
-     id="user_password"
-     name="user[password]"
-     type="password">
+     type="text"
+     value="<%= @user.persisted? ? @user.username : nil %>">
   <br>
   
+  <br>
+  <label for="user_about">About</label>
+  <br>
+  <textarea
+     id="user_about"
+     name="user[about]"
+     rows="5"
+     cols="30"><%= @user.about ? @user.about : "Tell people a little about yourself." %>
+  </textarea>
+  <br>
+  
+  <br>
   <label for="user_zipcode">Zipcode</label>
   <input
      id="user_zipcode"
      name="user[zipcode]"
-     type="text">
+     type="text"
+     value="<%= @user.persisted? ? @user.zipcode : nil %>">
   <br>
   
   <br>

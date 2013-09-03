@@ -4,4 +4,6 @@
 <p><%= @item.description %></p>
 <br>
 <br>
-<%= link_to "Edit", edit_item_url(@item) %>
+<% if current_user && (current_user.id == @item.owner.id) %>
+  <%= link_to "Edit", edit_item_url(@item) %>
+<% end %>

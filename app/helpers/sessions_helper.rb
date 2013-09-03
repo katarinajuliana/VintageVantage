@@ -23,6 +23,11 @@ module SessionsHelper
   
   def require_item_owner!
     @item = Item.find(params[:id])
-    redirect_to root_url unless (current_user.shop.id == @item.shop_id)
+    redirect_to root_url unless (current_user.id == @item.owner.id)
+  end
+  
+  def require_shop_owner!
+    @shop = Shop.find(params[:id])
+    redirect_to root_url unless (current_user.id == @shop.owner_id)
   end
 end

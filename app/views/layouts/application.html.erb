@@ -7,7 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= flash[:errors] || "" %>
+  <%= link_to "Vintage Vantage", root_url %>
+  <br>
   <% if current_user %>
     Hi,
     <%= link_to current_user.username, user_url(current_user) %>.

@@ -1,11 +1,11 @@
 <% action = @item.persisted? ? item_url(@item) : items_url %>
 <% method = @item.persisted? ? "put" : "post" %>
-<% button_text = @item.persisted? ? "Update" : "Submit" %>
+<% button_text = @item.persisted? ? "Update" : "List" %>
 
-<form action="<%= action %>" method="POST">
+<form action="<%= action %>" method="post">
   <input
      type="hidden"
-     name="method"
+     name="_method"
      value="<%= method %>">
         
   <input
@@ -13,12 +13,34 @@
      name="authenticity_token"
      value="<%= form_authenticity_token %>">
 
-  <label for="item_title">Item Title</label>
+  <label for="item_title">Title</label>
   <input
      type="text"
      id="item_title"
      name="item[title]"
      value="<%= @item.persisted? ? @item.title : nil %>">   
+  <br>
+  
+  <br>
+  <label for="item_category">Category</label>
+  <br>
+  <select id="item_category" name="item[category_id]">
+    <option>Select a category...</option>
+    <% Category.all.each do |cat| %>
+      <option value="<%= cat.id %>"><%= cat.title %></option>
+    <% end %>
+  </select>
+  <br>
+  
+  <br>
+  <label for="item_era">Era</label>
+  <br>
+  <select id="item_era" name="item[era_id]">
+    <option>Select an era...</option>
+    <% Era.all.sort{ |x, y| y <=> x }.each do |era| %>
+      <option value="<%= era.id %>"><%= era.decade %></option>
+    <% end %>
+  </select>
   <br>
   
   <br>
@@ -38,7 +60,7 @@
      type="text"
      id="item_price"
      name="item[price]"
-     value="<%= @item.persisted? ? @item.price : '0.00'%>">
+     value="<%= @item.persisted? ? @item.price : '0'%>">
   <br>
   
   <br>

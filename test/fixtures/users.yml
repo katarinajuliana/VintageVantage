@@ -4,12 +4,12 @@ one:
   email: MyString
   username: MyString
   password_digest: MyString
-  zip_code: 1
+  zipcode: 1
   about_me: MyText
 
 two:
   email: MyString
   username: MyString
   password_digest: MyString
-  zip_code: 1
+  zipcode: 1
   about_me: MyText

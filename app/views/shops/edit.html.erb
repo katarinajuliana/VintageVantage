@@ -1,0 +1,6 @@
+<h1>Your Shop</h1>
+
+<%= render "form", :locals  => { :shop => @shop } %>
+
+<br>
+<%= button_to "Delete", shop_url(@shop), :method => :delete %>

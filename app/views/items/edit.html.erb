@@ -1,4 +1,6 @@
-<h1>Edit Your Item</h1>
+<h1>Your Item</h1>
 
-<%= render :partial => "form",
-           :locals  => { :item => @item } %>
+<%= render "form", :locals  => { :item => @item } %>
+
+<br>
+<%= button_to "Delete", item_url(@item), :method => :delete %>

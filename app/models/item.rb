@@ -5,6 +5,10 @@ class Item < ActiveRecord::Base
   end
   
   belongs_to :shop
-  # belongs_to :category
-  # belongs_to :era
+  belongs_to :category
+  belongs_to :era
+  
+  has_one :owner,
+          :through => :shop,
+          :source => :owner
 end
