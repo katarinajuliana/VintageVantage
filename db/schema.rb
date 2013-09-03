@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130903003913) do
+ActiveRecord::Schema.define(:version => 20130903013233) do
 
   create_table "items", :force => true do |t|
     t.string   "title",       :null => false
@@ -37,5 +37,20 @@ ActiveRecord::Schema.define(:version => 20130903003913) do
   end
 
   add_index "shops", ["owner_id"], :name => "index_shops_on_owner_id", :unique => true
+
+  create_table "users", :force => true do |t|
+    t.string   "email",           :null => false
+    t.string   "username",        :null => false
+    t.string   "password_digest", :null => false
+    t.integer  "zip_code",        :null => false
+    t.string   "session_token",   :null => false
+    t.text     "about_me"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["session_token"], :name => "index_users_on_session_token"
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end
