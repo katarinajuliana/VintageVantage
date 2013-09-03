@@ -7,10 +7,18 @@
      name="_method"
      type="hidden"
      value="<%= method %>">
+     
   <input
      name="authenticity_token"
      type="hidden"
      value="<%= form_authenticity_token %>">
+     
+  <label for="user_email">Email</label>
+  <input
+    id="user_email"
+    name="user[email]"
+    type="text">
+  <br>
 
   <label for="user_username">Username</label>
   <input
@@ -25,6 +33,14 @@
      name="user[password]"
      type="password">
   <br>
-
+  
+  <label for="user_zipcode">Zipcode</label>
+  <input
+     id="user_zipcode"
+     name="user[zipcode]"
+     type="text">
+  <br>
+  
+  <br>
   <input type="submit" value="<%= message %>">
 </form>

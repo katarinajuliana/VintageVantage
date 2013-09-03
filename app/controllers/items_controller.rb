@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+  before_filter :require_current_user!, :except => [:index, :show]
+  before_filter :require_item_owner!, :only => [:edit, :update, :destroy]
+  
   def index
   end
   

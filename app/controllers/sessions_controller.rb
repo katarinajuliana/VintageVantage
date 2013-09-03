@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_filter :require_no_current_user!, :only => [:create, :new]
+  
   def create
     user = User.find_by_username(params[:user][:username])
 

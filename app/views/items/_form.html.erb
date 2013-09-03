@@ -1,40 +1,46 @@
+<% action = @item.persisted? ? item_url(@item) : items_url %>
+<% method = @item.persisted? ? "put" : "post" %>
 <% button_text = @item.persisted? ? "Update" : "Submit" %>
-<% method = @item.persisted? ? :put : :post %>
 
-<form action="<%= items_url %>" method="POST">
-  <input type="hidden"
-         name="method"
-        value="<%= method %>">
+<form action="<%= action %>" method="POST">
+  <input
+     type="hidden"
+     name="method"
+     value="<%= method %>">
         
-  <input type="hidden"
-         name="authenticity_token"
-        value="<%= form_authenticity_token %>">
+  <input
+     type="hidden"
+     name="authenticity_token"
+     value="<%= form_authenticity_token %>">
 
   <label for="item_title">Item Title</label>
-  
-  <input type="text"
-           id="item_title"
-         name="item[title]"
-        value="<%= @item.persisted? ? @item.title : nil %>">
-        
+  <input
+     type="text"
+     id="item_title"
+     name="item[title]"
+     value="<%= @item.persisted? ? @item.title : nil %>">   
   <br>
+  
   <br>
   <label for="item_description">Description</label>
   <br>
-  <textarea id="item_description"
-          name="item[description]"
-          rows="10"
-          cols="50"><%= @item.persisted? ? @item.description : "Tell the item's story and try to answer questions shoppers will have." %>
+  <textarea
+     id="item_description"
+     name="item[description]"
+     rows="10"
+     cols="50"><%= @item.persisted? ? @item.description : "Tell the item's story and try to answer questions shoppers will have." %>
   </textarea>
- 
   <br>
+  
   <br>
   <label for="item_price">Price $</label>
-  <input type="text"
-           id="item_price"
-         name="item[price]"
-        value="<%= @item.persisted? ? @item.price : '0.00'%>">
+  <input
+     type="text"
+     id="item_price"
+     name="item[price]"
+     value="<%= @item.persisted? ? @item.price : '0.00'%>">
   <br>
+  
   <br>
   <input type="submit" value="<%=button_text %>">
 </form>
