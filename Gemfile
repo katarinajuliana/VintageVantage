@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.14'
 
+group :assets do
+  gem 'uglifier'
+end
+
 group :development do
   gem 'pry-rails'
   gem 'debugger'
