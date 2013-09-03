@@ -18,7 +18,7 @@
     id="user_email"
     name="user[email]"
     type="text"
-    value="<%= @user.persisted? ? @user.email : nil %>">
+    value="<%= @user.email %>">
   <br>
 
   <br>
@@ -27,7 +27,7 @@
      id="user_username"
      name="user[username]"
      type="text"
-     value="<%= @user.persisted? ? @user.username : nil %>">
+     value="<%= @user.username %>">
   <br>
   
   <br>
@@ -37,7 +37,7 @@
      id="user_about"
      name="user[about]"
      rows="5"
-     cols="30"><%= @user.about ? @user.about : "Tell people a little about yourself." %>
+     cols="30"><%= @user.about || "Tell people a little about yourself." %>
   </textarea>
   <br>
   
@@ -47,7 +47,7 @@
      id="user_zipcode"
      name="user[zipcode]"
      type="text"
-     value="<%= @user.persisted? ? @user.zipcode : nil %>">
+     value="<%= @user.zipcode %>">
   <br>
   
   <br>

@@ -18,7 +18,7 @@
      type="text"
      id="item_title"
      name="item[title]"
-     value="<%= @item.persisted? ? @item.title : nil %>">   
+     value="<%= @item.title %>">   
   <br>
   
   <br>
@@ -50,7 +50,7 @@
      id="item_description"
      name="item[description]"
      rows="10"
-     cols="50"><%= @item.persisted? ? @item.description : "Tell the item's story and try to answer questions shoppers will have." %>
+     cols="50"><%= @item.description || "Tell the item's story and try to answer questions shoppers will have." %>
   </textarea>
   <br>
   
@@ -60,9 +60,9 @@
      type="text"
      id="item_price"
      name="item[price]"
-     value="<%= @item.persisted? ? @item.price : '0'%>">
+     value="<%= @item.price %>">
   <br>
   
   <br>
-  <input type="submit" value="<%=button_text %>">
+  <input type="submit" value="<%= button_text %>">
 </form>

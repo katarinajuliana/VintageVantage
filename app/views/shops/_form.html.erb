@@ -18,7 +18,7 @@
      type="text"
      id="shop_name"
      name="shop[name]"
-     value="<%= @shop.persisted? ? @shop.name : nil %>">   
+     value="<%= @shop.name %>">   
   <br>
   
   <br>
@@ -28,7 +28,7 @@
      id="shop_description"
      name="shop[description]"
      rows="10"
-     cols="50"><%= @shop.persisted? ? @shop.description : "Tell people what to expect from your shop." %>
+     cols="50"><%= @shop.description || "Tell people what to expect from your shop." %>
   </textarea>
   <br>
   

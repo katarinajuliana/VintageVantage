@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130903174723) do
+ActiveRecord::Schema.define(:version => 20130903205540) do
 
   create_table "categories", :force => true do |t|
     t.string "title", :null => false
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(:version => 20130903174723) do
   create_table "eras", :force => true do |t|
     t.string "decade", :null => false
   end
+
+  create_table "item_favorites", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "item_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "item_favorites", ["item_id", "user_id"], :name => "index_item_favorites_on_item_id_and_user_id", :unique => true
+  add_index "item_favorites", ["user_id"], :name => "index_item_favorites_on_user_id"
 
   create_table "items", :force => true do |t|
     t.string   "title",       :null => false
@@ -35,6 +45,16 @@ ActiveRecord::Schema.define(:version => 20130903174723) do
   add_index "items", ["category_id"], :name => "index_items_on_category_id"
   add_index "items", ["era_id"], :name => "index_items_on_era_id"
   add_index "items", ["shop_id"], :name => "index_items_on_shop_id"
+
+  create_table "shop_favorites", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "shop_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "shop_favorites", ["shop_id", "user_id"], :name => "index_shop_favorites_on_shop_id_and_user_id", :unique => true
+  add_index "shop_favorites", ["user_id"], :name => "index_shop_favorites_on_user_id"
 
   create_table "shops", :force => true do |t|
     t.string   "name",        :null => false
