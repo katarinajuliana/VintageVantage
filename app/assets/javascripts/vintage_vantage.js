@@ -3,15 +3,10 @@ window.VV = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function() {
-    var items = JSON.parse($("#bootstrapped-items").html());
-    var itemsCollection = new VV.Collections.Items(items);
-    
-    new VV.Routers.Items($("#content"), itemsCollection);
+  initialize: function($rootEl, itemsData) {
+    var items = new VV.Collections.Items(itemsData);
+
+    new VV.Routers.Items($rootEl, items);
     Backbone.history.start();
   }
 };
-
-$(document).ready(function(){
-  VV.initialize();
-});

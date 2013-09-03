@@ -5,7 +5,7 @@ VV.Routers.Items = Backbone.Router.extend({
   },
    
   routes: {
-    "": "indexItems"
+    "": "indexItems",
   },
   
   indexItems: function() {

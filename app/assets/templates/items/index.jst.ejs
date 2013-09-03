@@ -1,5 +1,9 @@
 <h1>Cool Vintage Items Go Here</h1>
 
 <% items.each(function (item) { %>
-  <span><%= item.escape("title") %>: $<%= item.get("price") %></span>
+  <span>
+    <a href="<%='/items/' + item.id %>">
+      <%= item.escape("title") %>
+    </a>: $<%= item.get("price") %>
+  </span>
 <% }); %>

@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.serializeJSON.js
+//= require jquery.serializeJSON
 //= require underscore
 //= require backbone
 //= require vintage_vantage

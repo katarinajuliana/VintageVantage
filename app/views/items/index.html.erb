@@ -2,4 +2,13 @@
   <%= Item.all.to_json.html_safe %>
 </script>
 
-<div id="#content"></div>
+<script type="application/javascript">
+  $(function (){
+    var items = JSON.parse($("#bootstrapped-items").html());
+    
+    window.VV.initialize($("#content"), items);
+  });
+</script>
+
+<div id="content">
+</div>
