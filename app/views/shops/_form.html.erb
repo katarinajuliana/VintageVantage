@@ -2,7 +2,7 @@
 <% method = @shop.persisted? ? "put" : "post" %>
 <% button_text = @shop.persisted? ? "Update" : "Create" %>
 
-<form action="<%= action %>" method="POST">
+<form action="<%= action %>" method="post" role="form">
   <input
      type="hidden"
      name="_method"
@@ -13,25 +13,25 @@
      name="authenticity_token"
      value="<%= form_authenticity_token %>">
 
-  <label for="shop_name">Name</label>
-  <input
-     type="text"
-     id="shop_name"
-     name="shop[name]"
-     value="<%= @shop.name %>">   
-  <br>
+  <div class="form-group"> 
+    <label for="shop_name">Name</label>
+    <input
+       type="text"
+       id="shop_name"
+       name="shop[name]"
+       class="form-control"
+       value="<%= @shop.name %>">   
+  </div>
   
-  <br>
-  <label for="shop_description">Description</label>
-  <br>
-  <textarea
-     id="shop_description"
-     name="shop[description]"
-     rows="10"
-     cols="50"><%= @shop.description || "Tell people what to expect from your shop." %>
-  </textarea>
-  <br>
+  <div class="form-group">
+    <label for="shop_description">Description</label>
+    <textarea
+       id="shop_description"
+       name="shop[description]"
+       class="form-control"
+       rows="10"><%= @shop.description || "Tell people what to expect from your shop." %>
+    </textarea>
+  </div>
   
-  <br>
-  <input type="submit" value="<%=button_text %>">
+  <button type="submit" class="btn btn-info"><%= button_text %></button>
 </form>

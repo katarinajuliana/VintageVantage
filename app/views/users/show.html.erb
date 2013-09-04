@@ -19,10 +19,13 @@
   <a href="<%= favorites_user_url(@user) %>">
     See More
   </a>
-  <br>TODO: LIST ITEMS
+  <br><%= @user.favorite_items[0..7] %>
 </div>
 
 <div id="favorite-shops">
   <h3>Favorite Shops</h3>
-  TODO: LIST SHOPS
+  <% @user.favorite_shops[0..2].each do |s| %>
+    <%= link_to s.name, shop_url(s) %>
+    <%= s.items[0..3] %>
+  <% end %>
 </div>

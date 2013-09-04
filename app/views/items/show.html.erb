@@ -1,43 +1,64 @@
-<% favorited = current_user.favorite_items.include?(@item) %>
-
-<div id="item-info">
-  <h1><%= @item.title %></h1>
-
-  <div id="toolbar">
-    <% if current_user && (current_user.id == @item.owner.id) %>
-      <%= link_to "Edit Item", edit_item_url(@item) %>
-    <% end %>
+<% favorited = (current_user && current_user.favorite_items.include?(@item)) %>
+<div class="row">
+  <div id="photo-box" class="col-md-7">
+    TODO: ITEM PHOTOS
   </div>
   
-  <h4><%= @item.era.decade %> | $<%= @item.price %></h4>
-  <%= button_to "Add to Cart" %>
+  <div id="item-box" class="col-md-5 well">
+    <div id="item-info" class="panel">
+      <div id="toolbar">
+        <% if current_user && (current_user.id == @item.owner.id) %>
+          <%= link_to "Edit Item", edit_item_url(@item) %>
+        <% end %>
+      </div>
+      
+      <h1><%= @item.title %></h1>
 
-  <br>
-  <input type="submit" 
-        class="favorite <%= 'hidden' if favorited %>"
-      data-id="<%= @item.id %>"
-        value="❤ Favorite">
+      <h4><%= @item.era.decade %></h4>
 
-  <input type="submit" 
-        class="unfavorite <%= 'hidden' unless favorited %>"
-      data-id="<%= @item.id %>"
-        value="❤ Favorited">
-  <br>
+      <h3>$<%= @item.price %></h3>
+    </div>
+    
+    <button type="submit" class="btn btn-success">Add to Cart</button>
+    
+    <button type="submit" 
+            class="btn btn-default favorite <%= 'hidden' if favorited %>"
+            data-id="<%= @item.id %>">
+      ❤ Favorite
+    </button>
+
+    <button type="submit" 
+            class="btn btn-default unfavorite <%= 'hidden' unless favorited %>"
+            data-id="<%= @item.id %>">
+      ❤ Favorited
+    </button>
+  </div>
 </div>
 
-<div id="desciption">
-  <h4>Details</h4>
-  <p><%= @item.description %></p>
+<div class="row">
+  <div id="description-box" class="col-md-6 well pull-left">
+    <h4>Details</h4>
+    
+    <div id="item-description" class="panel">
+      <p><%= @item.description %></p>
+    </div>
+  </div>
+
+
+  <div id="shop-box" class="col-md-5 well pull-right">
+    <h3>
+      <a href="<%= shop_url(@item.shop) %>">
+        <%= @item.shop.name %>
+      </a>
+    </h3>
+  
+    <div id="shop-items" class="panel">
+      <%= @item.shop.items %>
+    </div>
+  </div>
 </div>
 
-<div id="shop-info">
-  <h3>More from
-    <a href="<%= shop_url(@item.shop) %>">
-      <%= @item.shop.name %>
-    </a>
-  </h3>
-  TODO: LIST ITEMS
-</div>
+
 
 
 

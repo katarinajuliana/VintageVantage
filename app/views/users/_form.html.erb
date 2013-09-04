@@ -2,7 +2,7 @@
 <% method = (@user.persisted? ? "put" : "post") %>
 <% message = (@user.persisted? ? "Update" : "Sign Up") %>
 
-<form action="<%= action %>" method="post">
+<form action="<%= action %>" method="post" role="form">
   <input
      name="_method"
      type="hidden"
@@ -12,54 +12,57 @@
      name="authenticity_token"
      type="hidden"
      value="<%= form_authenticity_token %>">
-     
-  <label for="user_email">Email</label>
-  <input
-    id="user_email"
-    name="user[email]"
-    type="text"
-    value="<%= @user.email %>">
-  <br>
+  
+  <div class="form-group">   
+    <label for="user_email">Email</label>
+    <input
+      id="user_email"
+      name="user[email]"
+      type="email"
+      class="form-control"
+      value="<%= @user.email %>">
+  </div>
 
-  <br>
-  <label for="user_username">Username</label>
-  <input
-     id="user_username"
-     name="user[username]"
-     type="text"
-     value="<%= @user.username %>">
-  <br>
+  <div class="form-group"> 
+    <label for="user_username">Username</label>
+    <input
+       id="user_username"
+       name="user[username]"
+       type="text"
+       class="form-control"
+       value="<%= @user.username %>">
+  </div>
   
   <% unless @user.persisted? %>
-    <br>
-    <label for="user_password">Password</label>
-    <input
-       id="user_password"
-       name="user[password]"
-       type="password">
-    <br>
+    <div class="form-group"> 
+      <label for="user_password">Password</label>
+      <input
+         id="user_password"
+         name="user[password]"
+         type="password"
+         class="form-control">
+    </div>
   <% end %>
   
-  <br>
-  <label for="user_about">About</label>
-  <br>
-  <textarea
-     id="user_about"
-     name="user[about]"
-     rows="5"
-     cols="30"><%= @user.about || "Tell people a little about yourself." %>
-  </textarea>
-  <br>
+  <div class="form-group"> 
+    <label for="user_about">About</label>
+    <textarea
+       id="user_about"
+       name="user[about]"
+       class="form-control"
+       rows="5"><%= @user.about || "Tell people a little about yourself." %>
+    </textarea>
+  </div>
   
-  <br>
-  <label for="user_zipcode">Zipcode</label>
-  <input
-     id="user_zipcode"
-     name="user[zipcode]"
-     type="text"
-     value="<%= @user.zipcode %>">
-  <br>
+  <div class="form-group"> 
+    <label for="user_zipcode">Zipcode</label>
+    <input
+       id="user_zipcode"
+       name="user[zipcode]"
+       type="text"
+       class="form-control"
+       value="<%= @user.zipcode %>">
+  </div>
   
-  <br>
-  <input type="submit" value="<%= message %>">
+  <button type="submit" class="btn btn-info"><%= message %></button>
 </form>

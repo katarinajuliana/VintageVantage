@@ -3,4 +3,14 @@
 <%= render "form", :locals  => { :shop => @shop } %>
 
 <br>
-<%= button_to "Delete", shop_url(@shop), :method => :delete %>
+<br>
+<br>
+<form action="<%= shop_url(@shop) %>" method="post" role="form">
+  <input type="hidden"
+         name="_method"
+         value="delete">
+  
+  <button type="submit" class="btn btn-danger">
+    Close Shop
+  </button>
+</form>

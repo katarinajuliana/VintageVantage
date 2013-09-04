@@ -6,29 +6,67 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-  <%= link_to "Vintage Vantage", root_url %>
-  <br>
-  <% if current_user %>
-    Hi,
-    <%= link_to current_user.username, user_url(current_user) %>.
-    //
-    <%= link_to "❤", favorites_user_url(current_user)%>
-    //
-    <% if current_user.shop %>
-      <%= link_to "Your Shop", shop_url(current_user.shop) %>
-    <% else %>
-      <%= link_to "Open a Shop", new_shop_url %>
-    <% end %>
-    //
-    <%= link_to "Sign Out", session_url, :method => :delete %>
-  <% else %>
-    <%= link_to "Join Us", new_user_url %>
-    //
-    <%= link_to "Sign In", new_session_url %>
-  <% end %>
-
-<%= yield %>
-
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="<%= root_url %>">Vintage Vantage</a>
+  </div>
+  
+  <div class="collapse navbar-collapse">
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Find items & shops">
+      </div>
+      <button type="submit" class="btn btn-info">Search</button>
+    </form>
+    
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_user %>
+        <li>
+          <p class="navbar-text pull-right">
+            Hi, <%= link_to current_user.username, user_url(current_user) %>.
+          </p>         
+        </li>
+    
+        <li>
+          <%= link_to "❤", favorites_user_url(current_user) %>
+        </li>
+    
+        <% if current_user.shop %>
+          <li>
+            <%= link_to "Your Shop", shop_url(current_user.shop) %>
+          </li>
+        <% else %>
+          <li>
+              <%= link_to "Open a Shop", new_shop_url %>
+          </li>
+        <% end %>
+    
+        <li>
+          <%= link_to "Sign Out", session_url , :method => :delete %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "Join Us", new_user_url %>
+        </li>
+    
+        <li>
+          <%= link_to "Sign In", new_session_url %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+    
+<div class="container">
+  <%= yield %>
+</div>
 </body>
 </html>
