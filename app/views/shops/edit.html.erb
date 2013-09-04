@@ -1,16 +1,24 @@
 <h1>Your Shop</h1>
 
-<%= render "form", :locals  => { :shop => @shop } %>
+<div class="row">
+  <%= render 'form', :locals => { :shop => @shop } %>
+</div>
 
 <br>
 <br>
 <br>
-<form action="<%= shop_url(@shop) %>" method="post" role="form">
-  <input type="hidden"
-         name="_method"
-         value="delete">
-  
-  <button type="submit" class="btn btn-danger">
-    Close Shop
-  </button>
-</form>
+<div class="row col-md-7">
+  <form action="<%= shop_url(@shop) %>" method="post">
+    <input type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+      
+    <input type="hidden"
+      name="_method"
+      value="DELETE">
+         
+    <button type="submit" class="btn btn-danger">
+      Close Shop
+    </button>
+  </form>
+</div>

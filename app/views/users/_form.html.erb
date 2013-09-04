@@ -2,7 +2,7 @@
 <% method = (@user.persisted? ? "put" : "post") %>
 <% message = (@user.persisted? ? "Update" : "Sign Up") %>
 
-<form action="<%= action %>" method="post" role="form">
+<form action="<%= action %>" method="post" role="form" class="col-md-7">
   <input
      name="_method"
      type="hidden"

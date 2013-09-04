@@ -2,7 +2,7 @@
 <% method = @shop.persisted? ? "put" : "post" %>
 <% button_text = @shop.persisted? ? "Update" : "Create" %>
 
-<form action="<%= action %>" method="post" role="form">
+<form action="<%= action %>" method="post" role="form" class="col-md-7">
   <input
      type="hidden"
      name="_method"

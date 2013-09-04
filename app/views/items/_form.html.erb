@@ -1,8 +1,10 @@
 <% action = @item.persisted? ? item_url(@item) : items_url %>
 <% method = @item.persisted? ? "put" : "post" %>
 <% button_text = @item.persisted? ? "Update" : "List" %>
+<% era_selected = @item.persisted? ? @item.era.id : nil %>
+<% cat_selected = @item.persisted? ? @item.category.id : nil %>
 
-<form action="<%= action %>" method="post" role="form">
+<form action="<%= action %>" method="post" role="form" class="col-md-7">
   <input
      type="hidden"
      name="_method"
@@ -28,7 +30,10 @@
     <select id="item_category" name="item[category_id]" class="form-control">
       <option>Select a category...</option>
       <% Category.all.each do |cat| %>
-        <option value="<%= cat.id %>"><%= cat.title %></option>
+        <option value="<%= cat.id %>"
+          <%= (cat.id == cat_selected) ? "selected='selected'" : "" %>>
+           <%= cat.title %>
+        </option>
       <% end %>
     </select>
   </div>
@@ -38,7 +43,10 @@
     <select id="item_era" name="item[era_id]" class="form-control">
       <option>Select an era...</option>
       <% Era.all.sort{ |x, y| y <=> x }.each do |era| %>
-        <option value="<%= era.id %>"><%= era.decade %></option>
+        <option value="<%= era.id %>"
+          <%= (era.id == era_selected) ? "selected='selected'" : "" %>>
+            <%= era.decade %>
+        </option>
       <% end %>
     </select>
   </div>
@@ -53,16 +61,19 @@
     </textarea>
   </div>
   
-  <div class="form-group"> 
+  <div class="form-group">
     <label for="item_price">Price</label>
-    <input
-       type="text"
-       id="item_price"
-       name="item[price]"
-       class="form-control"
-       value="$<%= @item.price %>">
-  </div>
-  
+    <div class="input-group"> 
+      <span class="input-group-addon">$</span>
+      <input
+         type="text"
+         id="item_price"
+         name="item[price]"
+         class="form-control"
+         value="<%= @item.price %>">
+         <span class="input-group-addon">.00</span>
+    </div>
+  </div>  
 
   <button type="submit" class="btn btn-info"><%= button_text %></button>
 </form>

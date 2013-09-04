@@ -10,29 +10,31 @@
       <% end %>
     </div> 
     
-    <h1><%= @shop.name %></h1>
+    <h1>
+      <%= @shop.name %>
+      
+      <button type="submit"
+              id="favorite" 
+              class="btn btn-default <%= 'hidden' if favorited %>"
+              data-id="<%= @shop.id %>">
+        ❤ Favorite
+      </button>
+
+      <button type="submit"
+              id="unfavorite"
+              class="btn btn-default <%= 'hidden' unless favorited %>"
+              data-id="<%= @shop.id %>">
+        ❤ Favorited
+      </button>
+    </h1>
     
     <div id="shop-description" class="panel">
       <p><%= @shop.description %></p>
-    </div>
-  
-    <button type="submit"
-            id="favorite" 
-            class="btn btn-default <%= 'hidden' if favorited %>"
-            data-id="<%= @shop.id %>">
-      ❤ Favorite
-    </button>
-
-    <button type="submit"
-            id="unfavorite"
-            class="btn btn-default <%= 'hidden' unless favorited %>"
-            data-id="<%= @shop.id %>">
-      ❤ Favorited
-    </button>     
+    </div>     
   </div>
   
   <div id="owner-box" class="well col-md-4 pull-right">
-    <h3>Shop Owner</h3>
+    <h4>Shop Owner</h4>
     
     <div id="owner-info" class="panel">
       <h4>
@@ -41,7 +43,7 @@
         </a>
       </h4>
       
-      <p>Opened Shop on <%=  date_string %></p>
+      <p class="text-muted">Opened Shop on <%=  date_string %></p>
     </div>
   </div>
 </div>
@@ -51,6 +53,8 @@
     <div id="items" class="panel">
       <%= @shop.items %>
     </div>
+    
+    <p class="text-muted"><%= @shop.items.count %> Items</p>
   </div>
 </div>
 

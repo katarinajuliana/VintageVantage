@@ -1,36 +1,32 @@
 <h1><a href="<%= user_url(@user) %>"><%= @user.username %>'s</a> Favorites</h1>
 
-<input type="submit"
-         id="show-items"
-      value="Items">
-      
-<input type="submit"
-         id="show-shops"
-      value="Shops">
+<div class="well">
+  <ul class="switch-fav nav nav-pills">
+    <li id="show-items" class="active"><a>Items</a>
+    <li id="show-shops"><a>Shop</a>
+  </ul>
 
-<div id="favorite-items">
-  <%= @user.favorite_items %>
+  <div class="panel">
+    <div id="favorite-items">
+      <%= @user.favorite_items %>
+    </div>
+
+    <div id="favorite-shops" class="hidden">
+      <%= @user.favorite_shops %>
+    </div>
+  </div>
 </div>
-
-<div id="favorite-shops" class="hidden">
-  <%= @user.favorite_shops %>
-</div>
-
 
 <script type="application/javascript">
   $(function () {
-    $("#show-items").on("click", function (event) {
-      event.preventDefault();    
+    $(".switch-fav").on("click", function (event) {
+      event.preventDefault();
+      
+      $("#show-items").toggleClass("active");
+      $("#show-shops").toggleClass("active");
 
-      $("#favorite-items").removeClass("hidden");
-      $("#favorite-shops").addClass("hidden");
-    });
-  
-    $("#show-shops").on("click", function (event) {
-      event.preventDefault();    
-
-      $("#favorite-items").addClass("hidden");
-      $("#favorite-shops").removeClass("hidden");
+      $("#favorite-items").toggleClass("hidden");
+      $("#favorite-shops").toggleClass("hidden");
     });
   });
 </script>

@@ -1,10 +1,12 @@
-<% favorited = (current_user && current_user.favorite_items.include?(@item)) %>
+<% fav_item = (current_user && current_user.favorite_items.include?(@item)) %>
+<% fav_shop = (current_user && current_user.favorite_shops.include?(@item.shop)) %>
+
 <div class="row">
-  <div id="photo-box" class="col-md-7">
+  <div id="photo-box" class="col-md-6 pull-left">
     TODO: ITEM PHOTOS
   </div>
   
-  <div id="item-box" class="col-md-5 well">
+  <div id="item-box" class="col-md-5 well pull-right">
     <div id="item-info" class="panel">
       <div id="toolbar">
         <% if current_user && (current_user.id == @item.owner.id) %>
@@ -21,16 +23,18 @@
     
     <button type="submit" class="btn btn-success">Add to Cart</button>
     
-    <button type="submit" 
-            class="btn btn-default favorite <%= 'hidden' if favorited %>"
-            data-id="<%= @item.id %>">
-      ❤ Favorite
+    <button type="submit"
+      id="item-favorite"
+      class="btn btn-default item <%= 'hidden' if fav_item %>"
+      data-id="<%= @item.id %>">
+        ❤ Favorite
     </button>
 
-    <button type="submit" 
-            class="btn btn-default unfavorite <%= 'hidden' unless favorited %>"
-            data-id="<%= @item.id %>">
-      ❤ Favorited
+    <button type="submit"
+      id="item-unfavorite" 
+      class="btn btn-default item <%= 'hidden' unless fav_item %>"
+      data-id="<%= @item.id %>">
+        ❤ Favorited
     </button>
   </div>
 </div>
@@ -47,9 +51,21 @@
 
   <div id="shop-box" class="col-md-5 well pull-right">
     <h3>
-      <a href="<%= shop_url(@item.shop) %>">
-        <%= @item.shop.name %>
-      </a>
+      <a href="<%= shop_url(@item.shop) %>"><%= @item.shop.name %></a>
+      
+      <button type="submit" 
+        id="shop-favorite"
+        class="btn btn-default shop <%= 'hidden' if fav_shop %>"
+        data-id="<%= @item.shop.id %>">
+          ❤ Favorite
+      </button>
+
+      <button type="submit"
+        id="shop-unfavorite"
+        class="btn btn-default shop <%= 'hidden' unless fav_shop %>"
+        data-id="<%= @item.shop.id %>">
+          ❤ Favorited
+      </button>
     </h3>
   
     <div id="shop-items" class="panel">
@@ -60,36 +76,37 @@
 
 
 
-
-
 <script type="application/javascript">
   $(function () {
-    $(".favorite").on("click", function (event) {
+    $(".item").on("click", function (event) {
       event.preventDefault();
       var itemId = $(event.target).data("id");
+      var method = ($(event.target).attr("id") == "item-favorite" ? "POST" : "DELETE")
       
       $.ajax({
         url: "/items/" + itemId + "/item_favorite.json",
-        type: "POST",
+        type: method,
         data: { item_id: itemId },
         success: function (response) {
-          $(".favorite").toggleClass("hidden");
-          $(".unfavorite").toggleClass("hidden");
+          $("#item-favorite").toggleClass("hidden");
+          $("#item-unfavorite").toggleClass("hidden");
         }
       });
     });
-    
-    $(".unfavorite").on("click", function (event) {
+
+
+    $(".shop").on("click", function (event) {
       event.preventDefault();
-      var itemId = $(event.target).data("id");
+      var shopId = $(event.target).data("id");
+      var method = ($(event.target).attr("id") == "shop-favorite" ? "POST" : "DELETE")
       
       $.ajax({
-        url: "/items/" + itemId + "/item_favorite.json",
-        type: "DELETE",
-        data: { item_id: itemId },
+        url: "/shops/" + shopId + "/shop_favorite.json",
+        type: method,
+        data: { shop_id: shopId },
         success: function (response) {
-          $(".favorite").toggleClass("hidden");
-          $(".unfavorite").toggleClass("hidden");
+          $("#shop-favorite").toggleClass("hidden");
+          $("#shop-unfavorite").toggleClass("hidden");
         }
       });
     });

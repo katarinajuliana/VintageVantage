@@ -1,31 +1,67 @@
 <% date_string = "#{ Date::MONTHNAMES[@date.month] } #{ @date.mday }, #{ @date.year }" %>
 
-<div id="user-info">
-  <h1><%= @user.username %></h1>
-  
-  <div id="toolbar">
-    <% if current_user && (current_user.id == @user.id) %>
-      <%= link_to "Edit Profile", edit_user_url(@user) %>
-    <% end %>
-  </div>
-  
-  <p><%= @user.about %></p>
-  
-  <p>Joined <%= date_string %></p>
-</div>
+<h1><%= @user.username %></h1> 
 
-<div id="favorite-items">
-  <h3>Favorite Items</h3>
-  <a href="<%= favorites_user_url(@user) %>">
-    See More
-  </a>
-  <br><%= @user.favorite_items[0..7] %>
-</div>
-
-<div id="favorite-shops">
-  <h3>Favorite Shops</h3>
-  <% @user.favorite_shops[0..2].each do |s| %>
-    <%= link_to s.name, shop_url(s) %>
-    <%= s.items[0..3] %>
+<div id="toolbar">
+  <% if current_user && (current_user.id == @user.id) %>
+    <%= link_to "Edit Profile", edit_user_url(@user) %>
   <% end %>
+</div>
+
+<div id="row">
+  <div id="user-box" class="well col-md-6 pull-left">
+    <h4>About</h4>
+    
+    <div id="user-info" class="panel">
+      <p><%= @user.about %></p>
+      
+      <p class="text-muted">Joined <%= date_string %></p>
+    </div>
+  </div>
+
+  <div id="favorite-item-box" class="well col-md-5 pull-right">
+    <h4>Favorite Items</h4>
+    
+    <a href="<%= favorites_user_url(@user) %>">
+      See More
+    </a>
+    
+    <div id="favorite-tems" class="panel">
+      <%= @user.favorite_items[0..7] %>
+      
+      <p class="text-muted"><%= @user.favorite_items.count %> Items</p>
+    </div>
+  </div>
+</div>
+
+<div id="row">
+  <% if @user.shop %>
+    <div id="shop-box" class="well col-md-6 pull-left">
+      <h4>Shop</h4>
+    
+      <a href="<%= shop_url(@user.shop) %>">
+        See More
+      </a>
+    
+      <div id="shop-items" class="panel">
+        <%= @user.shop.items[0..9]%>
+      </div>
+    </div>
+  <% end %>
+  
+  <div id="favorite-shop-box" class="well col-md-5 pull-right">
+    <h4>Favorite Shops</h4>
+    
+    <a href="<%= favorites_user_url(@user) %>">
+      See More
+    </a>
+    
+    <div id="favorite-shops" class="panel">
+      <% @user.favorite_shops[0..2].each do |s| %>
+        <%= link_to s.name, shop_url(s) %>
+        <%= s.items[0..3] %>
+        <p class="text-muted"><%= s.items.count %> Items</p>
+      <% end %>
+    </div>
+  </div>
 </div>
