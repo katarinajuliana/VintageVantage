@@ -30,6 +30,7 @@ class UsersController < ApplicationController
   
   def favorites
     @user = User.find(params[:id])
+    p params
     @items = @user.favorite_items
     @shops = @user.favorite_shops
   end
