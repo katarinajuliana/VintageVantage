@@ -1,7 +1,75 @@
-<h1><%= @shop.name %></h1>
-<p><%= @shop.description %></p>
+<% favorited = current_user.favorite_shops.include?(@shop) %>
+<% date_string = "#{ Date::MONTHNAMES[@date.month] } #{ @date.mday }, #{ @date.year }" %>
 
-<% if current_user && (current_user.id == @shop.owner_id) %>
-  <%= link_to "Add an Item", new_item_url %> |
-  <%= link_to "Edit Shop", edit_shop_url(@shop) %>
-<% end %>
+<div id="shop-info">
+  <h1><%= @shop.name %></h1>
+  
+  <div id="toolbar">
+    <% if current_user && (current_user.id == @shop.owner_id) %>
+      <%= link_to "Add an Item", new_item_url %> |
+      <%= link_to "Edit Shop", edit_shop_url(@shop) %>
+    <% end %>
+  </div>
+
+  <p><%= @shop.description %></p>
+
+  <input type="submit" 
+        class="favorite <%= 'hidden' if favorited %>"
+      data-id="<%= @shop.id %>"
+        value="❤!">
+
+  <input type="submit" 
+        class="unfavorite <%= 'hidden' unless favorited %>"
+      data-id="<%= @shop.id %>"
+        value="❤">
+</div>
+
+<div id="items">
+  <br>
+  TODO: LIST ITEMS
+  <br>
+</div>
+
+<div id="owner-info">
+  <h3>Shop Owner</h3>
+  
+  <a href="<%= user_url(@shop.owner) %>">
+    <%= @shop.owner.username %>
+  </a>
+  <p>Opened Shop on <%=  date_string %></p>
+</div>
+
+
+<script type="application/javascript">
+  $(function () {
+    $(".favorite").on("click", function (event) {
+      event.preventDefault();
+      var shopId = $(event.target).data("id");
+      
+      $.ajax({
+        url: "/shops/" + shopId + "/shop_favorite.json",
+        type: "POST",
+        data: { shop_id: shopId },
+        success: function (response) {
+          $(".favorite").toggleClass("hidden");
+          $(".unfavorite").toggleClass("hidden");
+        }
+      });
+    });
+    
+    $(".unfavorite").on("click", function (event) {
+      event.preventDefault();
+      var shopId = $(event.target).data("id");
+      
+      $.ajax({
+        url: "/shops/" + shopId + "/shop_favorite.json",
+        type: "DELETE",
+        data: { shop_id: shopId },
+        success: function (response) {
+          $(".favorite").toggleClass("hidden");
+          $(".unfavorite").toggleClass("hidden");
+        }
+      });
+    });
+  });
+</script>

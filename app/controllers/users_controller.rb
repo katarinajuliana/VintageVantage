@@ -27,6 +27,12 @@ class UsersController < ApplicationController
       redirect_to root_url
     end
   end
+  
+  def favorites
+    @user = User.find(params[:id])
+    @items = @user.favorite_items
+    @shops = @user.favorite_shops
+  end
 
   def new
     @user = User.new
@@ -34,6 +40,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @date = @user.created_at
   end
   
   def update

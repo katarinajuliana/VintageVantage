@@ -4,11 +4,14 @@ class Item < ActiveRecord::Base
     validates attr, :presence => true
   end
   
-  belongs_to :shop
+
   belongs_to :category
+  
   belongs_to :era
+  
+  belongs_to :shop
   
   has_one :owner,
           :through => :shop,
-          :source => :owner
+          :source  => :owner
 end

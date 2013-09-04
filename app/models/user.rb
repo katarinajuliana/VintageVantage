@@ -10,10 +10,23 @@ class User < ActiveRecord::Base
             :presence => true
             
   validates :email, :username, :uniqueness => true
-            
+  
   validates :password, :length => { :minimum => 6, :allow_nil => true }
   
   after_initialize :ensure_session_token
+  
+  
+  has_many :favorite_items,
+           :through => :item_favorites,
+           :source  => :item
+           
+  has_many :favorite_shops,
+           :through => :shop_favorites,
+           :source  => :shop
+           
+  has_many :item_favorites
+           
+  has_many :shop_favorites
   
   has_one :shop,
           :foreign_key => :owner_id,

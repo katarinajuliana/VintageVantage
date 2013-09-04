@@ -1,10 +1,57 @@
+<% favorited = current_user.favorite_items.include?(@item) %>
+
 <h1><%= @item.title %></h1>
 
 <p><%= @item.era.decade %> | $<%= @item.price %></p>
 
 <p><%= @item.description %></p>
+
+<input type="submit" 
+      class="favorite <%= 'hidden' if favorited %>"
+    data-id="<%= @item.id %>"
+      value="❤!">
+
+<input type="submit" 
+      class="unfavorite <%= 'hidden' unless favorited %>"
+    data-id="<%= @item.id %>"
+      value="❤">
+
 <br>
 <br>
 <% if current_user && (current_user.id == @item.owner.id) %>
   <%= link_to "Edit", edit_item_url(@item) %>
 <% end %>
+
+<script type="application/javascript">
+  $(function () {
+    $(".favorite").on("click", function (event) {
+      event.preventDefault();
+      var itemId = $(event.target).data("id");
+      
+      $.ajax({
+        url: "/items/" + itemId + "/item_favorite.json",
+        type: "POST",
+        data: { item_id: itemId },
+        success: function (response) {
+          $(".favorite").toggleClass("hidden");
+          $(".unfavorite").toggleClass("hidden");
+        }
+      });
+    });
+    
+    $(".unfavorite").on("click", function (event) {
+      event.preventDefault();
+      var itemId = $(event.target).data("id");
+      
+      $.ajax({
+        url: "/items/" + itemId + "/item_favorite.json",
+        type: "DELETE",
+        data: { item_id: itemId },
+        success: function (response) {
+          $(".favorite").toggleClass("hidden");
+          $(".unfavorite").toggleClass("hidden");
+        }
+      });
+    });
+  });
+</script>

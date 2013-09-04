@@ -1,8 +1,17 @@
 VintageVantage::Application.routes.draw do
   resource :session, :only => [:new, :create, :destroy]
-  resources :items, :except => [:index]
-  resources :users, :except => [:index]
-  resources :shops, :except => [:index]
+  
+  resources :items, :except => [:index] do
+    resource :item_favorite, :only => [:create, :destroy]
+  end
+  
+  resources :shops, :except => [:index] do
+    resource :shop_favorite, :only => [:create, :destroy]
+  end
+  
+  resources :users, :except => [:index] do
+    get 'favorites', :on => :member
+  end
   
   root to: "items#index"
 end

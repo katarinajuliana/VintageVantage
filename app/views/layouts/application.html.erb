@@ -13,6 +13,8 @@
     Hi,
     <%= link_to current_user.username, user_url(current_user) %>.
     //
+    <%= link_to "❤", favorites_user_url(current_user)%>
+    //
     <% if current_user.shop %>
       <%= link_to "Your Shop", shop_url(current_user.shop) %>
     <% else %>
