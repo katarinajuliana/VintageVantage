@@ -1,21 +1,26 @@
+<% item_class = @shop ? '' : 'active' %>
+<% shop_class = @shop ? 'active' : '' %>
+
 <h1><a href="<%= user_url(@user) %>"><%= @user.username %>'s</a> Favorites</h1>
 
 <div class="well">
-  <ul class="switch-fav nav nav-pills">
-    <li id="show-items" class="active"><a>Items</a>
-    <li id="show-shops"><a>Shop</a>
+  <ul class="switch-fav nav nav-tabs">
+    <li id="show-items" class="<%= @shop ? '' : 'active' %>"><a>Items</a>
+    <li id="show-shops" class="<%= @shop ? 'active' : '' %>"><a>Shop</a>
   </ul>
 
   <div class="panel">
-    <div id="favorite-items">
+    <div id="favorite-items" class="<%= @shop ? 'hidden' : '' %>">
       <%= @user.favorite_items %>
     </div>
 
-    <div id="favorite-shops" class="hidden">
+    <div id="favorite-shops" class="<%= @shop ? '' : 'hidden' %>">
       <%= @user.favorite_shops %>
     </div>
   </div>
 </div>
+
+
 
 <script type="application/javascript">
   $(function () {

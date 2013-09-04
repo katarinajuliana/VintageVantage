@@ -20,7 +20,8 @@
       name="user[email]"
       type="email"
       class="form-control"
-      value="<%= @user.email %>">
+      value="<%= @user.email %>"
+      placeholder="email@example.com">
   </div>
 
   <div class="form-group"> 
@@ -50,8 +51,9 @@
        id="user_about"
        name="user[about]"
        class="form-control"
-       rows="5"><%= @user.about || "Tell people a little about yourself." %>
-    </textarea>
+       rows="5"
+       placeholder="Tell people a little about yourself."
+       ><%= @user.about %></textarea>
   </div>
   
   <div class="form-group"> 

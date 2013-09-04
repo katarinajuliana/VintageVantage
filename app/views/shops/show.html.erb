@@ -15,14 +15,14 @@
       
       <button type="submit"
               id="favorite" 
-              class="btn btn-default <%= 'hidden' if favorited %>"
+              class="btn btn-default favorite <%= 'hidden' if favorited %>"
               data-id="<%= @shop.id %>">
         ❤ Favorite
       </button>
 
       <button type="submit"
               id="unfavorite"
-              class="btn btn-default <%= 'hidden' unless favorited %>"
+              class="btn btn-default favorite <%= 'hidden' unless favorited %>"
               data-id="<%= @shop.id %>">
         ❤ Favorited
       </button>
@@ -62,33 +62,22 @@
 
 <script type="application/javascript">
   $(function () {
-    $("#favorite").on("click", function (event) {
+    $(".favorite").on("click", function (event) {
       event.preventDefault();
+      
       var shopId = $(event.target).data("id");
+      var method = ($(event.target).attr("id") == "favorite" ? "POST" : "DELETE")
       
       $.ajax({
         url: "/shops/" + shopId + "/shop_favorite.json",
-        type: "POST",
+        type: method,
         data: { shop_id: shopId },
         success: function () {
           $("#favorite").toggleClass("hidden");
           $("#unfavorite").toggleClass("hidden");
         },
-        error: function () {}
-      });
-    });
-    
-    $("#unfavorite").on("click", function (event) {
-      event.preventDefault();
-      var shopId = $(event.target).data("id");
-      
-      $.ajax({
-        url: "/shops/" + shopId + "/shop_favorite.json",
-        type: "DELETE",
-        data: { shop_id: shopId },
-        success: function (response) {
-          $("#favorite").toggleClass("hidden");
-          $("#unfavorite").toggleClass("hidden");
+        error: function () {
+          window.location.href = '/session/new';
         }
       });
     });

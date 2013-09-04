@@ -80,6 +80,7 @@
   $(function () {
     $(".item").on("click", function (event) {
       event.preventDefault();
+      
       var itemId = $(event.target).data("id");
       var method = ($(event.target).attr("id") == "item-favorite" ? "POST" : "DELETE")
       
@@ -90,6 +91,9 @@
         success: function (response) {
           $("#item-favorite").toggleClass("hidden");
           $("#item-unfavorite").toggleClass("hidden");
+        },
+        error: function () {
+          window.location.href = '/session/new';
         }
       });
     });
@@ -97,6 +101,7 @@
 
     $(".shop").on("click", function (event) {
       event.preventDefault();
+      
       var shopId = $(event.target).data("id");
       var method = ($(event.target).attr("id") == "shop-favorite" ? "POST" : "DELETE")
       
@@ -104,9 +109,12 @@
         url: "/shops/" + shopId + "/shop_favorite.json",
         type: method,
         data: { shop_id: shopId },
-        success: function (response) {
+        success: function () {
           $("#shop-favorite").toggleClass("hidden");
           $("#shop-unfavorite").toggleClass("hidden");
+        },
+        error: function () {
+          window.location.href = '/session/new';
         }
       });
     });

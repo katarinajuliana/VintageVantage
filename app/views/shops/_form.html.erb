@@ -29,8 +29,9 @@
        id="shop_description"
        name="shop[description]"
        class="form-control"
-       rows="10"><%= @shop.description || "Tell people what to expect from your shop." %>
-    </textarea>
+       rows="5"
+       placeholder="Tell people what to expect from your shop."
+       ><%= @shop.description %></textarea>
   </div>
   
   <button type="submit" class="btn btn-info"><%= button_text %></button>
