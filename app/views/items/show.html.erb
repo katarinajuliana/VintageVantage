@@ -1,26 +1,45 @@
 <% favorited = current_user.favorite_items.include?(@item) %>
 
-<h1><%= @item.title %></h1>
+<div id="item-info">
+  <h1><%= @item.title %></h1>
 
-<p><%= @item.era.decade %> | $<%= @item.price %></p>
+  <div id="toolbar">
+    <% if current_user && (current_user.id == @item.owner.id) %>
+      <%= link_to "Edit Item", edit_item_url(@item) %>
+    <% end %>
+  </div>
+  
+  <h4><%= @item.era.decade %> | $<%= @item.price %></h4>
+  <%= button_to "Add to Cart" %>
 
-<p><%= @item.description %></p>
+  <br>
+  <input type="submit" 
+        class="favorite <%= 'hidden' if favorited %>"
+      data-id="<%= @item.id %>"
+        value="❤ Favorite">
 
-<input type="submit" 
-      class="favorite <%= 'hidden' if favorited %>"
-    data-id="<%= @item.id %>"
-      value="❤!">
+  <input type="submit" 
+        class="unfavorite <%= 'hidden' unless favorited %>"
+      data-id="<%= @item.id %>"
+        value="❤ Favorited">
+  <br>
+</div>
 
-<input type="submit" 
-      class="unfavorite <%= 'hidden' unless favorited %>"
-    data-id="<%= @item.id %>"
-      value="❤">
+<div id="desciption">
+  <h4>Details</h4>
+  <p><%= @item.description %></p>
+</div>
 
-<br>
-<br>
-<% if current_user && (current_user.id == @item.owner.id) %>
-  <%= link_to "Edit", edit_item_url(@item) %>
-<% end %>
+<div id="shop-info">
+  <h3>More from
+    <a href="<%= shop_url(@item.shop) %>">
+      <%= @item.shop.name %>
+    </a>
+  </h3>
+  TODO: LIST ITEMS
+</div>
+
+
 
 <script type="application/javascript">
   $(function () {

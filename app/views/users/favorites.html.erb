@@ -1,9 +1,36 @@
-<h1><%= @user.username %>'s Favorites</h1>
+<h1><a href="<%= user_url(@user) %>"><%= @user.username %>'s</a> Favorites</h1>
+
+<input type="submit"
+         id="show-items"
+      value="Items">
+      
+<input type="submit"
+         id="show-shops"
+      value="Shops">
 
 <div id="favorite-items">
   TODO: LIST ITEMS
 </div>
 
-<div id="favorite-shops">
+<div id="favorite-shops" class="hidden">
   TODO: LIST SHOPS
 </div>
+
+
+<script type="application/javascript">
+  $(function () {
+    $("#show-items").on("click", function (event) {
+      event.preventDefault();    
+
+      $("#favorite-items").removeClass("hidden");
+      $("#favorite-shops").addClass("hidden");
+    });
+  
+    $("#show-shops").on("click", function (event) {
+      event.preventDefault();    
+
+      $("#favorite-items").addClass("hidden");
+      $("#favorite-shops").removeClass("hidden");
+    });
+  });
+</script>
