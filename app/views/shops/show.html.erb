@@ -77,7 +77,7 @@
           $("#unfavorite").toggleClass("hidden");
         },
         error: function () {
-          window.location.href = '/session/new';
+          $('#auth-modal').modal('show');
         }
       });
     });

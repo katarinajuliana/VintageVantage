@@ -3,11 +3,12 @@ class SessionsController < ApplicationController
   respond_to :json
   
   def create
-    user = User.find_by_username(params[:user][:username])
+    @user = User.find_by_username(params[:user][:username])
 
-    if user && (user.is_password?(params[:user][:password]))
-      self.current_user = user
-      render :json => user
+    if @user && (@user.is_password?(params[:user][:password]))
+      self.current_user = @user
+      
+      render :session
     else
       render :json => user.errors
     end

@@ -24,25 +24,50 @@
   <button id="sign-in-button" type="submit" class="btn btn-info">Welcome Back</button>
 </form>
 
+
+
 <script type="application/javascript">
   $(function () {
-    $("#sign-in-button").on('submit', function (event) {
+    $("#session-form").on('submit', function (event) {
       event.preventDefault();
-    
-      console.log(event.target);
-      console.log(event.currentTarget);
-    
-      var formData = $(event.currentTarget).data;
-    
+      
+      var formData = $(event.target).serializeJSON();
+      
       $.ajax({
-        url: "/session",
+        url: "/session.json",
         type: "post",
         data: formData,
-        sucess: function () {
-          console.log("logged in")
+        success: function (response) {
+          $("#auth-modal").modal("hide");
+          $("#sign-out").removeClass("hidden");
+
+          var $navList = $("#nav-links");
+          $navList.empty();
+          
+          
+          var $userLink = $('<li><p class="navbar-text pull-right">Hi, </p></li>');
+          $userLink.children().first().append('<a href="/users/' + response.id + '">' + response.username +'</a>')
+         
+          $navList.append($userLink);
+          
+          var $favLink = $("<li>")
+          $favLink.html("<a href='/users/" + response.id + "/favorites'>❤</a>");
+          $navList.append($favLink);
+
+          if(response.shop) {
+            var $shopLink = $("<li>");
+            $shopLink.html("<a href='/shops/" + 
+              response.shop + "'>Your Shop</a>");
+              
+            $navList.append($shopLink);
+          } else {
+            $navList.append("<li><a href='/shops/new'>Open a Shop</a></li>");
+          }
+          
+          
         },
-        error: function () {
-          console.log("error function")
+        error: function (response) {
+          console.log(response)
         }
       });
     });

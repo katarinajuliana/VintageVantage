@@ -34,8 +34,14 @@
         
         <button type="submit" class="btn btn-info">Search</button>
       </form>
-    
+      
       <ul class="nav navbar-nav navbar-right">
+        <li id="sign-out" class="<%= current_user ? '' : 'hidden' %>">
+          <%= link_to "Sign Out", session_url , :method => :delete %>
+        </li>
+      </ul>
+    
+      <ul id="nav-links" class="nav navbar-nav navbar-right">
         <% if current_user %>
           <li>
             <p class="navbar-text pull-right">
@@ -51,7 +57,7 @@
             <li><%= link_to "Open a Shop", new_shop_url %></li>
           <% end %>
 
-          <li><%= link_to "Sign Out", session_url , :method => :delete %></li>
+          
         <% else %>
           <li><%= link_to "Join Us", new_user_url %></li>
     
@@ -66,12 +72,3 @@
   <div class="container"><%= yield %></div>
 </body>
 </html>
-
-
-<script type="application/javascript">
-  $(function () {
-    $("#auth-modal").on('shown.bs.modal', function () {
-      
-    });
-  });
-</script>
