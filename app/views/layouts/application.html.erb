@@ -62,18 +62,7 @@
 </script>
 
 <script type="text/json" id="current-shop">
-  <% if current_user && current_user.shop %>
+  <% if current_user %>
     <%= current_user.shop.to_json.html_safe %>
   <% end %>
-</script>
-
-
-
-<script type="application/javascript">
-  window.currentUser = JSON.parse($("#current-user").html());
-  var currentShop = JSON.parse($("#current-shop").html());
-  
-  $(function () {  
-    window.VV.populateUserNav(currentUser, currentShop.id);
-  });
 </script>

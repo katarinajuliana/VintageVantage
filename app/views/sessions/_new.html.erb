@@ -23,29 +23,3 @@
 
   <button id="sign-in-button" type="submit" class="btn btn-info">Welcome Back</button>
 </form>
-
-<script type="application/javascript">
-  $(function () {
-    $("#session-form").on('submit', function (event) {
-      event.preventDefault();
-
-      var formData = $(event.target).serializeJSON();
-  
-      $.ajax({
-        url: "/session.json",
-        type: "post",
-        data: formData,
-        success: function (response) {
-          $("#auth-modal").modal("hide");
-          $("#user-nav").removeClass("hidden");
-          $("#anon-nav").addClass("hidden");
-
-          window.VV.populateUserNav(response, response.shop);
-        },
-        error: function (response) {
-          console.log(response)
-        }
-      });
-    });
-  });  
-</script>

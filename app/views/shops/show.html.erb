@@ -14,14 +14,14 @@
       <%= @shop.name %>
       
       <button type="submit" 
-              class="btn btn-default btn-fav shop-fav <%= 'hidden' if favorited %>"
+              class="btn btn-default btn-fav fav shop <%= 'hidden' if favorited %>"
               data-id="<%= @shop.id %>">
         ❤ Favorite
       </button>
 
       <button type="submit"
               id="unfavorite"
-              class="btn btn-default btn-fav shop-unfav <%= 'hidden' unless favorited %>"
+              class="btn btn-default btn-fav shop unfav <%= 'hidden' unless favorited %>"
               data-id="<%= @shop.id %>">
         ❤ Favorited
       </button>
@@ -56,28 +56,3 @@
     <p class="text-muted"><%= @shop.items.count %> Items</p>
   </div>
 </div>
-
-
-
-<script type="application/javascript">
-  $(function () {
-    $(".btn-fav").on("click", function (event) {
-      event.preventDefault();
-      
-      var shopId = $(event.target).data("id");
-      var method = ($(event.target).hasClass("shop-fav") ? "POST" : "DELETE")
-      
-      $.ajax({
-        url: "/shops/" + shopId + "/shop_favorite.json",
-        type: method,
-        data: { shop_id: shopId },
-        success: function () {
-          $(".btn-fav").toggleClass("hidden");
-        },
-        error: function () {
-          $('#auth-modal').modal('show');
-        }
-      });
-    });
-  });
-</script>
