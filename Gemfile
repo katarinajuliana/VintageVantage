@@ -20,3 +20,6 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'backbone-on-rails'
 gem 'rabl'
+gem "paperclip"
+gem "aws-sdk"
+gem 'figaro'

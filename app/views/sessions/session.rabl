@@ -1,4 +1,6 @@
 object @user
 attributes :id, :username
 
-node(:shop) { |user| user.shop ? user.shop.id : nil }
+child(:shop) { attribute *Shop.column_names }
+child(:favorite_shops) { attribute *Shop.column_names }
+child(:favorite_items) { attribute *Item.column_names }

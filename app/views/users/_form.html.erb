@@ -1,7 +1,7 @@
 <% @user ||= User.new %>
 <% action = (@user.persisted? ? user_url(@user) : users_url) %>
 <% method = (@user.persisted? ? "put" : "post") %>
-<% message = (@user.persisted? ? "" : "Sign Up") %>
+<% message = (@user.persisted? ? "Update" : "Sign Up") %>
 
 
 <form action="<%= action %>" method="post" role="form" class="col-md-7">
@@ -68,7 +68,6 @@
        value="<%= @user.zipcode %>">
   </div>
   
-  <% if @user.persisted? %>
-    <button type='submit' class='btn btn-info'>Update</button>
-  <% end %>
+
+  <button type='submit' class='btn btn-info'><%= message %></button>
 </form>

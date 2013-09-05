@@ -35,10 +35,6 @@ class UsersController < ApplicationController
     @shops = @user.favorite_shops
   end
 
-  # def new
-  #   @user = User.new
-  # end
-
   def show
     @user = User.find(params[:id])
     @date = @user.created_at

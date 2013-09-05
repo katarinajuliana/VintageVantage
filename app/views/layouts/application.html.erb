@@ -34,41 +34,46 @@
         
         <button type="submit" class="btn btn-info">Search</button>
       </form>
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li id="sign-out" class="<%= current_user ? '' : 'hidden' %>">
-          <%= link_to "Sign Out", session_url , :method => :delete %>
-        </li>
-      </ul>
-    
-      <ul id="nav-links" class="nav navbar-nav navbar-right">
-        <% if current_user %>
-          <li>
-            <p class="navbar-text pull-right">
-              Hi, <%= link_to current_user.username, user_url(current_user) %>.
-            </p>         
-          </li>
-    
-          <li><%= link_to "❤", favorites_user_url(current_user) %></li>
-    
-          <% if current_user.shop %>
-            <li><%= link_to "Your Shop", shop_url(current_user.shop) %></li>
-          <% else %>
-            <li><%= link_to "Open a Shop", new_shop_url %></li>
-          <% end %>
 
-          
-        <% else %>
-          <li><%= link_to "Join Us", new_user_url %></li>
     
+      <ul id="user-nav"
+        class="nav navbar-nav navbar-right <%= 'hidden' unless current_user %>">
+        <li><%= link_to "Sign Out", session_url , :method => :delete %></li>
+      </ul>
+      
+      <ul id="anon-nav"
+        class="nav navbar-nav navbar-right <%= 'hidden' if current_user %>">
+          <li><%= link_to "Join Us", new_user_url %></li>
           <li><a data-toggle="modal" data-target="#auth-modal">Sign In</a></li>
-        <% end %>
       </ul>
     </div>
   </nav>
-  
+
   <%= render 'sessions/modal' %>
     
   <div class="container"><%= yield %></div>
 </body>
 </html>
+
+
+
+<script type="text/json" id="current-user">
+  <%= current_user.to_json.html_safe %>
+</script>
+
+<script type="text/json" id="current-shop">
+  <% if current_user && current_user.shop %>
+    <%= current_user.shop.to_json.html_safe %>
+  <% end %>
+</script>
+
+
+
+<script type="application/javascript">
+  window.currentUser = JSON.parse($("#current-user").html());
+  var currentShop = JSON.parse($("#current-shop").html());
+  
+  $(function () {  
+    window.VV.populateUserNav(currentUser, currentShop.id);
+  });
+</script>

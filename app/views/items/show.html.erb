@@ -24,18 +24,17 @@
     <button type="submit" class="btn btn-success">Add to Cart</button>
     
     <button type="submit"
-      id="item-favorite"
-      class="btn btn-default item <%= 'hidden' if fav_item %>"
+      class="btn btn-default btn-fav fav item <%= 'hidden' if fav_item %>"
       data-id="<%= @item.id %>">
         ❤ Favorite
     </button>
 
     <button type="submit"
-      id="item-unfavorite" 
-      class="btn btn-default item <%= 'hidden' unless fav_item %>"
+      class="btn btn-default btn-fav unfav item <%= 'hidden' unless fav_item %>"
       data-id="<%= @item.id %>">
         ❤ Favorited
     </button>
+    <t class="text-muted"><%= @item.item_favorites.count %> Admirers</t>
   </div>
 </div>
 
@@ -54,15 +53,13 @@
       <a href="<%= shop_url(@item.shop) %>"><%= @item.shop.name %></a>
       
       <button type="submit" 
-        id="shop-favorite"
-        class="btn btn-default shop <%= 'hidden' if fav_shop %>"
+        class="btn btn-default btn-fav fav shop <%= 'hidden' if fav_shop %>"
         data-id="<%= @item.shop.id %>">
           ❤ Favorite
       </button>
 
       <button type="submit"
-        id="shop-unfavorite"
-        class="btn btn-default shop <%= 'hidden' unless fav_shop %>"
+        class="btn btn-default btn-fav unfav shop <%= 'hidden' unless fav_shop %>"
         data-id="<%= @item.shop.id %>">
           ❤ Favorited
       </button>
@@ -82,7 +79,7 @@
       event.preventDefault();
       
       var itemId = $(event.target).data("id");
-      var method = ($(event.target).attr("id") == "item-favorite" ? "POST" : "DELETE")
+      var method = ($(event.target).hasClass("fav") ? "POST" : "DELETE")
       
       $.ajax({
         url: "/items/" + itemId + "/item_favorite.json",
@@ -103,7 +100,7 @@
       event.preventDefault();
       
       var shopId = $(event.target).data("id");
-      var method = ($(event.target).attr("id") == "shop-favorite" ? "POST" : "DELETE")
+      var method = ($(event.target).hasClass("fav") ? "POST" : "DELETE")
       
       $.ajax({
         url: "/shops/" + shopId + "/shop_favorite.json",

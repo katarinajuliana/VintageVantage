@@ -10,6 +10,8 @@ class Item < ActiveRecord::Base
   belongs_to :era
   
   belongs_to :shop
+  
+  has_many :item_favorites
           
   has_one :owner,
           :through => :shop,
