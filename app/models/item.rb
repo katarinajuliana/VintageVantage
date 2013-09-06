@@ -7,11 +7,11 @@ class Item < ActiveRecord::Base
   
   attr_accessible :detail_photo_1, :detail_photo_2, :detail_photo_3, :detail_photo_4
   
-  has_attached_file :primary_photo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-  has_attached_file :detail_photo_1, :styles => { :medium => "300x300>", :thumb => "100x100>" } 
-  has_attached_file :detail_photo_2, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-  has_attached_file :detail_photo_3, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-  has_attached_file :detail_photo_4, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :primary_photo, :styles => { :medium => "400x400>", :thumb => "100x100#" }
+  has_attached_file :detail_photo_1, :styles => { :medium => "400x400>", :thumb => "100x100#" } 
+  has_attached_file :detail_photo_2, :styles => { :medium => "400x400>", :thumb => "100x100#" }
+  has_attached_file :detail_photo_3, :styles => { :medium => "400x400>", :thumb => "100x100#" }
+  has_attached_file :detail_photo_4, :styles => { :medium => "400x400>", :thumb => "100x100#" }
     
   belongs_to :category
   

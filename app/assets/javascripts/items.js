@@ -4,8 +4,9 @@ $(function () {
     
     $(".thumbnail").removeClass("active");
     $(event.target).parent().addClass("active");
-    
-    var clickedImage = $(event.target).attr("src");
-    $("#display-photo").attr("src", clickedImage);
+
+    var ord = $(event.target).parent().data("id");
+    $(".display-photo").addClass("hidden");
+    $("img[data-ord='" + ord + "']").removeClass("hidden");
   })
 });

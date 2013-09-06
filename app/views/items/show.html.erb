@@ -4,39 +4,65 @@
 <div class="row">
   <div id="photo-box" class="col-md-6 well pull-left">
     <div id="display-box" class="panel">
-      <img id="display-photo" class="img-responsive img-rounded "
+      <img data-ord="1"
+        class="img-responsive img-rounded display-photo"
         src="<%= @item.primary_photo.url %>"
         alt="<%= @item.title %>"
         display="block">
+        
+      <img data-ord="2"
+        class="img-responsive img-rounded hidden display-photo"
+        src="<%= @item.detail_photo_1.url %>"
+        alt="<%= @item.title %>"
+        display="block">
+        
+      <img data-ord="3"
+        class="img-responsive img-rounded hidden display-photo"
+        src="<%= @item.detail_photo_2.url %>"
+        alt="<%= @item.title %>"
+        display="block">
+      
+      <img data-ord="4"
+        class="img-responsive img-rounded hidden display-photo"
+        src="<%= @item.detail_photo_3.url %>"
+        alt="<%= @item.title %>"
+        display="block">
+        
+      <img data-ord="5"
+        class="img-responsive img-rounded hidden display-photo"
+        src="<%= @item.detail_photo_4.url %>"
+        alt="<%= @item.title %>"
+        display="block">  
     </div>
     
     <div id="detail-thumbs" class="row">
         <div class="col-md-3">
-          <a href="" class="thumbnail active">
-            <img src="<%= @item.primary_photo.url %>">
+          <a href="" data-id="1" class="thumbnail active">
+            <img src="<%= @item.primary_photo.url(:thumb) %>">
           </a>
         </div>
+        
         <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_1.exists? %>">
-          <a href="" class="thumbnail">
-            <img src="<%= @item.detail_photo_1.url %>">
+          <a href="" data-id="2" class="thumbnail">
+            <img src="<%= @item.detail_photo_1.url(:thumb) %>">
           </a>
         </div>
       
       <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_2.exists? %>">
-        <a href="#" class="thumbnail">
-          <img src="<%= @item.detail_photo_2.url %>">
+        <a href="#" data-id="3" class="thumbnail">
+          <img src="<%= @item.detail_photo_2.url(:thumb) %>">
         </a>
       </div>
       
       <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_3.exists? %>">
         <a href="#" class="thumbnail">
-          <img src="<%= @item.detail_photo_3.url %>">
+          <img src="<%= @item.detail_photo_3.url(:thumb) %>">
         </a>
       </div>
       
       <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_4.exists? %>">
         <a href="#" class="thumbnail">
-          <img src="<%= @item.detail_photo_4.url %>">
+          <img src="<%= @item.detail_photo_4.url(:thumb) %>">
         </a>
       </div>
     </div>
