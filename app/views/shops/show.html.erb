@@ -3,11 +3,9 @@
 
 <div class="row">
   <div id="shop-box" class="well col-md-7 pull-left">
-    <div id="toolbar">
-      <% if current_user && (current_user.id == @shop.owner_id) %>
+    <div class="toolbar <%= 'hidden' unless current_user && (current_user.id == @shop.owner_id) %>">   
         <%= link_to "Add an Item", new_item_url %> |
         <%= link_to "Edit Shop", edit_shop_url(@shop) %>
-      <% end %>
     </div> 
     
     <h1>

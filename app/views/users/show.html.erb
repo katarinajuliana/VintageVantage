@@ -2,10 +2,8 @@
 
 <h1><%= @user.username %></h1> 
 
-<div id="toolbar">
-  <% if current_user && (current_user.id == @user.id) %>
+<div id="toolbar <% 'hidden' unless current_user && (current_user.id == @user.id) %>">
     <%= link_to "Edit Profile", edit_user_url(@user) %>
-  <% end %>
 </div>
 
 <div id="row">

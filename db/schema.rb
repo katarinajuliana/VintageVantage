@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130905232718) do
+ActiveRecord::Schema.define(:version => 20130906180100) do
 
   create_table "categories", :force => true do |t|
     t.string "title", :null => false
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(:version => 20130905232718) do
   create_table "eras", :force => true do |t|
     t.string "decade", :null => false
   end
+
+  create_table "friendly_id_slugs", :force => true do |t|
+    t.string   "slug",                         :null => false
+    t.integer  "sluggable_id",                 :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], :name => "index_friendly_id_slugs_on_slug_and_sluggable_type", :unique => true
+  add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "item_favorites", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -98,9 +109,11 @@ ActiveRecord::Schema.define(:version => 20130905232718) do
     t.integer  "owner_id",    :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "slug"
   end
 
   add_index "shops", ["owner_id"], :name => "index_shops_on_owner_id", :unique => true
+  add_index "shops", ["slug"], :name => "index_shops_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",           :null => false
@@ -111,10 +124,12 @@ ActiveRecord::Schema.define(:version => 20130905232718) do
     t.text     "about"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "slug"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["session_token"], :name => "index_users_on_session_token"
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end

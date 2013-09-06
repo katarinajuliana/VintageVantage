@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if @user && (@user.is_password?(params[:user][:password]))
       self.current_user = @user
       
-      render :session
+      render "users/user"
     else
       render :json => user.errors
     end

@@ -3,12 +3,19 @@
 
 <div class="row">
   <div id="photo-box" class="col-md-6 well pull-left">
-    <div id="photo-display" class="panel">
-      <img src="<%= @item.primary_photo.url %>"
-        alt="<%= @item.title %>" class="img-responsive img-rounded" display="block">
+    <div id="display-box" class="panel">
+      <img id="display-photo" class="img-responsive img-rounded "
+        src="<%= @item.primary_photo.url %>"
+        alt="<%= @item.title %>"
+        display="block">
     </div>
     
     <div id="detail-thumbs" class="row">
+        <div class="col-md-3">
+          <a href="" class="thumbnail active">
+            <img src="<%= @item.primary_photo.url %>">
+          </a>
+        </div>
         <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_1.exists? %>">
           <a href="" class="thumbnail">
             <img src="<%= @item.detail_photo_1.url %>">
@@ -37,10 +44,8 @@
   
   <div id="item-box" class="col-md-5 well pull-right">
     <div id="item-info" class="panel">
-      <div id="toolbar">
-        <% if current_user && (current_user.id == @item.owner.id) %>
+      <div class="toolbar <%= 'hidden' unless current_user && (current_user.id == @item.owner.id) %>">
           <%= link_to "Edit Item", edit_item_url(@item) %>
-        <% end %>
       </div>
       
       <h1><%= @item.title %></h1>

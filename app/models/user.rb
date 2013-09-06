@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  extend FriendlyId
+  
   attr_accessible :about, :email, :password, :username, :zipcode
   attr_reader :password
   
@@ -15,6 +17,7 @@ class User < ActiveRecord::Base
   
   after_initialize :ensure_session_token
   
+  friendly_id :username, :use => :slugged
   
   has_many :favorite_items,
            :through => :item_favorites,

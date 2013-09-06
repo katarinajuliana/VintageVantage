@@ -4978,6 +4978,10 @@ a.thumbnail:focus {
   border-color: #428bca;
 }
 
+a.thumbnail.active {
+  border-color: #428bca;
+}
+
 .thumbnail > img {
   margin-right: auto;
   margin-left: auto;

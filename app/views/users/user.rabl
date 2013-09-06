@@ -1,5 +1,5 @@
 object @user
-attributes :id, :username
+attribute *User.column_names
 
 child(:shop) { attribute *Shop.column_names }
 child(:favorite_shops) { attribute *Shop.column_names }

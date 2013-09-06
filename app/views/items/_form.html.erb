@@ -23,16 +23,20 @@
        id="item_title"
        name="item[title]"
        class="form-control"
+       required="true"
        value="<%= @item.title %>">   
   </div>
   
   <div class="form-group"> 
     <label for="item_category">Category</label>
     
-    <select id="item_category" name="item[category_id]" class="form-control">
+    <select id="item_category"
+      name="item[category_id]"
+      class="form-control"
+      required="true">
       <option>Select a category...</option>
       
-      <% Category.all.each do |cat| %>
+      <% Category.all.sort.each do |cat| %>
         <option value="<%= cat.id %>"
           <%= (cat.id == cat_select) ? "selected='selected'" : "" %>>
             <%= cat.title %>
@@ -45,7 +49,10 @@
   <div class="form-group"> 
     <label for="item_era">Era</label>
     
-    <select id="item_era" name="item[era_id]" class="form-control">
+    <select id="item_era" 
+      name="item[era_id]"
+      class="form-control"
+      required="true">
       <option>Select an era...</option>
       
       <% Era.all.sort{ |x, y| y <=> x }.each do |era| %>
@@ -59,19 +66,40 @@
   </div>
   
   <div class="form-group">
-    <label for="item_photo">Photos</label>
+    <label for="image_primary_photo">Listing Photo:</label>
     
     <input type="file"
       name="item[primary_photo]"
-      placeholder="Add Photos">
+      id="image_primary_photo"
+      accept="image"
+      required="true"
+      value="<%= @item.primary_photo %>">
+  </div>
 
+  <div class="form-group">
+    <label>Detail Photos:</label>
+    
     <input type="file"
       name="item[detail_photo_1]"
+      accept="image"
       placeholder="Add Photos">
       
     <input type="file"
       name="item[detail_photo_2]"
+      accept="image"
       placeholder="Add Photos">
+      
+    <input type="file"
+      name="item[detail_photo_3]"
+      accept="image"
+      placeholder="Add Photos">
+      
+    <input type="file"
+      name="item[detail_photo_4]"
+      accept="image"
+      placeholder="Add Photos">
+    
+    <small><em>(Optional)</em></small>
   </div>
   
   <div class="form-group"> 
@@ -82,6 +110,7 @@
        name="item[description]"
        class="form-control"
        rows="10"
+       required="true"
        placeholder="Tell the item's story and try to answer questions shoppers will have."
        ><%= @item.description %></textarea>
   </div>
@@ -98,6 +127,7 @@
          name="item[price]"
          class="form-control"
          placeholder="0"
+         required="true"
          value="<%= @item.price %>">
          
       <span class="input-group-addon">.00</span>
