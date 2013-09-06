@@ -9,25 +9,25 @@
     </div>
     
     <div id="detail-thumbs" class="row">
-        <div class="col-md-3">
-          <a href="#" class="thumbnail">
+        <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_1.exists? %>">
+          <a href="" class="thumbnail">
             <img src="<%= @item.detail_photo_1.url %>">
           </a>
         </div>
       
-      <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_2 %>">
+      <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_2.exists? %>">
         <a href="#" class="thumbnail">
-          <img src="<%= @item.detail_photo_2.url if @item.detail_photo_2 %>">
+          <img src="<%= @item.detail_photo_2.url %>">
         </a>
       </div>
       
-      <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_3 %>">
+      <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_3.exists? %>">
         <a href="#" class="thumbnail">
           <img src="<%= @item.detail_photo_3.url %>">
         </a>
       </div>
       
-      <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_4 %>">
+      <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_4.exists? %>">
         <a href="#" class="thumbnail">
           <img src="<%= @item.detail_photo_4.url %>">
         </a>

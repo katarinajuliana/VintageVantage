@@ -42,6 +42,7 @@ VintageVantage::Application.configure do
           :access_key_id => ENV["ACCESS_KEY_ID"],
           :secret_access_key => ENV["SECRET_ACCESS_KEY"],
           :s3_host_name => "s3-us-west-1.amazonaws.com"
-        }
+        },
+        :default_url => ""
       }
 end
