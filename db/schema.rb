@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130903205540) do
+ActiveRecord::Schema.define(:version => 20130905232718) do
 
   create_table "categories", :force => true do |t|
     t.string "title", :null => false
@@ -31,15 +31,51 @@ ActiveRecord::Schema.define(:version => 20130903205540) do
   add_index "item_favorites", ["item_id", "user_id"], :name => "index_item_favorites_on_item_id_and_user_id", :unique => true
   add_index "item_favorites", ["user_id"], :name => "index_item_favorites_on_user_id"
 
+  create_table "item_photos", :force => true do |t|
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.string   "{:null=>false}_file_name"
+    t.string   "{:null=>false}_content_type"
+    t.integer  "{:null=>false}_file_size"
+    t.datetime "{:null=>false}_updated_at"
+    t.integer  "item_id",                     :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "item_photos", ["item_id"], :name => "index_item_photos_on_item_id"
+
   create_table "items", :force => true do |t|
-    t.string   "title",       :null => false
-    t.integer  "price",       :null => false
-    t.integer  "era_id",      :null => false
-    t.text     "description", :null => false
-    t.integer  "shop_id",     :null => false
-    t.integer  "category_id", :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "title",                       :null => false
+    t.integer  "price",                       :null => false
+    t.integer  "era_id",                      :null => false
+    t.text     "description",                 :null => false
+    t.integer  "shop_id",                     :null => false
+    t.integer  "category_id",                 :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.string   "primary_photo_file_name"
+    t.string   "primary_photo_content_type"
+    t.integer  "primary_photo_file_size"
+    t.datetime "primary_photo_updated_at"
+    t.string   "detail_photo_1_file_name"
+    t.string   "detail_photo_1_content_type"
+    t.integer  "detail_photo_1_file_size"
+    t.datetime "detail_photo_1_updated_at"
+    t.string   "detail_photo_2_file_name"
+    t.string   "detail_photo_2_content_type"
+    t.integer  "detail_photo_2_file_size"
+    t.datetime "detail_photo_2_updated_at"
+    t.string   "detail_photo_3_file_name"
+    t.string   "detail_photo_3_content_type"
+    t.integer  "detail_photo_3_file_size"
+    t.datetime "detail_photo_3_updated_at"
+    t.string   "detail_photo_4_file_name"
+    t.string   "detail_photo_4_content_type"
+    t.integer  "detail_photo_4_file_size"
+    t.datetime "detail_photo_4_updated_at"
   end
 
   add_index "items", ["category_id"], :name => "index_items_on_category_id"

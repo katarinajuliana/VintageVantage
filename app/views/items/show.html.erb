@@ -2,8 +2,37 @@
 <% fav_shop = (current_user && current_user.favorite_shops.include?(@item.shop)) %>
 
 <div class="row">
-  <div id="photo-box" class="col-md-6 pull-left">
-    TODO: ITEM PHOTOS
+  <div id="photo-box" class="col-md-6 well pull-left">
+    <div id="photo-display" class="panel">
+      <img src="<%= @item.primary_photo.url %>"
+        alt="<%= @item.title %>" class="img-responsive img-rounded" display="block">
+    </div>
+    
+    <div id="detail-thumbs" class="row">
+        <div class="col-md-3">
+          <a href="#" class="thumbnail">
+            <img src="<%= @item.detail_photo_1.url %>">
+          </a>
+        </div>
+      
+      <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_2 %>">
+        <a href="#" class="thumbnail">
+          <img src="<%= @item.detail_photo_2.url if @item.detail_photo_2 %>">
+        </a>
+      </div>
+      
+      <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_3 %>">
+        <a href="#" class="thumbnail">
+          <img src="<%= @item.detail_photo_3.url %>">
+        </a>
+      </div>
+      
+      <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_4 %>">
+        <a href="#" class="thumbnail">
+          <img src="<%= @item.detail_photo_4.url %>">
+        </a>
+      </div>
+    </div>
   </div>
   
   <div id="item-box" class="col-md-5 well pull-right">

@@ -4,7 +4,11 @@
 <% cat_select = @item.persisted? ? @item.category.id : nil %>
 <% era_select = @item.persisted? ? @item.era.id : nil %>
 
-<form action="<%= action %>" method="post" role="form" class="col-md-7">
+<form action="<%= action %>"
+  method="post"
+  role="form"
+  enctype="multipart/form-data"
+  class="col-md-7">
   <input type="hidden" name="_method" value="<%= method %>">
         
   <input
@@ -52,6 +56,22 @@
       <% end %>
       
     </select>
+  </div>
+  
+  <div class="form-group">
+    <label for="item_photo">Photos</label>
+    
+    <input type="file"
+      name="item[primary_photo]"
+      placeholder="Add Photos">
+
+    <input type="file"
+      name="item[detail_photo_1]"
+      placeholder="Add Photos">
+      
+    <input type="file"
+      name="item[detail_photo_2]"
+      placeholder="Add Photos">
   </div>
   
   <div class="form-group"> 
