@@ -2,11 +2,11 @@
 
 <h1><%= @user.username %></h1> 
 
-<div id="toolbar <% 'hidden' unless current_user && (current_user.id == @user.id) %>">
+<div id="toolbar" class="<%= 'hidden' unless current_user && (current_user.id == @user.id) %>">
     <%= link_to "Edit Profile", edit_user_url(@user) %>
 </div>
 
-<div id="row">
+<div>
   <div id="user-box" class="well col-md-6 pull-left">
     <h4>About</h4>
     
@@ -32,7 +32,7 @@
   </div>
 </div>
 
-<div id="row">
+<div>
   <% if @user.shop %>
     <div id="shop-box" class="well col-md-6 pull-left">
       <h4>Shop</h4>
