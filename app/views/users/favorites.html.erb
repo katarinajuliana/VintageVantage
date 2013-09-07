@@ -11,11 +11,37 @@
 
   <div class="panel">
     <div id="favorite-items" class="<%= @shop ? 'hidden' : '' %>">
-      <%= @user.favorite_items %>
+      <div class="row">
+        <% @user.favorite_items.each do |item| %>
+          <%= render :partial => 'items/listing', :locals => { :item => item }%>
+        <% end %>
+      </div>
     </div>
 
     <div id="favorite-shops" class="<%= @shop ? '' : 'hidden' %>">
-      <%= @user.favorite_shops %>
+      <% @user.favorite_shops.each do |shop| %>
+       <div class="row clearfix"> 
+         <div class="col-md-2">
+            <h4>
+              <a href="<%= shop_url(shop) %>"><%= shop.name %></a>
+            </h4>
+            <p class="text-muted"><%= shop.items.count %> Items</p>
+          </div>
+          <div class="col-md-2">
+            Shop Owner
+            <%= link_to shop.owner.username, user_url(shop.owner)%>
+          </div>
+          
+          <% shop.items.each_with_index do |item, i|%>
+          <% return if i == 5 %>
+            <div class="col-md-2">
+              <a href="<%= item_url(item) %>" class="thumbnail">
+                <img src="<%= item.primary_photo.url(:thumb) %>">
+              </a>
+            </div>
+          <% end %>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>

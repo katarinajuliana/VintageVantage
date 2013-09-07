@@ -1,5 +1,5 @@
 $(function () {
-  $(".thumbnail").on("click", function (event) {
+  $(".display-option").on("click", function (event) {
     event.preventDefault();
     
     $(".thumbnail").removeClass("active");

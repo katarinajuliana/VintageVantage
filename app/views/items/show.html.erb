@@ -1,8 +1,8 @@
 <% fav_item = (current_user && current_user.favorite_items.include?(@item)) %>
 <% fav_shop = (current_user && current_user.favorite_shops.include?(@item.shop)) %>
 
-<div class="row">
-  <div id="photo-box" class="col-md-6 well pull-left">
+<div class="col-md-6 pull-left">
+  <div id="photo-box" class="well">
     <div id="display-box" class="panel">
       <img data-ord="1"
         class="img-responsive img-rounded display-photo"
@@ -37,38 +37,48 @@
     
     <div id="detail-thumbs" class="row">
         <div class="col-md-3">
-          <a href="" data-id="1" class="thumbnail active">
+          <a href="" data-id="1" class="thumbnail active display-option">
             <img src="<%= @item.primary_photo.url(:thumb) %>">
           </a>
         </div>
         
         <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_1.exists? %>">
-          <a href="" data-id="2" class="thumbnail">
+          <a href="" data-id="2" class="thumbnail display-option">
             <img src="<%= @item.detail_photo_1.url(:thumb) %>">
           </a>
         </div>
       
       <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_2.exists? %>">
-        <a href="#" data-id="3" class="thumbnail">
+        <a href="#" data-id="3" class="thumbnail display-option">
           <img src="<%= @item.detail_photo_2.url(:thumb) %>">
         </a>
       </div>
       
       <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_3.exists? %>">
-        <a href="#" class="thumbnail">
+        <a href="#" data-id="4" class="thumbnail display-option">
           <img src="<%= @item.detail_photo_3.url(:thumb) %>">
         </a>
       </div>
       
       <div class="col-md-3 <%= 'hidden' unless @item.detail_photo_4.exists? %>">
-        <a href="#" class="thumbnail">
+        <a href="#" data-id="5" class="thumbnail display-option">
           <img src="<%= @item.detail_photo_4.url(:thumb) %>">
         </a>
       </div>
     </div>
   </div>
   
-  <div id="item-box" class="col-md-5 well pull-right">
+  <div id="description-box" class="well">
+    <h4>Details</h4>
+    
+    <div id="item-description" class="panel">
+      <p><%= @item.description %></p>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-5 pull-right">
+  <div id="item-box" class="well">
     <div id="item-info" class="panel">
       <div class="toolbar <%= 'hidden' unless current_user && (current_user.id == @item.owner.id) %>">
           <%= link_to "Edit Item", edit_item_url(@item) %>
@@ -96,19 +106,9 @@
     </button>
     <t class="text-muted"><%= @item.item_favorites.count %> Admirers</t>
   </div>
-</div>
-
-<div class="row">
-  <div id="description-box" class="col-md-6 well pull-left">
-    <h4>Details</h4>
-    
-    <div id="item-description" class="panel">
-      <p><%= @item.description %></p>
-    </div>
-  </div>
 
 
-  <div id="shop-box" class="col-md-5 well pull-right">
+  <div id="shop-box" class="well">
     <h3>
       <a href="<%= shop_url(@item.shop) %>"><%= @item.shop.name %></a>
       
