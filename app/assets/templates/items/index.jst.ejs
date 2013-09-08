@@ -1,9 +1,26 @@
-<h1>Cool Vintage Items Go Here</h1>
+<div id="browse-options" class="well col-xs-2 pull-left">
+</div>
 
-<% items.each(function (item) { %>
-  <span>
-    <a href="<%='/items/' + item.id %>">
-      <%= item.escape("title") %>
-    </a>: $<%= item.get("price") %>
-  </span>
-<% }); %>
+<div id="items-index-box" class="col-xs-10 pull-right">
+  <div class="well">
+  <div class="panel">
+    <% items.each(function (item) { %>
+      <div class="listing-card">
+        <a href="<%= item.escape("url") %>" class="listing-thumb">
+          <img src="<%= item.escape("listPhoto") %>" alt="<%= item.escape("title") %>">
+        </a>
+    
+        <div class="caption">
+          <a href="<%= item.escape("url") %>"><strong><%= item.escape("title")%></strong></a>
+          <div>
+            <a href="<%= item.escape("shopUrl") %>">
+              <text class="text-muted"><%= item.escape("shopName") %></text>
+            </a>
+            <t class="small pull-right">$<%= item.escape("price") %>.00</t>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</div>
+</div>

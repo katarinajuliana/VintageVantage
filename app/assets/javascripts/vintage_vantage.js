@@ -3,11 +3,24 @@ window.VV = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function($rootEl, itemsData) {
-    var items = new VV.Collections.Items(itemsData);
-
-    new VV.Routers.Items($rootEl, items);
-    Backbone.history.start();
+  initialize: function($rootEl) {
+    var eraData = JSON.parse($("#bootstrapped-eras").html());
+    new VV.Collections.Eras(eraData);
+    
+    var catData = JSON.parse($("#bootstrapped-categories").html());
+    new VV.Collections.Categories(catData);
+    
+    var items = new VV.Collections.Items();
+    
+    items.fetch({
+      success: function () {
+        new VV.Routers.Items($rootEl, items);
+        Backbone.history.start();
+      },
+      error: function (response) {
+        console.log(response)
+      }
+    });
   },
   populateUserNav: function(user, shop) {
     var userLink = "<li><p class='navbar-text pull-right'> Hi, <a href='/users/" + 

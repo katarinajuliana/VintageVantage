@@ -26,6 +26,11 @@ class ItemsController < ApplicationController
   end
   
   def index
+    @items = Item.all
+    respond_to do |format|
+      format.json { render 'items.rabl' }
+      format.html { render :index }      
+    end
   end
   
   def new

@@ -7,26 +7,32 @@
         alt="<%= item.title %>">
     </div>
     
-    <div class="item">
-      <img
-        class="img-rounded"
-        src="<%= item.detail_photo_1.url %>"
-        alt="<%= item.title %>">
-    </div>
+    <% if item.detail_photo_1.exists? %>
+      <div class="item">
+        <img
+          class="img-rounded"
+          src="<%= item.detail_photo_1.url %>"
+          alt="<%= item.title %>">
+      </div>
+    <% end %>
     
-    <div class="item">
-      <img
-        class="img-rounded"
-        src="<%= item.detail_photo_2.url %>"
-        alt="<%= item.title %>">
-    </div>
+    <% if item.detail_photo_2.exists? %>
+      <div class="item">
+        <img
+          class="img-rounded"
+          src="<%= item.detail_photo_2.url %>"
+          alt="<%= item.title %>">
+      </div>
+    <% end %>
     
-    <div class="item">
-      <img
-        class="img-rounded"
-        src="<%= item.detail_photo_3.url %>"
-        alt="<%= item.title %>">
-    </div>
+    <% if item.detail_photo_3.exists? %>
+      <div class="item">
+        <img
+          class="img-rounded"
+          src="<%= item.detail_photo_3.url %>"
+          alt="<%= item.title %>">
+      </div>
+    <% end %>
   </div>
   
   <a class="left carousel-control" href="#display-box" data-slide="prev">
