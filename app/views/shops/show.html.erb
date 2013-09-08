@@ -48,7 +48,9 @@
 <div class="row">
   <div id="items-box" class="well">
     <div id="items" class="panel">
-      <%= @shop.items %>
+      <% @shop.items.each do |item| %>
+        <%= render :partial => "items/listing", :locals => { :item => item }%>
+      <% end %>
     </div>
     
     <p class="text-muted"><%= @shop.items.count %> Items</p>

@@ -10,8 +10,9 @@ window.VV = {
     Backbone.history.start();
   },
   populateUserNav: function(user, shop) {
-    var userLink = "<li><p class='navbar-text pull-right'> Hi, <a href='/users/" + user.id + "'>" + user.username + "</a>.</p></li>";
-    var favLink = "<li><a href='/users/" + user.id + "/favorites'> ❤ </a></li>";
+    var userLink = "<li><p class='navbar-text pull-right'> Hi, <a href='/users/" + 
+      user.id + "'>" + user.username + "</a>.</p></li>";
+    var favLink = "<li><a href='/users/" + user.username + "/favorites'> ❤ </a></li>";
 
     if(shop) {
       var shopLink = "<li><a href='/shops/" + shop.id + "'>Your Shop</a></li>"

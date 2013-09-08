@@ -1,0 +1,19 @@
+.listing-card {
+  display: inline-block;
+  height: 180px;
+  width: 180px;
+  padding: 4px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+}
+
+.listing-thumb {
+  display: block;
+  height: 135px;
+  width: 170px;
+}
+
+#favorite-well {
+  width: 800px;
+}

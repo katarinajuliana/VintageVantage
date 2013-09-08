@@ -1,9 +1,13 @@
-
-  <a href="<%= item_url(item) %>" class="col-md-2 thumbnail">
-      <img src="<%= item.primary_photo.url(:thumb) %>" alt="<%= item.title %>">
-
-    <div class="caption">
-      <strong><%= item.title %><strong>
-    </div>
+<div class="listing-card">
+  <a href="<%= item_url(item) %>" class="listing-thumb">
+    <img src="<%= item.primary_photo.url(:list) %>" alt="<%= item.title %>">
   </a>
-    
+  
+  <div class="caption">
+    <a href="<%= item_url(item) %>"><strong><%= item.title %></strong></a>
+    <div>
+    <a href="<%= shop_url(item.shop) %>"><text class="text-muted"><%= item.shop.name%></text></a>
+    <t class="small pull-right">$<%= item.price %>.00</t>
+  </div>
+  </div>
+</div>
