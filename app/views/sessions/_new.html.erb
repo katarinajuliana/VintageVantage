@@ -1,6 +1,4 @@
-<form id="session-form"
-  role="form">
-  
+<form id="session-form" role="form" class="col-xs-7">
   <input
      name="authenticity_token"
      type="hidden"
@@ -10,6 +8,7 @@
     <input id="user_username"
        name="user[username]"
        type="text"
+       class="form-control"
        placeholder="username">
   </div>
 
@@ -18,8 +17,13 @@
        id="user_password"
        name="user[password]"
        type="password"
+       class="form-control"
        placeholder="password">
    </div>
 
-  <button id="sign-in-button" type="submit" class="btn btn-info">Welcome Back</button>
+  <button id="sign-in-button" 
+    type="submit"
+    class="btn btn-info">
+    Welcome Back
+  </button>
 </form>

@@ -6,8 +6,10 @@
   <div class="caption">
     <a href="<%= item_url(item) %>"><strong><%= item.title %></strong></a>
     <div>
-    <a href="<%= shop_url(item.shop) %>"><text class="text-muted"><%= item.shop.name%></text></a>
-    <t class="small pull-right">$<%= item.price %>.00</t>
-  </div>
+      <a href="<%= shop_url(item.shop) %>">
+        <text class="text-muted"><%= item.shop.name %></text>
+      </a>
+      <t class="small pull-right">$<%= item.price %>.00</t>
+    </div>
   </div>
 </div>

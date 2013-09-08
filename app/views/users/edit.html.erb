@@ -1,24 +1,18 @@
 <h1>Your Profile</h1>
 
-<div class="row">
-  <%= render 'form', :locals => { :user => @user }%>
-</div>
+<div class="row col-xs-5">
+  <%= render 'form', :locals => { :user => @user } %>
 
 <br>
 <br>
 <br>
-<div class="row col-md-7">
-  <form action="<%= user_url(@user) %>" method="post">
-    <input type="hidden"
-      name="authenticity_token"
-      value="<%= form_authenticity_token %>">
-      
-    <input type="hidden"
-      name="_method"
-      value="DELETE">
-         
-    <button type="submit" class="btn btn-danger">
-      Close Account
-    </button>
-  </form>
+<form action="<%= user_url(@user) %>" method="post">
+  <input type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+    
+  <input type="hidden" name="_method" value="delete">
+       
+  <button type="submit" class="btn btn-danger">Close Account</button>
+</form>
 </div>

@@ -2,7 +2,7 @@
 <% method = @shop.persisted? ? "put" : "post" %>
 <% button_text = @shop.persisted? ? "Update" : "Create" %>
 
-<form action="<%= action %>" method="post" role="form" class="col-md-7">
+<form action="<%= action %>" method="post" role="form">
   <input
      type="hidden"
      name="_method"
@@ -15,6 +15,7 @@
 
   <div class="form-group"> 
     <label for="shop_name">Name</label>
+    
     <input
        type="text"
        id="shop_name"

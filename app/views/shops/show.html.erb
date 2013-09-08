@@ -1,26 +1,28 @@
 <% favorited = (current_user && current_user.favorite_shops.include?(@shop)) %>
-<% date_string = "#{ Date::MONTHNAMES[@date.month] } #{ @date.mday }, #{ @date.year }" %>
+<% date_string = "#{ Date::MONTHNAMES[@date.month] } 
+                  #{ @date.mday }, #{ @date.year }" %>
 
 <div class="row">
-  <div id="shop-box" class="well col-md-7 pull-left">
-    <div class="toolbar <%= 'hidden' unless current_user && (current_user.id == @shop.owner_id) %>">   
-        <%= link_to "Add an Item", new_item_url %> |
-        <%= link_to "Edit Shop", edit_shop_url(@shop) %>
+  <div id="shop-box" class="well col-xs-7 pull-left">
+    <div class="toolbar <%= 'hidden' unless current_user && 
+                            (current_user.id == @shop.owner_id) %>">   
+      <%= link_to "Add an Item", new_item_url %> |
+      <%= link_to "Edit Shop", edit_shop_url(@shop) %>
     </div> 
     
     <h1>
       <%= @shop.name %>
       
       <button type="submit" 
-              class="btn btn-default btn-fav fav shop <%= 'hidden' if favorited %>"
-              data-id="<%= @shop.id %>">
+        class="btn btn-default btn-fav fav shop <%= 'hidden' if favorited %>"
+        data-id="<%= @shop.id %>">
         ❤ Favorite
       </button>
 
       <button type="submit"
-              id="unfavorite"
-              class="btn btn-default btn-fav shop unfav <%= 'hidden' unless favorited %>"
-              data-id="<%= @shop.id %>">
+        id="unfavorite"
+        class="btn btn-default btn-fav shop unfav <%= 'hidden' unless favorited %>"
+        data-id="<%= @shop.id %>">
         ❤ Favorited
       </button>
     </h1>
@@ -30,14 +32,12 @@
     </div>     
   </div>
   
-  <div id="owner-box" class="well col-md-4 pull-right">
+  <div id="owner-box" class="well col-xs-4 pull-right">
     <h4>Shop Owner</h4>
     
     <div id="owner-info" class="panel">
       <h4>
-        <a href="<%= user_url(@shop.owner) %>">
-          <%= @shop.owner.username %>
-        </a>
+        <a href="<%= user_url(@shop.owner) %>"><%= @shop.owner.username %></a>
       </h4>
       
       <p class="text-muted">Opened Shop on <%=  date_string %></p>

@@ -17,3 +17,7 @@
 .container {
   width: 1080px;
 }
+
+.btn-fav {
+  color: red;
+}

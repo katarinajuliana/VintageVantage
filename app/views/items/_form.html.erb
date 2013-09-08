@@ -7,8 +7,7 @@
 <form action="<%= action %>"
   method="post"
   role="form"
-  enctype="multipart/form-data"
-  class="col-md-7">
+  enctype="multipart/form-data">
   <input type="hidden" name="_method" value="<%= method %>">
         
   <input
@@ -18,6 +17,7 @@
 
   <div class="form-group"> 
     <label for="item_title">Title</label>
+    
     <input
        type="text"
        id="item_title"
@@ -72,7 +72,7 @@
       name="item[primary_photo]"
       id="image_primary_photo"
       accept="image"
-      required="true"
+      <%= @item.persisted? ? '' : "required='true'" %>
       value="<%= @item.primary_photo %>">
   </div>
 

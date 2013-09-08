@@ -1,46 +1,45 @@
-<% item_class = @shop ? '' : 'active' %>
-<% shop_class = @shop ? 'active' : '' %>
-
 <h1><a href="<%= user_url(@user) %>"><%= @user.username %>'s</a> Favorites</h1>
 
-<div class="well" id="favorite-well">
+<div class="well col-xs-9" id="favorite-well">
   <ul class="switch-fav nav nav-tabs">
     <li id="show-items" class="<%= @shop ? '' : 'active' %>"><a>Items</a>
     <li id="show-shops" class="<%= @shop ? 'active' : '' %>"><a>Shops</a>
   </ul>
 
-  <div class="panel">
-    <div id="favorite-items" class="<%= @shop ? 'hidden' : '' %>">
-      <div class="row ">
-        <% @user.favorite_items.each do |item| %>
-          <%= render :partial => 'items/listing', :locals => { :item => item }%>
-        <% end %>
-      </div>
+  <div id="favorite-items" class="<%= @shop ? 'hidden' : '' %>">
+    <div class="panel">
+      <% @user.favorite_items.each do |item| %>
+        <%= render :partial => 'items/listing', :locals => { :item => item } %>
+      <% end %>
     </div>
+  </div>
 
-    <div id="favorite-shops" class="<%= @shop ? '' : 'hidden' %>">
+  <div id="favorite-shops" class="<%= @shop ? '' : 'hidden' %>">
+    <div class="panel">
       <% @user.favorite_shops.each do |shop| %>
-       <div class="row"> 
-         <div class="col-xs-2">
-            <h4>
-              <a href="<%= shop_url(shop) %>"><%= shop.name %></a>
-            </h4>
+        <div class="row"> 
+          <div class="col-xs-2">
+            <h4><a href="<%= shop_url(shop) %>"><%= shop.name %></a></h4>
+
             <p class="text-muted"><%= shop.items.count %> Items</p>
           </div>
+        
           <div class="col-xs-2">
             Shop Owner
-            <%= link_to shop.owner.username, user_url(shop.owner)%>
-          </div>
           
+            <%= link_to shop.owner.username, user_url(shop.owner) %>
+          </div>
+        
           <% shop.items.each_with_index do |item, i|%>
-          <% return if i == 5 %>
+            <% return if i == 5 %>
+          
             <div class="col-xs-2">
               <a href="<%= item_url(item) %>" class="thumbnail">
                 <img src="<%= item.primary_photo.url(:thumb) %>">
               </a>
             </div>
           <% end %>
-      </div>
+        </div>
       <% end %>
     </div>
   </div>

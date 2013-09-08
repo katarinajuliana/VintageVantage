@@ -4,35 +4,39 @@
   role="dialog"
   aria-labelledby="auth-modal-label"
   aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button"
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button"
           class="close"
           data-dismiss="modal"
-          aria-hidden="true">&times;</button>
+          aria-hidden="true">
+          &times;
+        </button>
 
-          <ul class="switch-fav nav nav-tabs">
-            <li id="sign-in-tab" class="active modal-tab"><a>Sign In</a></li>
-            <li id="sign-up-tab" class="modal-tab"><a>Join Us</a></li>
-          </ul>
+        <ul class="switch-fav nav nav-tabs">
+          <li id="sign-in-tab" class="active modal-tab"><a>Sign In</a></li>
+          <li id="sign-up-tab" class="modal-tab"><a>Join Us</a></li>
+        </ul>
+      </div>
+      
+      <div class="modal-body">
+        <div id="sign-in-form" class="modal-form">
+          <%= render 'sessions/new' %>
         </div>
         
-        <div class="modal-body">
-          <div id="sign-in-form" class="modal-form">
-            <%= render 'sessions/new' %>
-          </div>
-          
-          <div id="sign-up-form" class="modal-form hidden">
-            <%= render 'users/form' %>
-          </div>
+        <div id="sign-up-form" class="modal-form hidden col-xs-7">
+          <%= render 'users/form' %>
         </div>
-        
-        <div class="modal-footer">
-          <button type="button"
-            class="btn btn-default"
-            data-dismiss="modal">Close</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button"
+          class="btn btn-default"
+          data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
