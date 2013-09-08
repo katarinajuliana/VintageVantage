@@ -50,8 +50,14 @@
   </nav>
 
   <%= render 'sessions/modal' %>
+  
+  <div class="container">
+    <!-- <% if flash[:errors] %>
+      <div class="alert alert-danger col-xs-7"><%= flash[:errors].first %></div>
+    <% end %> -->
     
-  <div class="container"><%= yield %></div>
+    <div><%= yield %></div>
+  </div>
 </body>
 </html>
 

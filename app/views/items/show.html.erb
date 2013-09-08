@@ -3,53 +3,41 @@
 
 <div class="col-xs-7 pull-left">
   <div id="photo-box" class="well">
-    <div id="display-box" class="panel">
-      <img data-ord="1"
-        class="img-responsive img-rounded display-photo"
-        src="<%= @item.primary_photo.url %>"
-        alt="<%= @item.title %>"
-        display="block">
-        
-      <img data-ord="2"
-        class="img-responsive img-rounded hidden display-photo"
-        src="<%= @item.detail_photo_1.url %>"
-        alt="<%= @item.title %>"
-        display="block">
-        
-      <img data-ord="3"
-        class="img-responsive img-rounded hidden display-photo"
-        src="<%= @item.detail_photo_2.url %>"
-        alt="<%= @item.title %>"
-        display="block">
-      
-      <img data-ord="4"
-        class="img-responsive img-rounded hidden display-photo"
-        src="<%= @item.detail_photo_3.url %>"
-        alt="<%= @item.title %>"
-        display="block">
-    </div>
+    <%= render :partial => 'carousel', :locals => { :item => @item } %>
     
     <div id="detail-thumbs" class="row">
       <div class="col-xs-3">
-        <a href="" data-id="1" class="thumbnail active display-option">
+        <a href=""
+          data-target="#display-box"
+          data-slide-to="0"
+          class="thumbnail">
           <img src="<%= @item.primary_photo.url(:thumb) %>">
         </a>
       </div>
       
       <div class="col-xs-3 <%= 'hidden' unless @item.detail_photo_1.exists? %>">
-        <a href="" data-id="2" class="thumbnail display-option">
+        <a href=""
+          data-target="#display-box"
+          data-slide-to="1"
+          class="thumbnail">
           <img src="<%= @item.detail_photo_1.url(:thumb) %>">
         </a>
       </div>
       
       <div class="col-xs-3 <%= 'hidden' unless @item.detail_photo_2.exists? %>">
-        <a href="" data-id="3" class="thumbnail display-option">
+        <a href=""
+          data-target="#display-box"
+          data-slide-to="2"
+          class="thumbnail">
           <img src="<%= @item.detail_photo_2.url(:thumb) %>">
         </a>
       </div>
       
       <div class="col-xs-3 <%= 'hidden' unless @item.detail_photo_3.exists? %>">
-        <a href="" data-id="4" class="thumbnail display-option">
+        <a href=""
+          data-target="#display-box"
+          data-slide-to="3"
+          class="thumbnail">
           <img src="<%= @item.detail_photo_3.url(:thumb) %>">
         </a>
       </div>
@@ -83,18 +71,20 @@
     <button type="submit" class="btn btn-success">Add to Cart</button>
     
     <button type="submit"
-      class="btn btn-default btn-fav fav item <%= 'hidden' if fav_item %>"
+      class="btn btn-default btn-fav fav item-fav <%= 'hidden' if fav_item %>"
       data-id="<%= @item.id %>">
       ❤ Favorite
     </button>
 
     <button type="submit"
-      class="btn btn-default btn-fav unfav item <%= 'hidden' unless fav_item %>"
+      class="btn btn-default btn-fav unfav item-fav <%= 'hidden' unless fav_item %>"
       data-id="<%= @item.id %>">
       ❤ Favorited
     </button>
     
-    <t class="text-muted"><%= @item.item_favorites.count %> Admirers</t>
+    <t class="text-muted">
+      <t id="fav-count"><%= @item.item_favorites.count %></t> Admirers
+    </t>
   </div>
 
 
@@ -103,13 +93,13 @@
       <a href="<%= shop_url(@item.shop) %>"><%= @item.shop.name %></a>
       
       <button type="submit" 
-        class="btn btn-default btn-fav fav shop <%= 'hidden' if fav_shop %>"
+        class="btn btn-default btn-fav fav shop-fav <%= 'hidden' if fav_shop %>"
         data-id="<%= @item.shop.id %>">
         ❤ Favorite
       </button>
 
       <button type="submit"
-        class="btn btn-default btn-fav unfav shop <%= 'hidden' unless fav_shop %>"
+        class="btn btn-default btn-fav unfav shop-fav <%= 'hidden' unless fav_shop %>"
         data-id="<%= @item.shop.id %>">
         ❤ Favorited
       </button>

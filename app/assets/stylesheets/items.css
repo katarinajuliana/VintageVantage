@@ -13,3 +13,9 @@
   height: 135px;
   width: 170px;
 }
+
+.thumbnail {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+}

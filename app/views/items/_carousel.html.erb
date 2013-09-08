@@ -1,0 +1,39 @@
+<div id="display-box" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="item active">
+      <img
+        class="img-rounded"
+        src="<%= item.primary_photo.url %>"
+        alt="<%= item.title %>">
+    </div>
+    
+    <div class="item">
+      <img
+        class="img-rounded"
+        src="<%= item.detail_photo_1.url %>"
+        alt="<%= item.title %>">
+    </div>
+    
+    <div class="item">
+      <img
+        class="img-rounded"
+        src="<%= item.detail_photo_2.url %>"
+        alt="<%= item.title %>">
+    </div>
+    
+    <div class="item">
+      <img
+        class="img-rounded"
+        src="<%= item.detail_photo_3.url %>"
+        alt="<%= item.title %>">
+    </div>
+  </div>
+  
+  <a class="left carousel-control" href="#display-box" data-slide="prev">
+    <span class="icon-prev"></span>
+  </a>
+  
+  <a class="right carousel-control" href="#display-box" data-slide="next">
+    <span class="icon-next"></span>
+  </a>
+</div>

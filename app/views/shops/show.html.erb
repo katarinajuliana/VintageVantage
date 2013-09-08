@@ -14,14 +14,14 @@
       <%= @shop.name %>
       
       <button type="submit" 
-        class="btn btn-default btn-fav fav shop <%= 'hidden' if favorited %>"
+        class="btn btn-default btn-fav fav shop-fav <%= 'hidden' if favorited %>"
         data-id="<%= @shop.id %>">
         ❤ Favorite
       </button>
 
       <button type="submit"
         id="unfavorite"
-        class="btn btn-default btn-fav shop unfav <%= 'hidden' unless favorited %>"
+        class="btn btn-default btn-fav shop-fav unfav <%= 'hidden' unless favorited %>"
         data-id="<%= @shop.id %>">
         ❤ Favorited
       </button>

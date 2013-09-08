@@ -34,7 +34,7 @@
       name="item[category_id]"
       class="form-control"
       required="true">
-      <option>Select a category...</option>
+      <option value="">Select a category...</option>
       
       <% Category.all.sort.each do |cat| %>
         <option value="<%= cat.id %>"
@@ -53,7 +53,7 @@
       name="item[era_id]"
       class="form-control"
       required="true">
-      <option>Select an era...</option>
+      <option value="">Select an era...</option>
       
       <% Era.all.sort{ |x, y| y <=> x }.each do |era| %>
         <option value="<%= era.id %>"

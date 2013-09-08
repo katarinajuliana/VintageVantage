@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to item_url(@item)
     else
+      flash.now[:errors] = @item.errors.full_messages
       render :new
     end
   end

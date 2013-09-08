@@ -16,6 +16,6 @@ class ItemFavoritesController < ApplicationController
                   current_user.id, params[:item_id])
     @favorite.destroy
 
-    render :json => @favorite
+    render :json => {}
   end
 end

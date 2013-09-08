@@ -9,7 +9,7 @@ $(function () {
     $("#favorite-shops").toggleClass("hidden");
   });
   
-  $(".shop").on("click", function (event) {
+  $(".shop-fav").on("click", function (event) {
     event.preventDefault();
   
     var shopId = $(event.target).data("id");
@@ -20,16 +20,15 @@ $(function () {
       type: method,
       data: { shop_id: shopId },
       success: function () {
-        $(".shop").toggleClass("hidden");
+        $(".shop-fav").toggleClass("hidden");
       },
       error: function (response) {
-        console.log(response);
         $('#auth-modal').modal('show');
       }
     });
   });
   
-  $(".item").on("click", function (event) {
+  $(".item-fav").on("click", function (event) {
     event.preventDefault();
     
     var itemId = $(event.target).data("id");
@@ -40,7 +39,16 @@ $(function () {
       type: method,
       data: { item_id: itemId },
       success: function (response) {
-        $(".item").toggleClass("hidden");
+        $(".item-fav").toggleClass("hidden");
+        
+        numFaves = parseInt($("#fav-count").html());
+        if (method == "POST") {
+          numFaves += 1
+        } else {
+          numFaves -= 1
+        }
+        
+        $("#fav-count").html(numFaves);
       },
       error: function (response) {
         $('#auth-modal').modal('show');
