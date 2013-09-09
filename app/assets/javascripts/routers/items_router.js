@@ -6,8 +6,9 @@ VV.Routers.Items = Backbone.Router.extend({
    
   routes: {
     "": "indexItems",
+    "highest-price": "sortHighestPrice",
     "lowest-price": "sortLowestPrice",
-    "highest-price": "sortHighestPrice"
+    "most-recent": "sortMostRecent"
   },
   
   indexItems: function() {
@@ -20,10 +21,12 @@ VV.Routers.Items = Backbone.Router.extend({
   
   sortHighestPrice: function () {
     this.items.comparator = function (item) {
-      return (item.get("price") );
+      var price = item.get("price");
+      return price * -1
     }
     
     this.items.sort();
+    Backbone.history.navigate("#/");
   },
   
   sortLowestPrice: function () {
@@ -32,5 +35,19 @@ VV.Routers.Items = Backbone.Router.extend({
     }
     
     this.items.sort();
+    Backbone.history.navigate("#/");
+  },
+  
+  sortMostRecent: function () {
+    this.items.comparator = function (item1, item2) {
+      if (item1.get("updated_at") > item2.get("updated_at")) {
+        return -1
+      } else {
+        return 1
+      }
+    }
+    
+    this.items.sort();
+    Backbone.history.navigate("#/")
   }
 });
