@@ -7,56 +7,54 @@
   text-align: left;
 }
 
-.listing-card {
-  display: inline-block;
-  height: 184px;
-  width: 184px;
-  padding: 6px;
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
-  vertical-align: middle;
-  margin: 2px;
-  position: relative;
-}
-
-#item-shop-items > .listing-card {
-  display: inline-block;
-  width: 170px;
-  height: 175px;
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
-  vertical-align: middle;
-  margin: 7px;
-  position: relative;
-}
-
-.listing-thumb {
-  display: block;
-  height: 135px;
-  width: 170px;
-}
-
-#item-shop-items > .listing-card > .listing-thumb {
-  width: 156px;
-  height: 124px;
-  display: block;
-}
-
-.thumbnail {
-  display: inline-block;
-  height: 81px;
-  width: 81px;
-  padding: 3px;
-  vertical-align: middle;
-  margin: 1px;
-}
-
 #item-display-thumbs {
   text-align: center;
 }
 
 #item-display-thumbs > .thumbnail {
   margin: 10px;
+}
+.caption {
+  font-size: 12px;
+}
+
+.item-listing-price {
+  display: inline-block;
+}
+
+.item-shop-link {
+  width: 87px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 40px;
+}
+
+#item-shop-items .item-shop-link {
+  display: none;
+}
+
+.item-show-left {
+  margin-left: 75px;
+  width: 560px;
+}
+
+.item-show-right {
+  margin-right: 75px;
+  width: 392px;
+}
+
+.item-title-link {
+  width: 170px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#item-shop-items .item-title-link {
+  width: 152px;
 }
 
 #items-index {
@@ -73,16 +71,41 @@
   width: 784px;
 }
 
-#item-shop-items {
-  text-align: center;
+.listing-card {
+  display: inline-block;
+  height: 184px;
+  width: 184px;
+  padding: 6px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  vertical-align: middle;
+  margin: 2px;
+  position: relative;
 }
 
-.item-show-left {
-  margin-left: 75px;
-  width: 560px;
+#item-shop-items > .listing-card {
+  width: 170px;
+  height: 175px;
+  margin: 7px;
 }
 
-.item-show-right {
-  margin-right: 75px;
-  width: 392px;
+.listing-thumb {
+  display: block;
+  height: 135px;
+  width: 170px;
+}
+
+#item-shop-items .listing-thumb {
+  width: 156px;
+  height: 124px;
+  display: block;
+}
+
+.thumbnail {
+  display: inline-block;
+  height: 81px;
+  width: 81px;
+  padding: 3px;
+  vertical-align: middle;
+  margin: 1px;
 }

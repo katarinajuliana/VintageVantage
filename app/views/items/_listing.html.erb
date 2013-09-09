@@ -4,14 +4,16 @@
   </a>
   
   <div class="caption">
-    <a class="pull-left" href="<%= item_url(item) %>">
+    <a class="item-title-link" href="<%= item_url(item) %>">
       <%= item.title %>
     </a>
-    <div>
-      <a href="<%= shop_url(item.shop) %>">
-        <text class="text-muted pull-left"><%= item.shop.name %></text>
-      </a>
-      <t class="pull-right">$<%= item.price %>.00</t>
+    
+    <a href="<%= shop_url(item.shop) %>" class="item-shop-link">
+      <text class="text-muted"><%= item.shop.name %></text>
+    </a>
+    
+    <div class="item-listing-price">
+      $<%= item.price %>.00
     </div>
   </div>
 </div>

@@ -19,7 +19,7 @@ $(function () {
       url: "/shops/" + shopId + "/shop_favorite.json",
       type: method,
       data: { shop_id: shopId },
-      success: function () {
+      success: function (response) {
         $(".shop-fav").toggleClass("hidden");
       },
       error: function () {
@@ -38,7 +38,7 @@ $(function () {
       url: "/items/" + itemId + "/item_favorite.json",
       type: method,
       data: { item_id: itemId },
-      success: function () {
+      success: function (response) {
         $(".item-fav").toggleClass("hidden");
         
         numFaves = parseInt($("#fav-count").html());

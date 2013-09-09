@@ -38,6 +38,7 @@ window.VV = {
   }
 };
 
+
 $(function () {
   console.log("Vintage Vantage, an online vintage marketplace by Katarina Blagojevic 2013");
   

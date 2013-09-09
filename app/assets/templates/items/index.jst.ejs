@@ -26,16 +26,16 @@
           </a>
     
           <div class="caption">
-            <a href="<%= item.url() %>">
+            <a class="item-title-link" href="<%= item.url() %>">
               <%= item.escape("title")%>
             </a>
             
-            <div>
-              <a href="<%= item.escape("shopUrl") %>">
-                <text class="text-muted"><%= item.escape("shopName") %></text>
-              </a>
-              
-              <t class="small pull-right">$<%= item.escape("price") %>.00</t>
+            <a href="<%= item.escape("shopUrl") %>" class="item-shop-link">
+              <text class="text-muted"><%= item.escape("shopName") %></text>
+            </a>
+            
+            <div class="item-listing-price">  
+              $<%= item.escape("price") %>.00
             </div>
           </div>
         </div>
