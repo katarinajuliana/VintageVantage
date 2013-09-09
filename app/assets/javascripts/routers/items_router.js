@@ -5,7 +5,9 @@ VV.Routers.Items = Backbone.Router.extend({
   },
    
   routes: {
-    "": "indexItems"
+    "": "indexItems",
+    "lowest-price": "sortLowestPrice",
+    "highest-price": "sortHighestPrice"
   },
   
   indexItems: function() {
@@ -15,4 +17,20 @@ VV.Routers.Items = Backbone.Router.extend({
     
     this.$rootEl.html(itemsIndexView.render().$el);
   },
+  
+  sortHighestPrice: function () {
+    this.items.comparator = function (item) {
+      return (item.get("price") );
+    }
+    
+    this.items.sort();
+  },
+  
+  sortLowestPrice: function () {
+    this.items.comparator = function (item) {
+      return item.get("price");
+    }
+    
+    this.items.sort();
+  }
 });
