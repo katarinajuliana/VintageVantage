@@ -1,15 +1,17 @@
 <div class="listing-card">
   <a href="<%= item_url(item) %>" class="listing-thumb">
-    <img src="<%= item.primary_photo.url(:list) %>" alt="<%= item.title %>">
+    <img class="img-responsive" src="<%= item.primary_photo.url(:list) %>" alt="<%= item.title %>">
   </a>
   
   <div class="caption">
-    <a href="<%= item_url(item) %>"><strong><%= item.title %></strong></a>
+    <a class="pull-left" href="<%= item_url(item) %>">
+      <%= item.title %>
+    </a>
     <div>
       <a href="<%= shop_url(item.shop) %>">
-        <text class="text-muted"><%= item.shop.name %></text>
+        <text class="text-muted pull-left"><%= item.shop.name %></text>
       </a>
-      <t class="small pull-right">$<%= item.price %>.00</t>
+      <t class="pull-right">$<%= item.price %>.00</t>
     </div>
   </div>
 </div>

@@ -15,7 +15,8 @@
  */
 
 .container {
-  width: 1200px;
+  width: 1228px;
+  margin-bottom: 100px;
 }
 
 .alert {
@@ -24,4 +25,8 @@
 
 #user-fav-btn:hover {
   color: salmon;
+}
+
+body {
+  font: arial;
 }

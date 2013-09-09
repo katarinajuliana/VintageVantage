@@ -1,7 +1,14 @@
 .user-show-right {
-  width: 460px;
+  margin-right: 100px;
+  width: 365px;
 }
 
 .user-show-left {
-  width: 566px;
+  margin-left: 125px;
+  width: 452px;
+}
+
+.see-more {
+  display: inline-block;
+  margin-right: 5px;
 }

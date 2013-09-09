@@ -21,10 +21,10 @@
 
   <% if @user.shop %>
     <div id="user-shop-box" class="user-show-left well">
-      <h4>Shop</h4>
-    
+      <h4 class="see-more">Shop</h4>
+      
       <a href="<%= shop_url(@user.shop) %>">
-        See More
+        <small>See More</small>
       </a>
     
       <div id="user-shop-items" class="panel">      
@@ -40,10 +40,10 @@
 
 <div class="pull-right">
   <div id="user-favorite-items-box" class="well user-show-right">
-    <h4>Favorite Items</h4>
+    <h4 class="see-more">Favorite Items</h4>
     
     <a href="<%= favorites_user_url(@user) %>">
-      See More
+      <small>See More</small>
     </a>    
     
     <div id="user-favorite-items" class="panel">
@@ -58,10 +58,10 @@
   </div>
   
   <div id="user-favorite-shops-box" class="well user-show-right">
-    <h4>Favorite Shops</h4>
+    <h4 class="see-more">Favorite Shops</h4>
     
     <a href="<%= favorites_user_url(@user) %>?shop=true">
-      See More
+      <small>See More</small>
     </a>
     
     <div id="user-favorite-shops" class="panel">

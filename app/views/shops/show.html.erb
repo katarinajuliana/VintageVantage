@@ -3,7 +3,7 @@
                   #{ @date.mday }, #{ @date.year }" %>
 
 <div class="row">
-  <div id="shop-show-box" class="well col-xs-7 pull-left">
+  <div id="shop-show-box" class="well pull-left">
     <div class="toolbar <%= 'hidden' unless current_user && 
                             (current_user.id == @shop.owner_id) %>">   
       <%= link_to "Add an Item", new_item_url %> |
@@ -32,7 +32,7 @@
     </div>     
   </div>
   
-  <div id="shop-owner-box" class="well col-xs-4 pull-right">
+  <div id="shop-owner-box" class="well pull-right">
     <h4>Shop Owner</h4>
     
     <div id="shop-owner-info" class="panel">

@@ -1,3 +1,14 @@
 #shop-items-box {
-  width: 1151px;
+  width: 976px;
+  margin-left: 82px;
+}
+
+#shop-show-box {
+  margin-left: 70px;
+  width: 700px;
+}
+
+#shop-owner-box {
+  width: 300px;
+  margin-right: 70px;
 }

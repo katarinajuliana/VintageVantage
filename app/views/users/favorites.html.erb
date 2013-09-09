@@ -17,6 +17,7 @@
   <div id="favorites-show-shops" class="<%= @shop ? '' : 'hidden' %>">
     <div class="panel">
       <% @user.favorite_shops.each do |shop| %>
+      <div class="row fav-shop-row">
         <div class="fav-shop-info">
           <h3><a href="<%= shop_url(shop) %>"><%= shop.name %></a></h3>
 
@@ -34,6 +35,7 @@
             <img src="<%= item.primary_photo.url(:thumb) %>">
           </a>
         <% end %>
+      </div>
       <% end %>
     </div>
   </div>

@@ -1,10 +1,13 @@
 <div id="browse-opts-box" class="well pull-left">
+  <h5>Browse</h5>
 </div>
 
-<div id="items-index-box" class="pull-right">
-  <div class="well">
+<div id="items-index" class="pull-right">
+  <div id="items-index-well" class="well">
     <div class="btn-group">
-      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+      <button type="button"
+        class="btn btn-info dropdown-toggle"
+        data-toggle="dropdown">
         Sort By <span class="caret"></span></a>
       </button>
       <ul class="dropdown-menu" role="menu">
@@ -14,7 +17,7 @@
       </ul>
     </div>
     
-    <div class="panel">
+    <div id="items-index-box" class="panel">
       <% items.each(function (item) { %>
         <div class="listing-card">
           <a href="<%= item.url() %>" class="listing-thumb">
