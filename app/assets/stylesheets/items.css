@@ -6,6 +6,8 @@
   background-color: #ffffff;
   border: 1px solid #dddddd;
   border-radius: 4px;
+  vertical-align: middle;
+  margin: .5px;
 }
 
 .listing-thumb {
@@ -18,4 +20,39 @@
   display: inline-block;
   height: 100px;
   width: 100px;
+  vertical-align: middle;
+  margin: .5px;
+}
+
+.item-show-left {
+  width: 620px;
+}
+
+.item-show-right {
+  width: 444px;
+}
+
+#item-display-thumbs {
+  height: 100px;
+  text-align: center;
+}
+
+#item-display-thumbs > .thumbnail {
+  margin: 10px;
+}
+
+#item-shop-items {
+  text-align: center;
+}
+
+#item-shop-items > .listing-card {
+  margin: 5px;
+}
+
+#items-index-box {
+  width: 966px;
+}
+
+#browse-opts-box {
+  width: 150px;
 }

@@ -15,9 +15,13 @@
  */
 
 .container {
-  width: 1080px;
+  width: 1200px;
 }
 
 .alert {
   display: block;
+}
+
+#user-fav-btn:hover {
+  color: salmon;
 }

@@ -1,12 +1,12 @@
 $(function () {
-  $(".switch-fav").on("click", function (event) {
+  $("#switch-fav").on("click", function (event) {
     event.preventDefault();
     
-    $("#show-items").toggleClass("active");
-    $("#show-shops").toggleClass("active");
+    $("#show-fav-items").toggleClass("active");
+    $("#show-fav-shops").toggleClass("active");
 
-    $("#favorite-items").toggleClass("hidden");
-    $("#favorite-shops").toggleClass("hidden");
+    $("#favorites-show-items").toggleClass("hidden");
+    $("#favorites-show-shops").toggleClass("hidden");
   });
   
   $(".shop-fav").on("click", function (event) {

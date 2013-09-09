@@ -8,11 +8,11 @@
   <%= link_to "Edit Profile", edit_user_url(@user) %>
 </div>
 
-<div class="col-xs-6 pull-left">
-  <div id="user-box" class="well">
+<div class="pull-left">
+  <div id="user-box" class="user-show-left well">
     <h4>About</h4>
     
-    <div id="user-info" class="panel">
+    <div id="user-about" class="panel">
       <p><%= @user.about %></p>
       
       <p class="text-muted">Joined <%= date_string %></p>
@@ -20,56 +20,55 @@
   </div>
 
   <% if @user.shop %>
-    <div id="shop-box" class="well">
+    <div id="user-shop-box" class="user-show-left well">
       <h4>Shop</h4>
     
       <a href="<%= shop_url(@user.shop) %>">
         See More
       </a>
     
-      <div id="shop-items" class="panel">        
-          <% @user.shop.items.each do |item| %>
-            <a href="<%= item_url(item) %>" class="thumbnail">
-              <img src="<%= item.primary_photo.url(:thumb) %>">
-            </a>
-          <% end %>
+      <div id="user-shop-items" class="panel">      
+        <% @user.shop.items.each do |item| %>
+          <a href="<%= item_url(item) %>" class="thumbnail">
+            <img src="<%= item.primary_photo.url(:thumb) %>">
+          </a>
+        <% end %>
       </div>
     </div>
   <% end %>
 </div>
 
-<div class="col-xs-6 pull-right">
-  <div id="favorite-item-box" class="well">
+<div class="pull-right">
+  <div id="user-favorite-items-box" class="well user-show-right">
     <h4>Favorite Items</h4>
     
     <a href="<%= favorites_user_url(@user) %>">
       See More
     </a>    
     
-    <div id="favorite-items" class="panel">
-        <% @user.favorite_items.each_with_index do |item, i| %>
-          <% return if i == 8 %>
-          <a href="<%= item_url(item) %>" class="thumbnail">
-            <img src="<%= item.primary_photo.url(:thumb) %>">
-          </a>
-        <% end %>
+    <div id="user-favorite-items" class="panel">
+      <% @user.favorite_items[0..7].each do |item| %>
+        <a href="<%= item_url(item) %>" class="thumbnail">
+          <img src="<%= item.primary_photo.url(:thumb) %>">
+        </a>
+      <% end %>
+      
       <p class="text-muted"><%= @user.favorite_items.count %> Items</p>
     </div>
   </div>
   
-  <div id="favorite-shop-box" class="well">
+  <div id="user-favorite-shops-box" class="well user-show-right">
     <h4>Favorite Shops</h4>
     
     <a href="<%= favorites_user_url(@user) %>?shop=true">
       See More
     </a>
     
-    <div id="favorite-shops" class="panel">
+    <div id="user-favorite-shops" class="panel">
       <% @user.favorite_shops[0..2].each do |shop| %>
         <h5><%= link_to shop.name, shop_url(shop) %></h5>       
 
-          <% shop.items.each_with_index do |item, i|%>
-          <% return if i == 4 %>
+          <% shop.items[0..3].each do |item|%>
             <a href="<%= item_url(item) %>" class="thumbnail">
               <img src="<%= item.primary_photo.url(:thumb) %>">
             </a>

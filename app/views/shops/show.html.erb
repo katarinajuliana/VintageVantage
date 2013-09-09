@@ -3,7 +3,7 @@
                   #{ @date.mday }, #{ @date.year }" %>
 
 <div class="row">
-  <div id="shop-box" class="well col-xs-7 pull-left">
+  <div id="shop-show-box" class="well col-xs-7 pull-left">
     <div class="toolbar <%= 'hidden' unless current_user && 
                             (current_user.id == @shop.owner_id) %>">   
       <%= link_to "Add an Item", new_item_url %> |
@@ -23,7 +23,7 @@
         id="unfavorite"
         class="btn btn-default btn-fav shop-fav unfav <%= 'hidden' unless favorited %>"
         data-id="<%= @shop.id %>">
-        ❤ Favorited
+        <span class="heart">❤</span> Favorited
       </button>
     </h1>
     
@@ -32,10 +32,10 @@
     </div>     
   </div>
   
-  <div id="owner-box" class="well col-xs-4 pull-right">
+  <div id="shop-owner-box" class="well col-xs-4 pull-right">
     <h4>Shop Owner</h4>
     
-    <div id="owner-info" class="panel">
+    <div id="shop-owner-info" class="panel">
       <h4>
         <a href="<%= user_url(@shop.owner) %>"><%= @shop.owner.username %></a>
       </h4>
@@ -45,14 +45,13 @@
   </div>
 </div>
 
-<div class="row">
-  <div id="items-box" class="well">
-    <div id="items" class="panel">
-      <% @shop.items.each do |item| %>
-        <%= render :partial => "items/listing", :locals => { :item => item }%>
-      <% end %>
-    </div>
-    
-    <p class="text-muted"><%= @shop.items.count %> Items</p>
+
+<div id="shop-items-box" class="well">
+  <div id="shop-items" class="panel">
+    <% @shop.items.each do |item| %>
+      <%= render :partial => "items/listing", :locals => { :item => item } %>
+    <% end %>
   </div>
+  
+  <p class="text-muted"><%= @shop.items.count %> Items</p>
 </div>

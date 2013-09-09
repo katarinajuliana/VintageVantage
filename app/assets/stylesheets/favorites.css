@@ -1,0 +1,25 @@
+#favorites-show {
+  width: 966px;
+}
+
+.fav-shop-info {
+  display: inline-block;
+  width: 250px;
+  padding-left: 10px;
+
+}
+
+.fav-shop-owner {
+  display: inline-block;
+  width: 141px;
+  vertical-align: top;
+  padding-top: 29px;
+}
+
+.btn-fav {
+  color: #756e69;
+}
+
+.heart {
+  color: salmon;
+}

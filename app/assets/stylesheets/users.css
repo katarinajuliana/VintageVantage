@@ -1,4 +1,7 @@
-/*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-*/
+.user-show-right {
+  width: 460px;
+}
+
+.user-show-left {
+  width: 566px;
+}

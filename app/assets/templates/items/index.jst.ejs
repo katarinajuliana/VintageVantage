@@ -1,26 +1,42 @@
-<div id="browse-options" class="well col-xs-2 pull-left">
+<div id="browse-opts-box" class="well pull-left">
 </div>
 
-<div id="items-index-box" class="col-xs-10 pull-right">
+<div id="items-index-box" class="pull-right">
   <div class="well">
-  <div class="panel">
-    <% items.each(function (item) { %>
-      <div class="listing-card">
-        <a href="<%= item.escape("url") %>" class="listing-thumb">
-          <img src="<%= item.escape("listPhoto") %>" alt="<%= item.escape("title") %>">
-        </a>
+    <div class="btn-group">
+      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+        Sort By <span class="caret"></span></a>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#most-recent">Most Recent</a></li>
+        <li><a href="#lowest-price">Lowest Price</a></li>
+        <li><a href="#highest-price">Highest Price</a></li>
+      </ul>
+    </div>
     
-        <div class="caption">
-          <a href="<%= item.escape("url") %>"><strong><%= item.escape("title")%></strong></a>
-          <div>
-            <a href="<%= item.escape("shopUrl") %>">
-              <text class="text-muted"><%= item.escape("shopName") %></text>
+    <div class="panel">
+      <% items.each(function (item) { %>
+        <div class="listing-card">
+          <a href="<%= item.url() %>" class="listing-thumb">
+            <img src="<%= item.escape("listPhoto") %>"
+              alt="<%= item.escape("title") %>">
+          </a>
+    
+          <div class="caption">
+            <a href="<%= item.url() %>">
+              <strong><%= item.escape("title")%></strong>
             </a>
-            <t class="small pull-right">$<%= item.escape("price") %>.00</t>
+            
+            <div>
+              <a href="<%= item.escape("shopUrl") %>">
+                <text class="text-muted"><%= item.escape("shopName") %></text>
+              </a>
+              
+              <t class="small pull-right">$<%= item.escape("price") %>.00</t>
+            </div>
           </div>
         </div>
-      </div>
-    <% }); %>
+      <% }); %>
+    </div>
   </div>
-</div>
 </div>
