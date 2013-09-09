@@ -4,6 +4,10 @@ window.VV = {
   Views: {},
   Routers: {},
   initialize: function($rootEl, $eraEl, $catEl) {
+    $.ajaxSetup({
+      cache: false
+    });
+    
     var eraData = JSON.parse($("#bootstrapped-eras").html());
     var eras = new VV.Collections.Eras(eraData);
     
