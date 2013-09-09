@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to item_url(@item)
     else
-      flash.now[:errors] = @item.errors.full_messages
+      flash.now[:errors] = @item.errors.full_messages.first
       render :new
     end
   end
@@ -27,6 +27,7 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.all
+    
     respond_to do |format|
       format.json { render 'items.rabl' }
       format.html { render :index }      
@@ -47,6 +48,7 @@ class ItemsController < ApplicationController
     if @item.update_attributes(params[:item])
       redirect_to item_url(@item)
     else
+      flash.now[:errors] = @item.errors.full_messages.first
       render :edit
     end
   end

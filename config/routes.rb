@@ -9,7 +9,7 @@ VintageVantage::Application.routes.draw do
     resource :shop_favorite, :only => [:create, :destroy]
   end
   
-  resources :users, :except => [:index] do
+  resources :users, :except => [:new, :index] do
     get 'favorites', :on => :member
   end
   

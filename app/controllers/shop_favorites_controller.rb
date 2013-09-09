@@ -13,7 +13,7 @@ class ShopFavoritesController < ApplicationController
   
   def destroy
     @favorite = ShopFavorite.find_by_user_id_and_shop_id(
-                  current_user.id, params[:shop_id])
+                               current_user.id, params[:shop_id])
     @favorite.destroy
 
     render :json => @favorite

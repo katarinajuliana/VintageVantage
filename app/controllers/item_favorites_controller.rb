@@ -13,9 +13,9 @@ class ItemFavoritesController < ApplicationController
   
   def destroy
     @favorite = ItemFavorite.find_by_user_id_and_item_id(
-                  current_user.id, params[:item_id])
+                               current_user.id, params[:item_id])
     @favorite.destroy
-
-    render :json => {}
+    
+    render :json => @favorite
   end
 end

@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-VintageVantage::Application.config.secret_token = '86d6e9330813a7c5dd2068df89cf0edf14dc5df7a627c21c773789fa9a91d2c930b3b8a244a9720d12a3ba468ebede1927443840a30a0bf5b7462ffe75a0d83b'
+VintageVantage::Application.config.secret_token = ENV["SECRET_TOKEN"]

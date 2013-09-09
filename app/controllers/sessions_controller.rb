@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   before_filter :require_no_current_user!, :only => [:create, :new]
-  respond_to :json
+  
+  respond_to :json, :only => [:create]
   
   def create
     @user = User.find_by_username(params[:user][:username])
@@ -10,7 +11,7 @@ class SessionsController < ApplicationController
       
       render "users/user"
     else
-      render :json => user.errors
+      render :text => "Invalid username or password", :status => 422
     end
   end
 

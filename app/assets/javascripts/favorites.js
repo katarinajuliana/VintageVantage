@@ -22,7 +22,7 @@ $(function () {
       success: function () {
         $(".shop-fav").toggleClass("hidden");
       },
-      error: function (response) {
+      error: function () {
         $('#auth-modal').modal('show');
       }
     });
@@ -38,7 +38,7 @@ $(function () {
       url: "/items/" + itemId + "/item_favorite.json",
       type: method,
       data: { item_id: itemId },
-      success: function (response) {
+      success: function () {
         $(".item-fav").toggleClass("hidden");
         
         numFaves = parseInt($("#fav-count").html());
@@ -50,7 +50,7 @@ $(function () {
         
         $("#fav-count").html(numFaves);
       },
-      error: function (response) {
+      error: function () {
         $('#auth-modal').modal('show');
       }
     });

@@ -52,9 +52,9 @@
   <%= render 'sessions/modal' %>
   
   <div class="container">
-    <!-- <% if flash[:errors] %>
-      <div class="alert alert-danger col-xs-7"><%= flash[:errors].first %></div>
-    <% end %> -->
+    <div id="flash-errors" class="alert alert-danger col-xs-3 <%= 'hidden' unless flash[:errors] %>">
+      <%= flash[:errors] %>
+    </div>
     
     <div><%= yield %></div>
   </div>

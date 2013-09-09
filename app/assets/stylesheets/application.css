@@ -19,14 +19,18 @@
   margin-bottom: 100px;
 }
 
-.alert {
-  display: block;
+#modal-errors {
+  margin-left: 15px;
+  margin-right: 100px;
+  float: none;
+}
+
+#flash-errors {
+  margin-right: 100px;
+  float: none;
 }
 
 #user-fav-btn:hover {
   color: salmon;
 }
 
-body {
-  font: arial;
-}

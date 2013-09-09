@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_no_current_user!, :only => [:create, :new]
+  
   respond_to :json, :only => [:create]
 
   def create
@@ -9,7 +10,7 @@ class UsersController < ApplicationController
       self.current_user = @user
       render "user"
     else
-      render :json => @user.errors
+      render :json => @user.errors.full_messages.first, :status => 422
     end
   end
   
@@ -51,6 +52,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       redirect_to user_url(@user)
     else
+      flash.now[:errors] = @user.errors.full_messages.first
       render :edit
     end
   end

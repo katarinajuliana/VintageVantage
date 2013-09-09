@@ -9,6 +9,7 @@ class ShopsController < ApplicationController
     if @shop.save
       redirect_to shop_url(@shop)
     else
+      flash.now[:errors] = @shop.errors.full_messages.first
       render :new
     end
   end
@@ -39,6 +40,7 @@ class ShopsController < ApplicationController
     if @shop.update_attributes(params[:shop])
       redirect_to shop_url(@shop)
     else
+      flash.now[:errors] = @shop.errors.full_messages.first
       render :edit
     end
   end

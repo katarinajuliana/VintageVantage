@@ -39,7 +39,7 @@ window.VV = {
 };
 
 $(function () {
-  console.log("Vintage Vantage by Katarina Blagojevic 2013");
+  console.log("Vintage Vantage, an online vintage marketplace by Katarina Blagojevic 2013");
   
   window.currentUser = JSON.parse($("#current-user").html());
   
