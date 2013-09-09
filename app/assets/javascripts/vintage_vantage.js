@@ -3,24 +3,28 @@ window.VV = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function($rootEl) {
+  initialize: function($rootEl, $eraEl, $catEl) {
     var eraData = JSON.parse($("#bootstrapped-eras").html());
-    new VV.Collections.Eras(eraData);
+    var eras = new VV.Collections.Eras(eraData);
     
     var catData = JSON.parse($("#bootstrapped-categories").html());
-    new VV.Collections.Categories(catData);
+    var categories = new VV.Collections.Categories(catData);
     
-    var items = new VV.Collections.Items();
+    this._installEraSideBar($eraEl, eras);
+    this._installCatSideBar($catEl, categories);
+
+    new VV.Routers.Items($rootEl, new VV.Collections.Items());
+    Backbone.history.start();
+  },
+  _installCatSideBar: function ($catList, categories){
+    var catIndexView = new VV.Views.CategoriesIndex(categories);
     
-    items.fetch({
-      success: function () {
-        new VV.Routers.Items($rootEl, items);
-        Backbone.history.start();
-      },
-      error: function (response) {
-        console.log(response)
-      }
-    });
+    $catList.html(catIndexView.render().$el);
+  },
+  _installEraSideBar: function ($eraList, eras) {
+    var erasIndexView = new VV.Views.ErasIndex(eras);
+    
+    $eraList.html(erasIndexView.render().$el);
   },
   populateUserNav: function(user, shop) {
     var userLink = "<li><p class='navbar-text pull-right'> Hi, <a href='/users/" + 

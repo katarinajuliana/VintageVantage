@@ -8,9 +8,17 @@
 
 <script type="application/javascript">
   $(function (){
-    window.VV.initialize($("#content"));
+    window.VV.initialize($("#content"), $("#era-list"), $("#category-list"));
   });
 </script>
+
+<div id="browse-opts-box" class="well pull-left">
+  <h4>Browse</h4>
+  Eras
+  <div id="era-list"></div>
+  Categories
+  <div id="category-list"></div>
+</div>
 
 <div id="content">
 </div>

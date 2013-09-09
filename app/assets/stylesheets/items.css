@@ -20,15 +20,16 @@
 
 .item-listing-price {
   display: inline-block;
+  text-align: right;
+  width: 70px;
 }
 
 .item-shop-link {
-  width: 87px;
+  width: 96px;
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-right: 40px;
 }
 
 #item-shop-items .item-shop-link {

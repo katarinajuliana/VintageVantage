@@ -1,0 +1,5 @@
+<% eras.each(function (era) { %>
+    <li class="browse">
+      <a href="#/era/<%= era.id %>"><%= era.escape("decade") %></a>
+    </li>
+<% }); %>

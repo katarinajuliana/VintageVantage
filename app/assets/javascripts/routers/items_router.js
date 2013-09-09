@@ -6,17 +6,45 @@ VV.Routers.Items = Backbone.Router.extend({
    
   routes: {
     "": "indexItems",
+    "category/:id": "filterCategory",
+    "era/:id": "filterEra",
     "highest-price": "sortHighestPrice",
     "lowest-price": "sortLowestPrice",
     "most-recent": "sortMostRecent"
   },
   
-  indexItems: function() {
-    var itemsIndexView = new VV.Views.ItemsIndex({
-      collection: this.items
-    });
+  filterCategory: function(id) {
+    var that = this;
     
-    this.$rootEl.html(itemsIndexView.render().$el);
+    this.items.fetch({
+      success: function () {
+        that.items.set(that.items.where({category_id: parseInt(id)}));
+      }
+    })
+  },
+  
+  filterEra: function(id) {
+    var that = this;
+    
+    this.items.fetch({
+      success: function () {
+        that.items.set(that.items.where({era_id: parseInt(id)}));
+      }
+    })
+  },
+  
+  indexItems: function() {
+    var that = this;
+    
+    this.items.fetch({
+      success: function () {
+        var itemsIndexView = new VV.Views.ItemsIndex({
+          collection: that.items
+        });
+    
+        that.$rootEl.html(itemsIndexView.render().$el);
+      }
+    }); 
   },
   
   sortHighestPrice: function () {
@@ -26,7 +54,6 @@ VV.Routers.Items = Backbone.Router.extend({
     }
     
     this.items.sort();
-    Backbone.history.navigate("#/");
   },
   
   sortLowestPrice: function () {
@@ -35,7 +62,6 @@ VV.Routers.Items = Backbone.Router.extend({
     }
     
     this.items.sort();
-    Backbone.history.navigate("#/");
   },
   
   sortMostRecent: function () {
@@ -48,6 +74,5 @@ VV.Routers.Items = Backbone.Router.extend({
     }
     
     this.items.sort();
-    Backbone.history.navigate("#/")
   }
 });

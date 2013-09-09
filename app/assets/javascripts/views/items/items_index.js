@@ -3,6 +3,9 @@ VV.Views.ItemsIndex = Backbone.View.extend({
     var that = this;
     var renderCallback = that.render.bind(that);
     
+    that.listenTo(that.collection, "add", renderCallback);
+    that.listenTo(that.collection, "change", renderCallback);
+    that.listenTo(that.collection, "remove", renderCallback);
     that.listenTo(that.collection, "reset sort", renderCallback);
   },
   

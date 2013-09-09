@@ -1,0 +1,9 @@
+.browse {
+  display: list-item;
+  list-style-type: none;
+  text-align: left;
+}
+
+#browse-opts-box {
+  font-weight: bold;
+}
