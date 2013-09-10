@@ -16,8 +16,8 @@ class SessionsController < ApplicationController
   end
   
   def create_fbook
-    auth_hash = request.env['omniauth.auth']
-    render :text => auth_hash.inspect
+    @user = User.find_or_create_from_auth_hash(auth_hash)
+    render :json => @user
   end
 
   def destroy
