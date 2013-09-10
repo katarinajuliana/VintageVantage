@@ -31,6 +31,7 @@ class ShopsController < ApplicationController
   
   def show
     @shop = Shop.find(params[:id])
+    @items = @shop.items.page params[:page]
     @date = @shop.created_at
   end
   

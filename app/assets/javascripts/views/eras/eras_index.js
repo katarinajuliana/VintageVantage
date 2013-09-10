@@ -1,6 +1,6 @@
 VV.Views.ErasIndex = Backbone.View.extend({
   initialize: function (eras) {
-    this.collection = eras
+    this.collection = eras;
     this.$el = $("<ul>");
   },
   

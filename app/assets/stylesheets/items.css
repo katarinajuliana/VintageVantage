@@ -3,8 +3,16 @@
   margin-left: 75px;
 }
 
+.caption {
+  font-size: 12px;
+}
+
 .dropdown-menu > li {
   text-align: left;
+}
+
+#item-description {
+  padding: 3px;
 }
 
 #item-display-thumbs {
@@ -13,14 +21,6 @@
 
 #item-display-thumbs > .thumbnail {
   margin: 10px;
-}
-
-.caption {
-  font-size: 12px;
-}
-
-#item-description {
-  padding: 3px;
 }
 
 #item-info {
@@ -115,6 +115,10 @@
   width: 156px;
   height: 124px;
   display: block;
+}
+
+.page-link.active {
+  font-weight: bold;
 }
 
 .thumbnail {

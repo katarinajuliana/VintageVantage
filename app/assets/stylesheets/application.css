@@ -30,6 +30,10 @@ body {
   background-color: #F5F5F5;
 }
 
+.btn-danger {
+  background-image: none;
+}
+
 .btn-info {
   background-image: none;
   background-color: #7DAD9F;
@@ -37,11 +41,6 @@ body {
 }
 
 .btn-info:hover {
-  background-image: none;
-  background-color: #609183;
-}
-
-.btn-info:focus, .btn-info:active {
   background-image: none;
   background-color: #609183;
 }
@@ -66,6 +65,11 @@ body {
   font-family: "american typewriter", "courier new";
 }
 
+.open .dropdown-toggle.btn-info {
+  background-image: none;
+  background-color: #609183;
+}
+
 .panel {
   margin-bottom: 0px;
   padding: 1px;
@@ -79,4 +83,8 @@ body {
   background-image: none;
   background-color: #C8DBD5;
   border: none;
+}
+
+.center {
+  text-align: center;
 }

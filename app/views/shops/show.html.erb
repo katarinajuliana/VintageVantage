@@ -48,10 +48,12 @@
 
 <div id="shop-items-box" class="well">
   <div id="shop-items" class="panel">
-    <% @shop.items.each do |item| %>
+    <% @items.each do |item| %>
       <%= render :partial => "items/listing", :locals => { :item => item } %>
     <% end %>
   </div>
+  
+  <div class="center"><%= paginate @items %></div>
   
   <p class="text-muted"><%= @shop.items.count %> Items</p>
 </div>

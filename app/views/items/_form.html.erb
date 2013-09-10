@@ -36,7 +36,7 @@
       required="true">
       <option value="">Select a category...</option>
       
-      <% Category.all.sort.each do |cat| %>
+      <% Category.all.sort_by{ |cat| cat.title }.each do |cat| %>
         <option value="<%= cat.id %>"
           <%= (cat.id == cat_select) ? "selected='selected'" : "" %>>
             <%= cat.title %>
@@ -51,11 +51,11 @@
     
     <select id="item_era" 
       name="item[era_id]"
-      class="form-control"
-      required="true">
+      required="true"
+      class="form-control">
       <option value="">Select an era...</option>
       
-      <% Era.all.sort{ |x, y| y <=> x }.each do |era| %>
+      <% Era.all.sort_by{ |era| era.decade }.each do |era| %>
         <option value="<%= era.id %>"
           <%= (era.id == era_select) ? "selected='selected'" : "" %>>
             <%= era.decade %>

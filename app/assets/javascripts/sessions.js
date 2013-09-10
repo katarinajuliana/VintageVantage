@@ -44,10 +44,11 @@ $(function () {
         $('#user-nav').removeClass('hidden');
         $('#anon-nav').addClass('hidden');
         $('.toolbar').removeClass('hidden');
-        window.VV.populateUserNav(response, response.shop);
         
+        window.VV.populateUserNav(response, response.shop);
+        window.currentUser = response;
 
-        var shopButtons = $('.shop')
+        var shopButtons = $('.shop-fav')
         _.each(shopButtons, function(button) {
           var buttonShopId = $(button).data('id')
           var favShop = _.find(response.shops, function(shop) {
@@ -59,7 +60,7 @@ $(function () {
           }
         });
         
-        var itemButtons = $('.item')
+        var itemButtons = $('.item-fav')
         _.each(itemButtons, function(button) {
           var buttonItemId = $(button).data('id')
           var favItem = _.find(response.items, function(item) {
@@ -76,4 +77,8 @@ $(function () {
       }
     });
   });
+  
+  $("#sign-out").on("click", function (event) {
+    window.currentUser = null
+  })
 });

@@ -87,7 +87,7 @@
 
 
   <div id="item-shop-box" class="well item-show-right">
-    <h5>
+    <h4>
       <a href="<%= shop_url(@item.shop) %>"><%= @item.shop.name %></a>
       
       <button type="submit" 
@@ -101,7 +101,7 @@
         data-id="<%= @item.shop.id %>">
         <span class="heart">❤</span> Favorited
       </button>
-    </h5>
+    </h4>
   
     <div id="item-shop-items" class="panel">
       <% @item.shop.items.each do |item| %>

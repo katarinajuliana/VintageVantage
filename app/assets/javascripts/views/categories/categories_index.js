@@ -1,6 +1,6 @@
 VV.Views.CategoriesIndex = Backbone.View.extend({
   initialize: function (categories) {
-    this.collection = categories
+    this.collection = categories;
     this.$el = $("<ul>");
   },
   

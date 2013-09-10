@@ -37,18 +37,18 @@ window.VV = {
       "/favorites'>❤</a></li>";
 
     if(shop) {
-      var shopLink = "<li><a href='/shops/" + shop.id + "'>Your Shop</a></li>"
+      var shopLink = "<li><a href='/shops/" + shop.id + "'>Your Shop</a></li>";
     } else {
-      var shopLink = "<li><a href='/shops/new'>Open Shop</a></li>"
+      var shopLink = "<li><a href='/shops/new'>Open Shop</a></li>";
     };
 
-    $("#user-nav").prepend(userLink + favLink + shopLink)
+    $("#user-nav").prepend(userLink + favLink + shopLink);
   }
 };
 
 
 $(function () {
-  console.log("Vintage Vantage, an online vintage marketplace by Katarina Blagojevic 2013");
+  console.log("'Vintage Vantage', an online vintage marketplace by Katarina Blagojevic 2013");
   
   window.currentUser = JSON.parse($("#current-user").html());
   

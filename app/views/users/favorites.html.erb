@@ -2,8 +2,13 @@
 
 <div class="well" id="favorites-show">
   <ul id="switch-fav" class= "nav nav-tabs">
-    <li id="show-fav-items" class="<%= @shop ? '' : 'active' %>"><a>Items</a>
-    <li id="show-fav-shops" class="<%= @shop ? 'active' : '' %>"><a>Shops</a>
+    <li id="show-fav-items" class="<%= @shop ? '' : 'active' %>">
+      <a href="">Items</a>
+    </li>
+    
+    <li id="show-fav-shops" class="<%= @shop ? 'active' : '' %>">
+      <a href="">Shops</a>
+    </li>
   </ul>
 
   <div id="favorites-show-items" class="<%= @shop ? 'hidden' : '' %>">

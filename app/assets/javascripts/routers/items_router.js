@@ -42,7 +42,7 @@ VV.Routers.Items = Backbone.Router.extend({
           collection: that.items
         });
     
-        that.$rootEl.html(itemsIndexView.render().$el);
+        that.$rootEl.html(itemsIndexView.paginate(0).$el);
       }
     }); 
   },

@@ -6,6 +6,7 @@
         data-toggle="dropdown">
         Sort By <span class="caret"></span></a>
       </button>
+      
       <ul class="dropdown-menu" role="menu">
         <li><a href="#/most-recent">Most Recent</a></li>
         <li><a href="#/lowest-price">Lowest Price</a></li>
@@ -15,7 +16,7 @@
     
     <div id="items-index-box" class="panel">
       <% if (items.length) { %>
-        <% items.each(function (item) { %>
+        <% _.each(items, function (item) { %>
           <div class="listing-card">
             <a href="<%= item.url() %>" class="listing-thumb">
               <img src="<%= item.escape("listPhoto") %>"
@@ -41,5 +42,23 @@
             maybe you should list something!</h5>
         <% } %>
     </div>
+    
+    <div class="center">
+      <a href="" class="page-link <%= (page == 0) ? 'hidden' : '' %>"
+        data-page="<%= (page - 1) %>">‹ Previous</a>
+      
+      <% _(numPages).times(function (i) { %>
+        <span>
+          <% if (page == i) { %>
+            <%= i + 1 %>
+          <% } else { %>
+            <a href="" class="page-link <%= (page == i) ? 'active' : '' %>" 
+            data-page="<%= i %>"><%= i + 1 %></a>
+          <% } %>
+      <% }); %>
+      <a href="" class="page-link <%= (page == (numPages - 1)) ? 'hidden' : '' %>"
+        data-page="<%= (page + 1) %>">Next ›</a>
+    </div>
   </div>
 </div>
+

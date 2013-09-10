@@ -15,13 +15,18 @@
         </button>
 
         <ul class="nav nav-tabs">
-          <li id="sign-in-tab" class="modal-tab active"><a>Sign In</a></li>
-          <li id="sign-up-tab" class="modal-tab"><a>Join Us</a></li>
+          <li id="sign-in-tab" class="modal-tab active">
+            <a href="">Sign In</a>
+          </li>
+          
+          <li id="sign-up-tab" class="modal-tab">
+            <a href="">Join Us</a>
+          </li>
         </ul>
       </div>
       
       <div class="modal-body">
-        <div id="modal-errors" class="alert alert-danger col-xs-5 hidden"></div>
+        <div id="modal-errors" class="alert alert-danger col-xs-7 hidden"></div>
         <div id="sign-in-form" class="modal-form">
           <%= render 'sessions/new' %>
         </div>

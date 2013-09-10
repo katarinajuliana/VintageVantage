@@ -1,5 +1,7 @@
 <% categories.each(function (category) { %>
     <li class="browse">
-      <a href="#/category/<%= category.id %>"><%= category.escape("title") %></a>
+      <a href="#/category/<%= category.id %>">
+        <%= category.escape("title") %>
+      </a>
     </li>
 <% }); %>
