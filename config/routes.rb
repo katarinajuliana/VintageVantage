@@ -13,5 +13,7 @@ VintageVantage::Application.routes.draw do
     get 'favorites', :on => :member
   end
   
+  match "/auth/:provider/callback" => "sessions#create_fbook"
+  
   root to: "items#index"
 end

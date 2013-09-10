@@ -14,6 +14,10 @@ class SessionsController < ApplicationController
       render :text => "Invalid username or password", :status => 422
     end
   end
+  
+  def create_fbook
+    render :text => "woo facebook login"
+  end
 
   def destroy
     logout_current_user!
