@@ -1,0 +1,28 @@
+<div id="auth-overlay"></div>
+<div id="auth-modal" class="well">
+
+    <button type="button"
+      class="close"
+      id="auth-modal-close"
+      aria-hidden="true">
+      &times;
+    </button>
+
+    <ul class="nav nav-tabs">
+      <li id="sign-in-tab" class="modal-tab"><a>Sign In</a></li>
+      <li id="sign-up-tab" class="modal-tab"><a>Join Us</a></li>
+    </ul>
+
+  
+  <div id="modal-content" class="panel">
+    <div id="modal-errors" class="alert alert-danger col-xs-5 hidden"></div>
+    
+    <div id="sign-in-form" class="modal-form hidden">
+      <%= render 'sessions/new' %>
+    </div>
+    
+    <div id="sign-up-form" class="modal-form hidden">
+      <%= render 'users/form' %>
+    </div>
+  </div>
+</div>
