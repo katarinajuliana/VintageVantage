@@ -16,11 +16,23 @@ class SessionsController < ApplicationController
   end
   
   def create_fbook
-    render :text => "woo facebook login"
+    if @user = User.find_or_create_from_auth_hash(auth_hash)
+      self.current_user = @user
+    
+      render "users/user"
+    else
+      render :json => @user.errors.full_messages
+    end
   end
 
   def destroy
     logout_current_user!
     redirect_to root_url
+  end
+  
+  protected
+  
+  def auth_hash
+    request.env['omniauth.auth']
   end
 end
