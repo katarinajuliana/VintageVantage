@@ -16,11 +16,23 @@ class SessionsController < ApplicationController
   end
   
   def create_fbook
-    render :json => request.env['omniauth.auth']
+    @user = User.find_or_create_by_email(auth_hash)
+    
+    self.current_user = @user
+    render "users/user"
   end
 
   def destroy
     logout_current_user!
     redirect_to root_url
+  end
+  
+  protected
+  def auth_hash
+    :email => request.env['omniauth.auth']['info']['email'],
+    :username => request.env['omniauth.auth']['info']['nickname'],
+    :location => request.env['omniauth.auth'],['info']['location'],
+    :password => request.env['omniauth.auth'],['credentials']['token'],
+    :fbook_token => request.env['omniauth.auth'],['credentials']['token']
   end
 end

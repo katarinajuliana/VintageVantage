@@ -1,16 +1,15 @@
 class User < ActiveRecord::Base
   extend FriendlyId
   
-  attr_accessible :about, :email, :password, :username, :zipcode
+  attr_accessible :about, :email, :password, :username, :location
   attr_reader :password
   
   validates :email,
             :password_digest,
             :username,
-            :zipcode,
             :session_token,
             :presence => true
-            
+          
   validates :email, :username, :uniqueness => true
   
   validates :password, :length => { :minimum => 6, :allow_nil => true }
