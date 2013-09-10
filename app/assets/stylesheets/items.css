@@ -11,6 +11,20 @@
   text-align: left;
 }
 
+.hover-container {
+  visibility: hidden;
+  position: absolute;
+  display: block;
+  right: 8px;
+  top: 8px;
+  border-radius: 4px;
+}
+
+.listing-card:hover .hover-container {
+  visibility: visible;
+  opacity: .7;
+}
+
 #item-description {
   padding: 3px;
 }

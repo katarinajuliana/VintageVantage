@@ -9,7 +9,8 @@ VV.Views.ItemsIndex = Backbone.View.extend({
   },
   
   events: {
-    "click .page-link": "pageClickCallback"
+    "click .page-link": "pageClickCallback",
+    "click .item-fav": "favoriteCallback"
   },
   
   template: JST['items/index'],
@@ -49,5 +50,30 @@ VV.Views.ItemsIndex = Backbone.View.extend({
     event.preventDefault();
     var pageNumber = $(event.target).data("page");
     this.paginate(pageNumber);
+  },
+  
+  favoriteCallback: function (event) {
+    event.preventDefault();
+    
+    if (window.currentUser) {
+      var $button = $(event.currentTarget);
+      var itemId = $button.data("id");
+      var method = ($button.hasClass("fav") ? "POST" : "DELETE")
+
+      $.ajax({
+        url: "/items/" + itemId + "/item_favorite.json",
+        type: method,
+        data: { item_id: itemId },
+        success: function (response) {
+          $button.toggleClass("hidden");
+          $button.next().toggleClass("hidden");
+          $button.prev().toggleClass("hidden");
+        }
+      });
+    } else {
+      $('#modal-errors').html("You must be logged in to do that!")
+        .removeClass("hidden");
+      $('#auth-modal').modal('show');
+    }
   }
 });

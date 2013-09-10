@@ -1,3 +1,5 @@
+<% fav_item = (current_user && current_user.favorite_items.include?(item)) %>
+
 <div class="listing-card">
   <a href="<%= item_url(item) %>" class="listing-thumb">
     <img class="img-responsive" src="<%= item.primary_photo.url(:list) %>" alt="<%= item.title %>">
@@ -15,5 +17,19 @@
     <div class="item-listing-price">
       $<%= item.price %>.00
     </div>
+  </div>
+  
+  <div class="hover-container">
+    <button type="submit"
+      class="btn btn-default btn-fav fav item-fav <%= 'hidden' if fav_item %>"
+      data-id="<%= item.id %>">
+      ❤
+    </button>
+
+    <button type="submit"
+      class="btn btn-default btn-fav unfav item-fav <%= 'hidden' unless fav_item %>"
+      data-id="<%= item.id %>">
+      <span class="heart">❤</span>
+    </button>
   </div>
 </div>

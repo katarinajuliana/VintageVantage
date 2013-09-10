@@ -12,3 +12,7 @@ end
 node(:listPhoto) do |item|
  item.primary_photo.url(:list)
 end
+
+node(:favItem) do |item|
+  current_user && current_user.favorite_items.include?(item)
+end

@@ -3,15 +3,18 @@ $(function () {
     event.preventDefault();
     
     if (window.currentUser) {
-      var itemId = $(event.target).data("id");
-      var method = ($(event.target).hasClass("fav") ? "POST" : "DELETE")
-    
+      var $button = $(event.currentTarget);
+      var itemId = $button.data("id");
+      var method = ($button.hasClass("fav") ? "POST" : "DELETE")
+      debugger
       $.ajax({
         url: "/items/" + itemId + "/item_favorite.json",
         type: method,
         data: { item_id: itemId },
         success: function (response) {
-          $(".item-fav").toggleClass("hidden");
+          $button.toggleClass("hidden");
+          $button.next().toggleClass("hidden");
+          $button.prev().toggleClass("hidden");
         
           numFaves = parseInt($("#fav-count").html());
           if (method == "POST") {
