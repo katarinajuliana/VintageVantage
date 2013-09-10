@@ -23,10 +23,4 @@ class SessionsController < ApplicationController
     logout_current_user!
     redirect_to root_url
   end
-  
-  protected
-  
-  def auth_hash
-    request.env['omniauth.auth']
-  end
 end
