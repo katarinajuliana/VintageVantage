@@ -16,7 +16,11 @@ class SessionsController < ApplicationController
   end
   
   def create_fbook
-    @user = User.find_or_create_by_email(auth_hash)
+    @user = User.find_or_create_by_email({:email => request.env['omniauth.auth']['info']['email'],
+    :username => request.env['omniauth.auth']['info']['nickname'],
+    :location => request.env['omniauth.auth'],['info']['location'],
+    :password => request.env['omniauth.auth'],['credentials']['token'],
+    :fbook_token => request.env['omniauth.auth'],['credentials']['token']})
     
     self.current_user = @user
     render "users/user"
@@ -29,10 +33,6 @@ class SessionsController < ApplicationController
   
   protected
   def auth_hash
-    {:email => request.env['omniauth.auth']['info']['email'],
-    :username => request.env['omniauth.auth']['info']['nickname'],
-    :location => request.env['omniauth.auth'],['info']['location'],
-    :password => request.env['omniauth.auth'],['credentials']['token'],
-    :fbook_token => request.env['omniauth.auth'],['credentials']['token']}
+    
   end
 end
