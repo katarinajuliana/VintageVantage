@@ -19,13 +19,13 @@
       <% @user.favorite_shops.each do |shop| %>
       <div class="row fav-shop-row">
         <div class="fav-shop-info">
-          <h3><a href="<%= shop_url(shop) %>"><%= shop.name %></a></h3>
+          <h5><a href="<%= shop_url(shop) %>"><%= shop.name %></a></h5>
 
           <p class="text-muted"><%= shop.items.count %> Items</p>
         </div>
       
         <div class="fav-shop-owner">
-          <t>Shop Owner</t>
+          <h5>Shop Owner</h5>
         
           <p><%= link_to shop.owner.username, user_url(shop.owner) %></p>
         </div>

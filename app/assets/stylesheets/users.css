@@ -1,3 +1,12 @@
+.see-more {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+#user-about {
+  padding: 3px;
+}
+
 .user-show-right {
   margin-right: 100px;
   width: 365px;
@@ -6,9 +15,4 @@
 .user-show-left {
   margin-left: 125px;
   width: 452px;
-}
-
-.see-more {
-  display: inline-block;
-  margin-right: 5px;
 }

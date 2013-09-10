@@ -8,15 +8,44 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require bootstrap
  *= require bootstrap-theme
+ *= require_self
  *= require_tree .
  */
+
+/*well #C8DBD5
+panel #E6F2EF
+bod #F0F5F0*/
+
+body {
+  background-color: #F5F5F5;
+}
+
+.btn-info {
+  background-image: none;
+  background-color: #7DAD9F;
+  border: none;
+}
+
+.btn-info:hover {
+  background-image: none;
+  background-color: #609183;
+}
+
+.btn-info:focus, .btn-info:active {
+  background-image: none;
+  background-color: #609183;
+}
 
 .container {
   width: 1228px;
   margin-bottom: 100px;
+}
+
+#flash-errors {
+  margin-right: 100px;
+  float: none;
 }
 
 #modal-errors {
@@ -25,12 +54,17 @@
   float: none;
 }
 
-#flash-errors {
-  margin-right: 100px;
-  float: none;
+.panel {
+  margin-bottom: 0px;
+  padding: 1px;
 }
 
 #user-fav-btn:hover {
   color: salmon;
 }
 
+.well {
+  background-image: none;
+  background-color: #C8DBD5;
+  border: none;
+}

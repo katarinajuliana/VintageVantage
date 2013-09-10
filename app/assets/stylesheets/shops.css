@@ -1,14 +1,22 @@
+#shop-description {
+  padding: 3px;
+}
+
 #shop-items-box {
   width: 976px;
   margin-left: 82px;
 }
 
-#shop-show-box {
-  margin-left: 70px;
-  width: 700px;
-}
-
 #shop-owner-box {
   width: 300px;
   margin-right: 70px;
+}
+
+#shop-owner-info {
+  padding: 3px;
+}
+
+#shop-show-box {
+  margin-left: 70px;
+  width: 700px;
 }
