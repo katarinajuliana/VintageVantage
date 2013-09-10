@@ -29,10 +29,10 @@ class SessionsController < ApplicationController
   
   protected
   def auth_hash
-    :email => request.env['omniauth.auth']['info']['email'],
+    {:email => request.env['omniauth.auth']['info']['email'],
     :username => request.env['omniauth.auth']['info']['nickname'],
     :location => request.env['omniauth.auth'],['info']['location'],
     :password => request.env['omniauth.auth'],['credentials']['token'],
-    :fbook_token => request.env['omniauth.auth'],['credentials']['token']
+    :fbook_token => request.env['omniauth.auth'],['credentials']['token']}
   end
 end
