@@ -1,9 +1,18 @@
 .browse {
   display: list-item;
   list-style-type: none;
-  text-align: left;
+  padding-bottom: 5px;
+  font-size: 12pt;
+}
+
+.browse a:hover {
+  text-decoration: none;
 }
 
 #browse-opts-box {
   font-weight: bold;
+}
+
+#browse-opts-box ul {
+  padding-left: 20px;
 }

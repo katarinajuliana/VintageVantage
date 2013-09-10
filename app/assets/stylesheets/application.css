@@ -18,6 +18,14 @@
 panel #E6F2EF
 bod #F0F5F0*/
 
+a {
+  color: #7DAD9F;
+}
+
+a:hover {
+  color: #609183;
+}
+
 body {
   background-color: #F5F5F5;
 }
@@ -52,6 +60,10 @@ body {
   margin-left: 15px;
   margin-right: 100px;
   float: none;
+}
+
+.navbar-brand {
+  font-family: "american typewriter", "courier new";
 }
 
 .panel {

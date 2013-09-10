@@ -14,28 +14,32 @@
     </div>
     
     <div id="items-index-box" class="panel">
-      <% items.each(function (item) { %>
-        <div class="listing-card">
-          <a href="<%= item.url() %>" class="listing-thumb">
-            <img src="<%= item.escape("listPhoto") %>"
-              alt="<%= item.escape("title") %>">
-          </a>
+      <% if (items.length) { %>
+        <% items.each(function (item) { %>
+          <div class="listing-card">
+            <a href="<%= item.url() %>" class="listing-thumb">
+              <img src="<%= item.escape("listPhoto") %>"
+                alt="<%= item.escape("title") %>">
+            </a>
     
-          <div class="caption">
-            <a class="item-title-link" href="<%= item.url() %>">
-              <%= item.escape("title")%>
-            </a>
+            <div class="caption">
+              <a class="item-title-link" href="<%= item.url() %>">
+                <%= item.escape("title")%>
+              </a>
             
-            <a href="<%= item.escape("shopUrl") %>" class="item-shop-link">
-              <text class="text-muted"><%= item.escape("shopName") %></text>
-            </a>
+              <a href="<%= item.escape("shopUrl") %>" class="item-shop-link">
+                <text class="text-muted"><%= item.escape("shopName") %></text>
+              </a>
             
-            <div class="item-listing-price">  
-              $<%= item.escape("price") %>.00
+              <div class="item-listing-price">  
+                $<%= item.escape("price") %>.00
+              </div>
             </div>
           </div>
-        </div>
-      <% }); %>
+        <% }) } else { %>
+          <h5>Sorry, we don't have any items matching that criteria...
+            maybe you should list something!</h5>
+        <% } %>
     </div>
   </div>
 </div>
