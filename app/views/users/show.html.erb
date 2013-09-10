@@ -28,7 +28,7 @@
       </a>
     
       <div id="user-shop-items" class="panel">      
-        <% @user.shop.items.each do |item| %>
+        <% @user.shop.items[0..14].each do |item| %>
           <a href="<%= item_url(item) %>" class="thumbnail">
             <img src="<%= item.primary_photo.url(:thumb) %>">
           </a>

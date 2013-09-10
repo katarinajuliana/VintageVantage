@@ -43,7 +43,7 @@
         <% } %>
     </div>
     
-    <div class="center">
+    <div class="page-links <%= (numPages < 2) ? 'hidden': '' %>">
       <a href="" class="page-link <%= (page == 0) ? 'hidden' : '' %>"
         data-page="<%= (page - 1) %>">‹ Previous</a>
       

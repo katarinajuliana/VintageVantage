@@ -117,10 +117,6 @@
   display: block;
 }
 
-.page-link.active {
-  font-weight: bold;
-}
-
 .thumbnail {
   display: inline-block;
   height: 81px;

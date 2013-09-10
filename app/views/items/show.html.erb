@@ -104,7 +104,7 @@
     </h4>
   
     <div id="item-shop-items" class="panel">
-      <% @item.shop.items.each do |item| %>
+      <% @item.shop.items[0..7].each do |item| %>
         <%= render :partial => 'listing', :locals => { :item => item } %>
       <% end %>
     </div>

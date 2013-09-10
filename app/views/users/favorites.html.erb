@@ -2,26 +2,26 @@
 
 <div class="well" id="favorites-show">
   <ul id="switch-fav" class= "nav nav-tabs">
-    <li id="show-fav-items" class="<%= @shop ? '' : 'active' %>">
+    <li id="show-fav-items" class="<%= @shop_show ? '' : 'active' %>">
       <a href="">Items</a>
     </li>
     
-    <li id="show-fav-shops" class="<%= @shop ? 'active' : '' %>">
+    <li id="show-fav-shops" class="<%= @shop_show ? 'active' : '' %>">
       <a href="">Shops</a>
     </li>
   </ul>
 
-  <div id="favorites-show-items" class="<%= @shop ? 'hidden' : '' %>">
+  <div id="favorites-show-items" class="<%= @shop_show ? 'hidden' : '' %>">
     <div class="panel">
-      <% @user.favorite_items.each do |item| %>
+      <% @items.each do |item| %>
         <%= render :partial => 'items/listing', :locals => { :item => item } %>
       <% end %>
     </div>
   </div>
 
-  <div id="favorites-show-shops" class="<%= @shop ? '' : 'hidden' %>">
+  <div id="favorites-show-shops" class="<%= @shop_show ? '' : 'hidden' %>">
     <div class="panel">
-      <% @user.favorite_shops.each do |shop| %>
+      <% @shops.each do |shop| %>
       <div class="row fav-shop-row">
         <div class="fav-shop-info">
           <h5><a href="<%= shop_url(shop) %>"><%= shop.name %></a></h5>
@@ -43,5 +43,13 @@
       </div>
       <% end %>
     </div>
+  </div>
+  
+  <div class="page-links <%= @shop_show ? 'hidden' : '' %>">
+    <%= paginate @items %>
+  </div>
+  
+  <div class="page-links <%= @shop_show ? '' : 'hidden' %>" >
+    <%= paginate @shops %>
   </div>
 </div>
