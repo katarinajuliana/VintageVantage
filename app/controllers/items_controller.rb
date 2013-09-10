@@ -39,6 +39,9 @@ class ItemsController < ApplicationController
   end
   
   def show
+    renderer = Redcarpet::Render::HTML.new(:no_intra_emphasis => true, :autolink => true, :hard_wrap => true)
+    @markdown = Redcarpet::Markdown.new(renderer)
+    
     @item = Item.find(params[:id])
   end
   

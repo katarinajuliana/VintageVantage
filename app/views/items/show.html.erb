@@ -46,7 +46,7 @@
     <h4>Details</h4>
     
     <div id="item-description" class="panel">
-      <p><%= @item.description %></p>
+      <%= @markdown.render(@item.description).html_safe %>
     </div>
   </div>
 </div>
