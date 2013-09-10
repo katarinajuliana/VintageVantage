@@ -16,13 +16,8 @@ class SessionsController < ApplicationController
   end
   
   def create_fbook
-    if @user = User.find_or_create_from_auth_hash(auth_hash)
-      self.current_user = @user
-    
-      render "users/user"
-    else
-      render :json => @user.errors.full_messages
-    end
+    auth_hash = request.env['omniauth.auth']
+    render :text => auth_hash.inspect
   end
 
   def destroy
