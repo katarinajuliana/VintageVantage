@@ -9,21 +9,17 @@ class SessionsController < ApplicationController
     if @user && (@user.is_password?(params[:user][:password]))
       self.current_user = @user
       
-      render "users/user"
+      render 'user/user'
     else
       render :text => "Invalid username or password", :status => 422
     end
   end
   
   def create_fbook
-    @user = User.find_or_create_by_email({:email => request.env['omniauth.auth']['info']['email'],
-    :username => request.env['omniauth.auth']['info']['nickname'],
-    :location => request.env['omniauth.auth']['info']['location'],
-    :password => request.env['omniauth.auth']['credentials']['token'],
-    :fbook_token => request.env['omniauth.auth']['credentials']['token']})
+    @user = User.find_or_create_by_email(auth_hash)
     
     self.current_user = @user
-    render "users/user"
+    redirect_to root_url
   end
 
   def destroy
@@ -33,6 +29,10 @@ class SessionsController < ApplicationController
   
   protected
   def auth_hash
-    
+    {:email => request.env['omniauth.auth']['info']['email'],
+     :username => request.env['omniauth.auth']['info']['nickname'],
+     :location => request.env['omniauth.auth']['info']['location'],
+     :password => request.env['omniauth.auth']['credentials']['token'],
+     :fbook_token => request.env['omniauth.auth']['credentials']['token']}
   end
 end

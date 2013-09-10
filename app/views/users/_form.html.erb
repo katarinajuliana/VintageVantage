@@ -44,19 +44,6 @@
        value="<%= @user.username %>">
   </div>
   
-  <% unless @user.persisted? %>
-    <div class="form-group"> 
-      <label for="user_password">Password</label>
-      
-      <input
-         id="user_password"
-         name="user[password]"
-         type="password"
-         required="true"
-         class="form-control">
-    </div>
-  <% end %>
-  
   <div class="form-group"> 
     <label for="user_about">About</label>
     
@@ -83,6 +70,18 @@
        placeholder="eg. Oakland, CA"
        value="<%= @user.location %>">
   </div>
-
+  
+  <div class="form-group"> 
+    <label for="user_password">Password</label>
+    
+    <input
+       id="user_password"
+       name="user[password]"
+       type="password"
+       required="true"
+       class="form-control">
+  </div>
+  
+  <br>
   <button type='submit' class='btn btn-info'><%= message %></button>
 </form>

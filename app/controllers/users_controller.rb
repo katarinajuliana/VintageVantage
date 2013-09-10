@@ -45,10 +45,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     
-    unless current_user.id == params[:id].to_i
-      redirect_to root_url
-    end
-    
     if @user.update_attributes(params[:user])
       redirect_to user_url(@user)
     else
