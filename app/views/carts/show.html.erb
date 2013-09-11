@@ -5,6 +5,6 @@
   </a>
 </h3>
 
-<% @items. each do |item| %>
+<% @items.each do |item| %>
   <%= render :partial => 'cart_item', :locals => { :item => item } %>
 <% end %>
