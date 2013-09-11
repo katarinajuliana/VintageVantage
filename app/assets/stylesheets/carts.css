@@ -1,3 +1,29 @@
 .cart-buttons {
   display: inline-block;
 }
+
+.cart-item {
+  margin-left: 30px;
+}
+
+.cart-item-content {
+  margin-left: 20px;
+  margin-top: 15px;
+  display: inline-block;
+  height: 120px;
+  vertical-align: top;
+}
+
+.cart-item-info {
+  height: 80px;
+}
+
+.checkout {
+  position: absolute;
+  bottom: 35%;
+  right: 10%;
+}
+
+.go-to-cart {
+  display: none;
+}

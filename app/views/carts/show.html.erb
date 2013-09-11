@@ -1,4 +1,9 @@
-<h3><%= @items.size %> Items in Your Cart</h3>
+<h3 class="col-xs-8">
+  <span id="cart-num-items"><%= @items.size %></span> Items in Your Cart
+  <a class="btn btn-info pull-right" href="/">
+    <span>Keep Shopping</span>
+  </a>
+</h3>
 
 <% @items. each do |item| %>
   <%= render :partial => 'cart_item', :locals => { :item => item } %>

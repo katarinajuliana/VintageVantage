@@ -3,7 +3,10 @@ class CartItemsController < ApplicationController
   
   def create
     session[:cart_item_ids] ||= []
-    session[:cart_item_ids] << params[:item_id]
+    
+    unless session[:cart_item_ids].include?(params[:item_id])
+      session[:cart_item_ids] << params[:item_id]
+    end
     
     render :json => Item.find(params[:item_id])
   end

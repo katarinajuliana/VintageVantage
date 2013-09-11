@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130911153353) do
+ActiveRecord::Schema.define(:version => 20130911202744) do
 
   create_table "cart_items", :force => true do |t|
     t.integer  "cart_id",    :null => false
@@ -77,15 +77,15 @@ ActiveRecord::Schema.define(:version => 20130911153353) do
   add_index "item_photos", ["item_id"], :name => "index_item_photos_on_item_id"
 
   create_table "items", :force => true do |t|
-    t.string   "title",                       :null => false
-    t.integer  "price",                       :null => false
-    t.integer  "era_id",                      :null => false
-    t.text     "description",                 :null => false
-    t.integer  "shop_id",                     :null => false
-    t.integer  "category_id",                 :null => false
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-    t.string   "primary_photo_file_name",     :null => false
+    t.string   "title",                                          :null => false
+    t.integer  "price",                                          :null => false
+    t.integer  "era_id",                                         :null => false
+    t.text     "description",                                    :null => false
+    t.integer  "shop_id",                                        :null => false
+    t.integer  "category_id",                                    :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+    t.string   "primary_photo_file_name",                        :null => false
     t.string   "primary_photo_content_type"
     t.integer  "primary_photo_file_size"
     t.datetime "primary_photo_updated_at"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(:version => 20130911153353) do
     t.string   "detail_photo_3_content_type"
     t.integer  "detail_photo_3_file_size"
     t.datetime "detail_photo_3_updated_at"
+    t.boolean  "sold",                        :default => false, :null => false
   end
 
   add_index "items", ["category_id"], :name => "index_items_on_category_id"
