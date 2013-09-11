@@ -18,7 +18,8 @@ window.VV = {
     this._installCatSideBar($catEl, categories);
 
     new VV.Routers.Items($rootEl, new VV.Collections.Items());
-    Backbone.history.start({pushState: true});
+    Backbone.history.start();
+    Backbone.history.navigate("#/")
   },
   _installCatSideBar: function ($catList, categories){
     var catIndexView = new VV.Views.CategoriesIndex(categories);

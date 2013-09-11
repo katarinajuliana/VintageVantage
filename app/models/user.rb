@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   extend FriendlyId
   
-  attr_accessible :about, :email, :password, :username, :location
+  attr_accessible :about, :email, :password, :username, :location, :fbook_token
   attr_reader :password
   
   validates :email,

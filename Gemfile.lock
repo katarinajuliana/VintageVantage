@@ -194,7 +194,8 @@ DEPENDENCIES
   friendly_id
   jquery-rails
   kaminari
-  omniauth-facebook
+  omniauth
+  omniauth-facebook (~> 1.4.0)
   paperclip
   pg
   pry-rails

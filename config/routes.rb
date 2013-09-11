@@ -13,7 +13,10 @@ VintageVantage::Application.routes.draw do
     get 'favorites', :on => :member
   end
   
+  
   match "/auth/:provider/callback" => "sessions#create_fbook"
+  
+  match "/auth/failure", to: redirect("/")
   
   root to: "items#index"
 end
