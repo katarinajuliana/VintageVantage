@@ -843,8 +843,8 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
  * limitations under the License.
  * ======================================================================== */
 
-
-+function ($) { "use strict";
+// 
+// +function ($) { "use strict";
 
   // MODAL CLASS DEFINITION
   // ======================

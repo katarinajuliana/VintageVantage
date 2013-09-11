@@ -59,7 +59,7 @@
     
     <div class="page-links <%= (numPages < 2) ? 'hidden': '' %>">
       <a href="" class="page-link <%= (page == 0) ? 'hidden' : '' %>"
-        data-page="<%= (page - 1) %>"></a>
+        data-page="<%= (page - 1) %>">Previous</a>
       
       <% _(numPages).times(function (i) { %>
         <span>
@@ -71,7 +71,7 @@
           <% } %>
       <% }); %>
       <a href="" class="page-link <%= (page == (numPages - 1)) ? 'hidden' : '' %>"
-        data-page="<%= (page + 1) %>"><span class="icon-arrow-right"></span></a>
+        data-page="<%= (page + 1) %>">Next</span></a>
     </div>
   </div>
 </div>
