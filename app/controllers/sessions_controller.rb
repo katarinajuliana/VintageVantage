@@ -4,14 +4,14 @@ class SessionsController < ApplicationController
   respond_to :json, :only => [:create]
   
   def create
-    @user = User.find_by_username(params[:user][:username])
+    @user = User.find_by_email(params[:user][:email])
 
     if @user && (@user.is_password?(params[:user][:password]))
       self.current_user = @user
       
       render 'users/user'
     else
-      render :text => "Invalid username or password", :status => 422
+      render :text => "Invalid email or password", :status => 422
     end
   end
   

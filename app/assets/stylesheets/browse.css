@@ -10,6 +10,8 @@
 }
 
 #browse-opts-box {
+  width: 190px;
+  margin-left: 75px;
   font-weight: bold;
 }
 

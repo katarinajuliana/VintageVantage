@@ -1,14 +1,14 @@
-#browse-opts-box {
-  width: 190px;
-  margin-left: 75px;
-}
-
 .caption {
   font-size: 12px;
 }
 
 .dropdown-menu > li {
   text-align: left;
+}
+
+.dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a {
+  background-image: none;
+  background-color: #7DAD9F;
 }
 
 .hover-container {

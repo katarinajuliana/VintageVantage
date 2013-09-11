@@ -10,13 +10,10 @@
  *
  *= require bootstrap
  *= require bootstrap-theme
+ *= require jquery.modal.css
  *= require_self
  *= require_tree .
  */
-
-/*well #C8DBD5
-panel #E6F2EF
-bod #F0F5F0*/
 
 a {
   color: #7DAD9F;

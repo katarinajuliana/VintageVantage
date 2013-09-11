@@ -17,6 +17,7 @@
 //= require backbone
 //= require vintage_vantage
 //= require bootstrap
+//= require jquery.modal
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

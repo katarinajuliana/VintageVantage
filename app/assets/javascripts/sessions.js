@@ -1,13 +1,28 @@
 $(function () {
-  $("#auth-modal").on("hide.bs.modal", function () {
+  $("body").on($.modal.CLOSE, function (event, modal) {
     $("#modal-errors").empty().addClass("hidden");
+    $(".modal-tabs").removeClass("acive");
+    $(".modal-form").addClass("hidden");
   });
   
-  $('.modal-tab').on('click', function (event) {
+  $('#sign-in-tab').on('click', function (event) {
     event.preventDefault();
     
-    $('.modal-form').toggleClass('hidden');
-    $('.modal-tab').toggleClass('active');
+    $('#sign-in-form').removeClass('hidden');
+    $('#sign-in-tab').addClass('active');
+    
+    $('#sign-up-form').addClass('hidden');
+    $('#sign-up-tab').removeClass('active');
+  });
+  
+  $('#sign-up-tab').on('click', function (event) {
+    event.preventDefault();
+    
+    $('#sign-up-form').removeClass('hidden');
+    $('#sign-up-tab').addClass('active');
+    
+    $('#sign-in-form').addClass('hidden');
+    $('#sign-in-tab').removeClass('active');
   });
   
   $('#new-user-form').on('submit', function (event) {
@@ -20,7 +35,7 @@ $(function () {
       type: 'post',
       data: formData,
       success: function (response) {
-        $('#auth-modal').modal('hide');
+        $('#auth-modal').close();
         $('#user-nav').removeClass('hidden');
         $('#anon-nav').addClass('hidden');
         
@@ -42,7 +57,7 @@ $(function () {
       type: 'post',
       data: formData,
       success: function (response) {
-        $('#auth-modal').modal('hide');
+        $.modal.close();
         $('#user-nav').removeClass('hidden');
         $('#anon-nav').addClass('hidden');
         $('.toolbar').removeClass('hidden');
@@ -82,5 +97,31 @@ $(function () {
   
   $("#sign-out").on("click", function (event) {
     window.currentUser = null
-  })
+  });
+  
+  $("#sign-in-link").on("click", function (event){
+    event.preventDefault();
+    $.modal.close;
+    
+    $("#sign-in-tab").addClass("active");
+    $("#sign-in-form").removeClass("hidden");
+    
+    $("#sign-up-tab").removeClass("active");
+    $("#sign-up-form").addClass("hidden");
+    
+    $('#auth-modal').modal({fadeDuration: 250});
+  });
+  
+  $("#sign-up-link").on("click", function (event){
+    event.preventDefault();
+    $.modal.close;
+    
+    $("#sign-up-tab").addClass("active");
+    $("#sign-up-form").removeClass("hidden");
+    
+    $("#sign-in-tab").removeClass("active");
+    $("#sign-in-form").addClass("hidden");
+    
+    $('#auth-modal').modal({fadeDuration: 250});
+  });
 });

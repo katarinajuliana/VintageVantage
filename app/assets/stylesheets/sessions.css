@@ -1,3 +1,17 @@
-.modal-body {
+.modal {
+  position: fixed;
+  bottom: 150px;
+  width: 450px;
+  height: 550px;
+}
+
+#modal-content {
+  vertical-align: center;
   overflow: auto;
+  
+}
+
+.fbook {
+  font-weight: bold;
+  font-size: 12pt;
 }
