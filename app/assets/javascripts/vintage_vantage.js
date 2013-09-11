@@ -42,8 +42,6 @@ window.VV = {
     } else {
       var shopLink = "<li><a href='/shops/new'>Open Shop</a></li>";
     };
-    
-    var cartLink = "<li><a href='/user/" + user.id + "/cart'><span class='icon-cart'></span></li>"
 
     $("#user-nav").prepend(userLink + favLink + shopLink);
   }

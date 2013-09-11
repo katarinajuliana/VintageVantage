@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if @user && (@user.is_password?(params[:user][:password]))
       self.current_user = @user
       
-      render 'user/user'
+      render 'users/user'
     else
       render :text => "Invalid username or password", :status => 422
     end

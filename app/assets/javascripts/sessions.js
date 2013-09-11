@@ -3,7 +3,9 @@ $(function () {
     $("#modal-errors").empty().addClass("hidden");
   });
   
-  $('.modal-tab').on('click', function () {
+  $('.modal-tab').on('click', function (event) {
+    event.preventDefault();
+    
     $('.modal-form').toggleClass('hidden');
     $('.modal-tab').toggleClass('active');
   });
