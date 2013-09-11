@@ -13,7 +13,9 @@ VintageVantage::Application.routes.draw do
     get 'favorites', :on => :member
   end
   
-  resource :cart, :only => [:show]
+  resource :cart, :only => [:show, :update]
+  
+  resource :cart_item, :only => [:create, :destroy]
   
   match "/auth/:provider/callback" => "sessions#create_fbook"
   

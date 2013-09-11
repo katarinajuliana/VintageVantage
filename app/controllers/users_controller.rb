@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     @shop_show = params[:shop]
-    @items = @user.favorite_items.reverse.page params[:page]
+    @items = @user.favorite_items.page params[:page]
     @shops = @user.favorite_shops.page params[:page]
   end
 

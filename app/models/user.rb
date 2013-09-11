@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   
   has_many :cart_items,
            :through => :cart,
-           :source => :items
+           :source => :cart_items
   
   has_many :favorite_items,
            :through => :item_favorites,

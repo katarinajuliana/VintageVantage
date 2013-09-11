@@ -1,11 +1,9 @@
 class CartsController < ApplicationController
   def show
-    cart = Cart.find_by_user_id(current_user)
-    
-    :cookies[:cart_items].each do |item|
-      cart.cart_items << item
-    end
-    
-    @items = cart.cart_items
+    @items = session[:cart_item_ids].map { |id| Item.find(id) }
+  end
+  
+  def update
+    # checkout
   end
 end

@@ -6,7 +6,7 @@ $(function () {
       var $button = $(event.currentTarget);
       var itemId = $button.data("id");
       var method = ($button.hasClass("fav") ? "POST" : "DELETE")
-      debugger
+   
       $.ajax({
         url: "/items/" + itemId + "/item_favorite.json",
         type: method,
