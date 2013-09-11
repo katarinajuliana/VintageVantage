@@ -19,7 +19,7 @@ window.VV = {
 
     new VV.Routers.Items($rootEl, new VV.Collections.Items());
     Backbone.history.start();
-    Backbone.history.navigate("#/")
+    Backbone.history.navigate("/")
   },
   _installCatSideBar: function ($catList, categories){
     var catIndexView = new VV.Views.CategoriesIndex(categories);
@@ -42,6 +42,8 @@ window.VV = {
     } else {
       var shopLink = "<li><a href='/shops/new'>Open Shop</a></li>";
     };
+    
+    var cartLink = "<li><a href='/user/" + user.id + "/cart'><span class='icon-cart'></span></li>"
 
     $("#user-nav").prepend(userLink + favLink + shopLink);
   }
