@@ -55,7 +55,7 @@
       class="form-control">
       <option value="">Select an era...</option>
       
-      <% Era.all.sort_by{ |era| era.decade }.each do |era| %>
+      <% Era.all.sort_by{ |era| era.decade.to_i * -1 }.each do |era| %>
         <option value="<%= era.id %>"
           <%= (era.id == era_select) ? "selected='selected'" : "" %>>
             <%= era.decade %>

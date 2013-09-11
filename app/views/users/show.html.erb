@@ -28,7 +28,7 @@
       </a>
     
       <div id="user-shop-items" class="panel">      
-        <% @user.shop.items[0..14].each do |item| %>
+        <% @user.shop.items.shuffle[0..14].each do |item| %>
           <a href="<%= item_url(item) %>" class="thumbnail">
             <img src="<%= item.primary_photo.url(:thumb) %>">
           </a>
@@ -47,7 +47,7 @@
     </a>    
     
     <div id="user-favorite-items" class="panel">
-      <% @user.favorite_items[0..7].each do |item| %>
+      <% @user.favorite_items.shuffle[0..7].each do |item| %>
         <a href="<%= item_url(item) %>" class="thumbnail">
           <img src="<%= item.primary_photo.url(:thumb) %>">
         </a>
@@ -65,10 +65,10 @@
     </a>
     
     <div id="user-favorite-shops" class="panel">
-      <% @user.favorite_shops[0..2].each do |shop| %>
+      <% @user.favorite_shops.shuffle[0..2].each do |shop| %>
         <h5><%= link_to shop.name, shop_url(shop) %></h5>       
 
-          <% shop.items[0..3].each do |item|%>
+          <% shop.items.shuffle[0..3].each do |item|%>
             <a href="<%= item_url(item) %>" class="thumbnail">
               <img src="<%= item.primary_photo.url(:thumb) %>">
             </a>

@@ -16,7 +16,15 @@ class User < ActiveRecord::Base
   
   after_initialize :ensure_session_token
   
+  after_create :create_user_cart
+  
   friendly_id :username, :use => :slugged
+  
+  has_one :cart
+  
+  has_many :cart_items,
+           :through => :cart,
+           :source => :items
   
   has_many :favorite_items,
            :through => :item_favorites,
@@ -53,6 +61,10 @@ class User < ActiveRecord::Base
   end
 
   private
+  def create_user_cart
+    Cart.create(:user_id => self.id)
+  end
+  
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token
   end
