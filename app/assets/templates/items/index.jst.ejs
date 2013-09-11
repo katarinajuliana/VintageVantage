@@ -59,7 +59,7 @@
     
     <div class="page-links <%= (numPages < 2) ? 'hidden': '' %>">
       <a href="" class="page-link <%= (page == 0) ? 'hidden' : '' %>"
-        data-page="<%= (page - 1) %>"><span class="icon-arrow-left"></span></a>
+        data-page="<%= (page - 1) %>"></a>
       
       <% _(numPages).times(function (i) { %>
         <span>
