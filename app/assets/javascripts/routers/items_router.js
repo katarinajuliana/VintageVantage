@@ -51,8 +51,6 @@ VV.Routers.Items = Backbone.Router.extend({
   
   search: function (search) {
     var that = this;
-    
-    var search = $("#search-content")[0].value;
     var pattern = new RegExp(".*" + search + ".*", "i");
 
     that.items.fetch({
