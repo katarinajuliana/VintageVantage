@@ -9,7 +9,7 @@ module SessionsHelper
   end
   
   def in_cart?(item)
-    session[:cart_item_ids].include?(item.id.to_s)
+    session[:cart_item_ids] && session[:cart_item_ids].include?(item.id.to_s)
   end
 
   def logout_current_user!

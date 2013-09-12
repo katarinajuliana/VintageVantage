@@ -10,33 +10,38 @@ VV.Routers.Items = Backbone.Router.extend({
     "era/:id": "filterEra",
     "highest-price": "sortHighestPrice",
     "lowest-price": "sortLowestPrice",
-    "most-recent": "sortMostRecent"
+    "most-recent": "sortMostRecent",
+    "?:search": "filterSearch"
   },
   
-  filterCategory: function(id) {
+  filterCategory: function (id) {
     var that = this;
     
-    this.items.fetch({
+    that.items.fetch({
       success: function () {
         that.items.set(that.items.where({category_id: parseInt(id)}));
       }
     })
   },
   
-  filterEra: function(id) {
+  filterEra: function (id) {
     var that = this;
     
-    this.items.fetch({
+    that.items.fetch({
       success: function () {
         that.items.set(that.items.where({era_id: parseInt(id)}));
       }
     })
   },
   
-  indexItems: function() {
+  filterSearch: function (search) {
+    console.log("search is " + search);
+  },
+  
+  indexItems: function () {
     var that = this;
     
-    this.items.fetch({
+    that.items.fetch({
       success: function () {
         var itemsIndexView = new VV.Views.ItemsIndex({
           collection: that.items
