@@ -11,7 +11,7 @@ VV.Routers.Items = Backbone.Router.extend({
     "highest-price": "sortHighestPrice",
     "lowest-price": "sortLowestPrice",
     "most-recent": "sortMostRecent",
-    "?:search": "filterSearch"
+    "?": "search"
   },
   
   filterCategory: function (id) {
@@ -34,10 +34,6 @@ VV.Routers.Items = Backbone.Router.extend({
     })
   },
   
-  filterSearch: function (search) {
-    console.log("search is " + search);
-  },
-  
   indexItems: function () {
     var that = this;
     
@@ -50,6 +46,24 @@ VV.Routers.Items = Backbone.Router.extend({
         that.$rootEl.html(itemsIndexView.paginate(0).$el);
       }
     }); 
+  },
+  
+  search: function () {
+    var that = this;
+    
+    var search = $("#search-content")[0].value;
+    var pattern = new RegExp(".*" + search + ".*", "i");
+    
+    that.items.fetch({
+      success: function () {     
+        that.items.set(that.items.filter(function (item){
+          return pattern.exec(item.get("description"));
+          })
+        );
+        
+        Backbone.history.navigate("/");
+      }
+    })
   },
   
   sortHighestPrice: function () {
