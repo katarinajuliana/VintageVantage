@@ -50,7 +50,7 @@ window.VV = {
 
 $(function () {
   console.log("'Vintage Vantage', an online vintage marketplace by Katarina Blagojevic 2013");
-  
+  debugger
   window.currentUser = JSON.parse($("#current-user").html());
   
   if(currentUser) {

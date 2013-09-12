@@ -117,6 +117,6 @@ VV.Routers.Items = Backbone.Router.extend({
   },
   
   facebookRedirect: function () {
-    Backbone.history.navigate("/");
+    Backbone.history.navigate("/", {trigger: true});
   }
 });
