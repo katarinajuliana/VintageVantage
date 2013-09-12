@@ -19,7 +19,7 @@ VintageVantage::Application.routes.draw do
   
   match "/auth/:provider/callback" => "sessions#create_fbook"
   
-  match "/auth/failure", to: redirect("/")
+  # match "/auth/failure", to: redirect("/")
   
   root to: "items#index"
 end

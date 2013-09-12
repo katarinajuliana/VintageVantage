@@ -6,6 +6,7 @@ VV.Routers.Items = Backbone.Router.extend({
    
   routes: {
     "": "indexItems",
+    "_=_": "facebookRedirect",
     "category/:id": "filterCategory",
     "era/:id": "filterEra",
     "highest-price": "sortHighestPrice",
@@ -113,5 +114,9 @@ VV.Routers.Items = Backbone.Router.extend({
     }
     
     this.items.sort();
+  },
+  
+  facebookRedirect: function () {
+    Backbone.history.navigate("/");
   }
 });
