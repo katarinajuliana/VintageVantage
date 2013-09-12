@@ -42,6 +42,10 @@ body {
   background-color: #609183;
 }
 
+.btn-success {
+  background-image: none;
+}
+
 .container {
   width: 1228px;
   margin-bottom: 100px;

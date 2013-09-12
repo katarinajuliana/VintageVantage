@@ -73,7 +73,16 @@ VV.Views.ItemsIndex = Backbone.View.extend({
     } else {
       $('#modal-errors').html("You must be logged in to do that!")
         .removeClass("hidden");
-      $('#auth-modal').modal('show');
+        
+      $.modal.close;
+  
+      $("#sign-in-tab").addClass("active");
+      $("#sign-in-form").removeClass("hidden");
+  
+      $("#sign-up-tab").removeClass("active");
+      $("#sign-up-form").addClass("hidden");
+  
+      $("#auth-modal").modal({fadeDuration: 250}); 
     }
   }
 });

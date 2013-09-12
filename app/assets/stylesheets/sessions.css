@@ -11,6 +11,17 @@
 }
 
 .fbook {
-  font-weight: bold;
-  font-size: 12pt;
+  background-image: url("/assets/fbook_login.png");
+  width: 140px;
+  height: 31px;
+}
+
+.fbook:hover {
+  background-image: url("/assets/fbook_login.png");
+}
+
+#cute-message {
+  margin-top: 40px;
+  font-family: "american typewriter", "courier new";
+  font-size: 22px;
 }

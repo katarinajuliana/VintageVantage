@@ -38,7 +38,7 @@ $(function () {
       $("#sign-up-tab").removeClass("active");
       $("#sign-up-form").addClass("hidden");
   
-      $('#auth-modal').modal({fadeDuration: 250}); 
+      $("#auth-modal").modal({fadeDuration: 250}); 
     }
   });
   
@@ -69,7 +69,7 @@ $(function () {
       $("#sign-up-tab").removeClass("active");
       $("#sign-up-form").addClass("hidden");
   
-      $('#auth-modal').modal({fadeDuration: 250});
+      $("#auth-modal").modal({fadeDuration: 250});
     }
   });
   

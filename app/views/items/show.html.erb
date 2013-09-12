@@ -68,16 +68,17 @@
     
     <div class="cart-buttons">
       <% unless @item.sold %>
-        <button type="submit"
-          class="add-cart btn btn-success"
-          data-id="<%= @item.id %>">
-          Add to Cart
-        </button>
-        
-        <a href="/cart" class="in-cart btn btn-success hidden">
-          In Cart!
+        <% unless in_cart?(@item) %>
+          <button type="submit"
+            class="add-cart btn btn-success"
+            data-id="<%= @item.id %>">
+            Add to Cart
+          </button>
+        <% end %>
+        <a href="/cart"
+          class="in-cart btn btn-success <%= in_cart?(@item) ? '' : 'hidden' %>">
+          Already in Cart
         </a>
-
       <% else %>
         <button type="submit"
           class="disabled btn btn-danger">

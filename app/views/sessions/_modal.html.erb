@@ -5,11 +5,14 @@
   </ul>
   
   <div id="modal-content">
-    <div id="modal-errors" class="alert alert-danger col-xs-7 hidden"></div>
+    <br>
+    <div id="modal-errors" class="alert alert-danger col-xs-9 hidden"></div>
     
     <div id="sign-in-form" class="modal-form col-xs-11 hidden">
       <br>
-      <%= link_to "Sign In with Facebook", "/auth/facebook", :class => "fbook" %>
+      <a href="/auth/facebook"
+        class="fbook btn btn-info"
+        alt="Sign In with Facebook"></a>
       <br>
       
       <br>
@@ -19,9 +22,11 @@
       <%= render 'sessions/new' %>
     </div>
     
-    <div id="sign-up-form" class="modal-form hidden col-xs-11 hidden">
+    <div id="sign-up-form" class="modal-form col-xs-11 hidden">
       <br>
-      <%= link_to "Sign Up with Facebook", "/auth/facebook", :class => "fbook" %>
+      <a href="/auth/facebook"
+        class="fbook btn btn-info"
+        alt="Sign In with Facebook"></a>
       <br>
       
       <br>

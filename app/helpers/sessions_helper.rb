@@ -7,6 +7,10 @@ module SessionsHelper
     @current_user = user
     session[:session_token] = user.session_token
   end
+  
+  def in_cart?(item)
+    session[:cart_item_ids].include?(item.id.to_s)
+  end
 
   def logout_current_user!
     current_user.reset_session_token!

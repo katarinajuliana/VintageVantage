@@ -101,7 +101,6 @@ $(function () {
   
   $("#sign-in-link").on("click", function (event){
     event.preventDefault();
-    $.modal.close;
     
     $("#sign-in-tab").addClass("active");
     $("#sign-in-form").removeClass("hidden");
@@ -114,7 +113,6 @@ $(function () {
   
   $("#sign-up-link").on("click", function (event){
     event.preventDefault();
-    $.modal.close;
     
     $("#sign-up-tab").addClass("active");
     $("#sign-up-form").removeClass("hidden");

@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+  respond_to :json, :only => [:update]
+  
   def show
     if session[:cart_item_ids]
       @items = session[:cart_item_ids].map { |id| Item.find(id) }
@@ -8,6 +10,10 @@ class CartsController < ApplicationController
   end
   
   def update
-    # checkout
+    @item = Item.find(params[:item_id])
+    
+    @item.sold = true
+    
+    render :json => @item
   end
 end

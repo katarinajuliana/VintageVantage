@@ -16,10 +16,19 @@ $(function () {
     });
   });
   
+  $(".checkout").on("click", function (event) {
+    event.preventDefault();
+    
+  });
+  
   $(".in-cart").hover(function () {
-      $(this).removeClass("btn-success").addClass("btn-danger").html("Checkout");
+      $(this).removeClass("btn-success")
+        .addClass("btn-danger")
+        .html("Go Checkout!");
     }, function () {
-      $(this).removeClass("btn-danger").addClass("btn-success").html("In Cart!");
+      $(this).removeClass("btn-danger")
+        .addClass("btn-success")
+        .html("Already in Cart");
     });
     
   $(".remove-cart").on("click", function (event) {
