@@ -82,6 +82,19 @@
        class="form-control">
   </div>
   
+  <% unless @user.persisted? %>
+    <div class="form-group"> 
+      <label for="confirm_password">Confirm Password</label>
+    
+      <input
+         id="confirm_password"
+         name="confirm_password"
+         type="password"
+         required="true"
+         class="form-control">
+    </div>
+  <% end %>
+  
   <br>
   <button type='submit' class='btn btn-info'><%= message %></button>
 </form>

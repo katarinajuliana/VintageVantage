@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   respond_to :json, :only => [:create]
 
   def create
+    unless params[:user][:password] == params[:confirm_password]
+      render :json => "One of your passwords was not like the other.", :status => 422 
+      return
+    end
+    
     @user = User.new(params[:user])
 
     if @user.save

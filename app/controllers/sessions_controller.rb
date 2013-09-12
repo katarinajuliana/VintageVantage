@@ -4,7 +4,9 @@ class SessionsController < ApplicationController
   respond_to :json, :only => [:create]
   
   def create
-    @user = User.find_by_email(params[:user][:email])
+    email = params[:user][:email].downcase
+    
+    @user = User.find_by_email(email)
 
     if @user && (@user.is_password?(params[:user][:password]))
       self.current_user = @user
