@@ -3,9 +3,18 @@ class CartsController < ApplicationController
   
   def show
     if session[:cart_item_ids]
+      @shops = {}
       @items = session[:cart_item_ids].map { |id| Item.find(id) }
+      
+      @items.each do |item|
+        if @shops[item.shop]
+          @shops[item.shop] << item
+        else
+          @shops[item.shop] = [item]
+        end
+      end
     else
-      @items = []
+      @shops = {}
     end
   end
   

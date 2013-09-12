@@ -19,7 +19,6 @@ window.VV = {
 
     new VV.Routers.Items($rootEl, new VV.Collections.Items());
     Backbone.history.start();
-    // Backbone.history.navigate("/");
   },
   _installCatSideBar: function ($catList, categories){
     var catIndexView = new VV.Views.CategoriesIndex(categories);
@@ -50,7 +49,6 @@ window.VV = {
 
 $(function () {
   console.log("'Vintage Vantage', an online vintage marketplace by Katarina Blagojevic 2013");
-  debugger
   window.currentUser = JSON.parse($("#current-user").html());
   
   if(currentUser) {

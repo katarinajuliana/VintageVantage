@@ -913,7 +913,7 @@ pre code {
   width: 100%;
 }
 
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
   .container {
     max-width: 750px;
   }
@@ -1391,7 +1391,7 @@ pre code {
   .col-lg-offset-11 {
     margin-left: 91.66666666666666%;
   }
-}
+}*/
 
 table {
   max-width: 100%;

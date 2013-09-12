@@ -1,25 +1,17 @@
-<div class="well col-xs-7 cart-item <%= item.id %>">
-  <h5>Order from <%= link_to item.shop.name, shop_url(item.shop) %></h5>
+<div class="panel col-xs-9 cart-item <%= item.id %>">
+  <a href="/items/<%= item.id %>">
+    <img src="<%= item.primary_photo.url(:list) %>">
+  </a>
   
-  <div class="panel">
-    <a href="/items/<%= item.id %>"><img src="<%= item.primary_photo.url(:list) %>"></a>
+  <div class="cart-item-content">
+    <div class="cart-item-info">
+      <div><%= link_to item.title, item_url(item) %></div>
     
-    <div class="cart-item-content">
-      <div class="cart-item-info">
-        <div><%= link_to item.title, item_url(item) %></div>
-      
-        <div>$<%= item.price %>.00</div>    
-      </div>
-      
-      <a href="" data-id="<%= item.id %>" class="remove-cart">
-        <small>Remove</small>
-      </a>
+      <div>$<%= item.price %>.00</div>    
     </div>
     
-    <button type="submit" 
-      class="btn btn-success checkout"
-      data-id="<%= item.id %>">
-      Checkout
-    </button>
+    <a href="" data-id="<%= item.id %>" class="remove-cart">
+      <small>Remove</small>
+    </a>
   </div>
 </div>

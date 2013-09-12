@@ -5,6 +5,24 @@
   </a>
 </h3>
 
-<% @items.each do |item| %>
-  <%= render :partial => 'cart_item', :locals => { :item => item } %>
+
+<% @shops.each do |shop, items| %>
+  <div data-id="<%= shop.id %>" class="well col-xs-7 cart-shop <%= shop.id %>">
+    <h5>
+      Order from <%= link_to shop.name, shop_url(shop) %>
+      <t class="subtotal">
+        Total: $<span class="shop-total"><%= items.map{ |item| item.price }.inject(:+) %></span>.00
+      </t>
+    </h5>
+
+    <% items.each do |item| %>
+      <%= render :partial => 'cart_item', :locals => { :item => item } %>
+    <% end %>
+    
+    <button type="submit" 
+      class="btn btn-success checkout"
+      data-id="<%= shop.id %>">
+      Checkout
+    </button>
+  </div>
 <% end %>

@@ -2,8 +2,12 @@
   display: inline-block;
 }
 
-.cart-item {
+.cart-shop {
   margin-left: 40px;
+}
+
+.cart-item {
+  margin-top: 8px;
 }
 
 .cart-item-content {
@@ -20,10 +24,15 @@
 
 .checkout {
   position: absolute;
-  bottom: 35%;
-  right: 10%;
+  top: 50%;
+  right: 7%;
 }
 
 .go-to-cart {
   display: none;
+}
+
+.subtotal {
+  position: absolute;
+  right: 7%;
 }
