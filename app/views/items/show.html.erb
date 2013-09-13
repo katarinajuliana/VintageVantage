@@ -49,6 +49,32 @@
       <%= @markdown.render(@item.description).html_safe %>
     </div>
   </div>
+  
+  <% unless @item.questions.empty? %>
+    <div id="item-questions-box" class="well vv-well item-show-left">
+      <h4>Questions?</h4>
+    
+      <div class="panel">
+        <ul id="item-questions">
+          <% @item.questions.each do |question| %>
+            <li><text class="lead"><small><%= question.body %></small></text></li>
+          <% end %>
+        </ul>
+        
+        <form id="item-question-form" role="form" data-id="<%= @item.id %>">
+          <input type="text"
+            class="form-control"
+            placeholder="Ask Away..."
+            id="question_body"
+            name="question[body]">
+            
+          <button type='submit' class='btn btn-info'>
+            Ask
+          </button>
+        </form>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <div class="pull-right">

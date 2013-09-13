@@ -28,6 +28,21 @@ $(function () {
     tolerance: "touch"
   });
   
+  $("#item-question-form").on("submit", function (event) {
+    event.preventDefault();
+
+    $.ajax({
+      url: "/items/" + $(event.target).data("id") + "/questions",
+      method: "post",
+      data: { body: $("#question_body")[0].value },
+      success: function (response) {
+        $("#item-questions").append("<li><text class='lead'><small>" + 
+          response.body + "</small></text></li>");
+        $("#question_body").val('');
+      }
+    })
+  })
+  
   $(".listing-card").draggable({
     cursorAt: {left: 40, top: 30},
     helper: "clone",

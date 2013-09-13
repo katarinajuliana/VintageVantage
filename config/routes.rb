@@ -3,6 +3,7 @@ VintageVantage::Application.routes.draw do
   
   resources :items, :except => [:index] do
     resource :item_favorite, :only => [:create, :destroy]
+    resources :questions, :only => [:create]
   end
   
   resources :shops, :except => [:index] do

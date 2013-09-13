@@ -151,3 +151,13 @@
   vertical-align: middle;
   margin: 1px;
 }
+
+.item-question-form {
+  width: 300px;
+  margin-left: 25px;
+}
+
+#question_body {
+  display: inline-block;
+  margin-bottom: 2px;
+}

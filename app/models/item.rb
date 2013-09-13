@@ -23,4 +23,6 @@ class Item < ActiveRecord::Base
   has_one :owner,
           :through => :shop,
           :source  => :owner
+          
+  has_many :questions
 end
