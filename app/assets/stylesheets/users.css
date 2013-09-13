@@ -1,6 +1,7 @@
 .purchase-item-info {
   display: inline-block;
   text-align: right;
+  width: 250px;
 }
 
 .see-more {
