@@ -36,12 +36,13 @@ $(function () {
       method: "post",
       data: { body: $("#question_body")[0].value },
       success: function (response) {
-        $("#item-questions").append("<li><text class='lead'><small>" + 
-          response.body + "</small></text></li>");
+        $("#item-questions").append("<li><small><text class='lead'>" + 
+          response.body + "</small><br>From: <a href='/users/" + 
+            window.currentUser.id + "'>" + window.currentUser.username + "</text></li>");
         $("#question_body").val('');
       }
     })
-  })
+  });
   
   $(".listing-card").draggable({
     cursorAt: {left: 40, top: 30},

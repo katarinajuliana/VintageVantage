@@ -57,14 +57,17 @@
       <div class="panel">
         <ul id="item-questions">
           <% @item.questions.each do |question| %>
-            <li><text class="lead"><small><%= question.body %></small></text></li>
+            <li>
+              <small><text class="lead"><%= question.body %></text></small>
+              <br>From: <%= link_to question.user.username, user_url(question.user) %>
+            </li>
           <% end %>
         </ul>
         
         <form id="item-question-form" role="form" data-id="<%= @item.id %>">
           <input type="text"
             class="form-control"
-            placeholder="Ask Away..."
+            placeholder="Hmmm..."
             id="question_body"
             name="question[body]">
             
