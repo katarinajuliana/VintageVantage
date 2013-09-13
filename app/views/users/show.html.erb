@@ -36,6 +36,16 @@
       </div>
     </div>
   <% end %>
+  
+  <% unless @user.purchases.empty? %>
+    <div id="user-purchases-box" class="user-show-left well">
+      <h4>Purchases</h4>
+            
+      <% @user.purchases.each do |purchase| %>
+        <%= render :partial => 'purchase', :locals => { :purchase => purchase } %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 <div class="pull-right">

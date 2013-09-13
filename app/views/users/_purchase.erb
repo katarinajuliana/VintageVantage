@@ -1,0 +1,21 @@
+<% date = purchase.created_at %>
+<% date_string = "#{ Date::MONTHNAMES[date.month] } 
+                  #{ date.mday }, #{ date.year }" %>
+<div class="user-purchases panel">
+  <h5>
+    Purchased from <%= link_to purchase.shop.name, shop_url(purchase.shop) %> on <%= date_string %> 
+    <t class="pull-right">Total: $<%= purchase.total %>.00</t>
+  </h5>
+
+  <% purchase.items.each do |item| %>
+  <a href="/items/<%= item.id %>">
+    <img src="<%= item.primary_photo.url(:list) %>">
+  </a>
+
+  <div class="purchase-item-info">
+    <h4><%= link_to item.title, item_url(item) %></h4>
+
+    <div>$<%= item.price %>.00</div>    
+  </div>
+  <% end %>
+</div>

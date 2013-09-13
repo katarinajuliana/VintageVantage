@@ -16,15 +16,7 @@ class User < ActiveRecord::Base
   
   after_create :downcase_email
   
-  after_create :create_user_cart
-  
   friendly_id :username, :use => :slugged
-  
-  has_one :cart
-  
-  has_many :cart_items,
-           :through => :cart,
-           :source => :cart_items
   
   has_many :favorite_items,
            :through => :item_favorites,
@@ -35,6 +27,8 @@ class User < ActiveRecord::Base
            :source  => :shop
            
   has_many :item_favorites
+  
+  has_many :purchases
            
   has_many :shop_favorites
   
@@ -61,10 +55,6 @@ class User < ActiveRecord::Base
   end
 
   private
-  def create_user_cart
-    Cart.create(:user_id => self.id)
-  end
-  
   def downcase_email
     self.email = self.email.downcase
     self.save

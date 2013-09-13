@@ -1,3 +1,8 @@
+.purchase-item-info {
+  display: inline-block;
+  text-align: right;
+}
+
 .see-more {
   display: inline-block;
   margin-right: 5px;
@@ -5,6 +10,14 @@
 
 #user-about {
   padding: 3px;
+}
+
+.user-purchases {
+  margin-bottom: 10px;
+}
+
+#user-purchases-box {
+  padding-bottom: 1px;
 }
 
 .user-show-right {

@@ -31,9 +31,17 @@ class CartsController < ApplicationController
       end
     end
     
+    total = @items.map{ |item| item.price }.inject(:+)
+    
     begin
       ActiveRecord::Base.transaction do
+        @purchase = Purchase.create!(:user_id => current_user.id,
+                                     :shop_id => params[:shop_id].to_i,
+                                     :total => total)
+
         @items.each do |item| 
+          PurchaseItem.create!(:item_id => item.id, :purchase_id => @purchase.id)
+          
           item.update_attributes(:sold => true)
         end
         

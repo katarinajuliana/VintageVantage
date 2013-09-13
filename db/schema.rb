@@ -11,25 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130911202744) do
-
-  create_table "cart_items", :force => true do |t|
-    t.integer  "cart_id",    :null => false
-    t.integer  "item_id",    :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "cart_items", ["cart_id", "item_id"], :name => "index_cart_items_on_cart_id_and_item_id", :unique => true
-  add_index "cart_items", ["item_id"], :name => "index_cart_items_on_item_id"
-
-  create_table "carts", :force => true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "carts", ["user_id"], :name => "index_carts_on_user_id", :unique => true
+ActiveRecord::Schema.define(:version => 20130913205505) do
 
   create_table "categories", :force => true do |t|
     t.string "title", :null => false
@@ -107,6 +89,27 @@ ActiveRecord::Schema.define(:version => 20130911202744) do
   add_index "items", ["category_id"], :name => "index_items_on_category_id"
   add_index "items", ["era_id"], :name => "index_items_on_era_id"
   add_index "items", ["shop_id"], :name => "index_items_on_shop_id"
+
+  create_table "purchase_items", :force => true do |t|
+    t.integer  "purchase_id", :null => false
+    t.integer  "item_id",     :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "purchase_items", ["item_id"], :name => "index_purchase_items_on_item_id", :unique => true
+  add_index "purchase_items", ["purchase_id"], :name => "index_purchase_items_on_purchase_id"
+
+  create_table "purchases", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "shop_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "total",      :null => false
+  end
+
+  add_index "purchases", ["shop_id"], :name => "index_purchases_on_shop_id"
+  add_index "purchases", ["user_id"], :name => "index_purchases_on_user_id"
 
   create_table "shop_favorites", :force => true do |t|
     t.integer  "user_id",    :null => false
