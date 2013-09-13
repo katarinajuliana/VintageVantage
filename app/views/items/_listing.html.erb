@@ -1,6 +1,6 @@
 <% fav_item = (current_user && current_user.favorite_items.include?(item)) %>
 
-<div class="listing-card">
+<div class="listing-card" data-id="<%= item.id %>">
   <a href="<%= item_url(item) %>" class="listing-thumb">
     <img class="img-responsive" src="<%= item.primary_photo.url(:list) %>" alt="<%= item.title %>">
   </a>

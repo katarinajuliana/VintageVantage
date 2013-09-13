@@ -58,6 +58,7 @@ $(function () {
         
         var numItems = parseInt($("#cart-num-items").html()) - 1;
         $("#cart-num-items").html(numItems);
+        $(".cart-count").html(numItems);
         
         var shopTotal = $(".cart-shop." + response.shop_id).find(".shop-total");
         var newTotal = parseInt($(shopTotal).html()) - parseInt(response.price);

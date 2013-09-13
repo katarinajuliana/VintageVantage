@@ -17,9 +17,9 @@
     <div id="items-index-box" class="panel">
       <% if (items.length) { %>
         <% _.each(items, function (item) { %>
-          <div class="listing-card">
+          <div class="listing-card" data-id="<%= item.id %>">
             <a href="<%= item.url() %>" class="listing-thumb">
-              <img src="<%= item.escape("listPhoto") %>"
+              <img class="img-responsive" src="<%= item.escape("listPhoto") %>"
                 alt="<%= item.escape("title") %>">
             </a>
 

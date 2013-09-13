@@ -1,8 +1,9 @@
 .modal {
   position: fixed;
-  bottom: 150px;
+  top: 150px;
   width: 450px;
   height: 550px;
+  z-index: 100;
 }
 
 #modal-content {

@@ -17,6 +17,11 @@
 //= require backbone
 //= require vintage_vantage
 //= require bootstrap
+//= require jquery.ui.core
+//= require jquery.ui.widget
+//= require jquery.ui.mouse
+//= require jquery.ui.draggable
+//= require jquery.ui.droppable
 //= require jquery.modal
 //= require_tree ../templates
 //= require_tree ./models

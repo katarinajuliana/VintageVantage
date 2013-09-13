@@ -20,11 +20,6 @@
   border-radius: 4px;
 }
 
-.listing-card:hover .hover-container {
-  visibility: visible;
-  opacity: .7;
-}
-
 #item-description {
   padding: 3px;
 }
@@ -52,16 +47,32 @@
   text-align: left;
 }
 
+#item-shop-items .item-shop-link {
+  display: none;
+}
+
+#item-shop-items .item-title-link {
+  width: 152px;
+}
+
+#item-shop-items .listing-card {
+  width: 170px;
+  height: 170px;
+  margin: 7px;
+}
+
+#item-shop-items .listing-thumb {
+  width: 156px;
+  height: 124px;
+  display: block;
+}
+
 .item-shop-link {
   width: 96px;
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-#item-shop-items .item-shop-link {
-  display: none;
 }
 
 .item-show-left {
@@ -80,10 +91,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-#item-shop-items .item-title-link {
-  width: 152px;
 }
 
 #items-index {
@@ -112,10 +119,21 @@
   position: relative;
 }
 
-#item-shop-items > .listing-card {
-  width: 170px;
-  height: 170px;
-  margin: 7px;
+.listing-card:hover .hover-container {
+  visibility: visible;
+  opacity: .7;
+}
+
+.listing-drag {
+  height: 66px;
+  width: 80px;
+  padding: 2px;
+  margin: 1px;
+}
+
+.listing-drag .listing-thumb {
+  width: 74px;
+  height: 76px;
 }
 
 .listing-thumb {
@@ -123,12 +141,6 @@
   height: 135px;
   width: 170px;
   margin-bottom: 3px;
-}
-
-#item-shop-items .listing-thumb {
-  width: 156px;
-  height: 124px;
-  display: block;
 }
 
 .thumbnail {

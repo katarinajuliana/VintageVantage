@@ -62,6 +62,10 @@ body {
   float: none;
 }
 
+.navbar {
+  z-index: 50;
+}
+
 .navbar-brand {
   font-family: "american typewriter", "courier new";
 }
@@ -93,4 +97,13 @@ body {
 
 .navbar-form {
   margin-right: 20px;
+}
+
+.ui-draggable-dragging {
+  height: 20px;
+  width: 20px;
+}
+
+.label {
+  margin-left: 3px;
 }

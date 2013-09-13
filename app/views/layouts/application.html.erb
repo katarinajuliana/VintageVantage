@@ -40,7 +40,11 @@
       
       <ul id="user-nav"
         class="nav navbar-nav navbar-right <%= 'hidden' unless current_user %>">
-          <li><a href='/cart'>Your Cart</a></li>
+          <li>
+            <a class="cart-nav" href='/cart'>
+              <span class="cart-link">Your Cart </span><span class="cart-count label label-default"><%= session[:cart_item_ids].size %></span>
+            </a>
+          </li>
           
           <li id="sign-out">
             <%= link_to "Sign Out", session_url , :method => :delete %>
@@ -49,7 +53,11 @@
       
       <ul id="anon-nav"
         class="nav navbar-nav navbar-right <%= 'hidden' if current_user %>">
-          <li><a href='/cart'>Your Cart</a></li>
+          <li>
+            <a href='/cart'>
+              <span class="cart-link">Your Cart </span><span class="cart-count label label-default"><%= session[:cart_item_ids].size %></span>
+            </a>
+          </li>
           <li><a href="" id="sign-up-link">Join Us</a></li>
           <li><a href="" id="sign-in-link">Sign In</a></li>
       </ul>
