@@ -50,6 +50,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     
+    unless params[:user][:password]
+      params[:user].delete(:password)
+    end
+    
     if @user.update_attributes(params[:user])
       redirect_to user_url(@user)
     else
