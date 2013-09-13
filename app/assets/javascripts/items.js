@@ -1,9 +1,9 @@
 $(function () {
-  $("#search-form").on("submit", function(event){
-    event.preventDefault;
+  $("#search-form").on("submit", function (event) {
+    event.preventDefault();
     
-    var search = $("#search-content").value();
+    var search = $("#search-content")[0].value;
     
-    window.navigate("/#/?:" + search);
+    window.location = "/#/?/" + search;
   });
 });
