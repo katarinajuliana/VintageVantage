@@ -50,34 +50,32 @@
     </div>
   </div>
   
-  <% unless @item.questions.empty? %>
-    <div id="item-questions-box" class="well vv-well item-show-left">
-      <h4>Questions?</h4>
-    
-      <div class="panel">
-        <ul id="item-questions">
-          <% @item.questions.each do |question| %>
-            <li>
-              <small><text class="lead"><%= question.body %></text></small>
-              <br>From: <%= link_to question.user.username, user_url(question.user) %>
-            </li>
-          <% end %>
-        </ul>
-        
-        <form id="item-question-form" role="form" data-id="<%= @item.id %>">
-          <input type="text"
-            class="form-control"
-            placeholder="Hmmm..."
-            id="question_body"
-            name="question[body]">
-            
-          <button type='submit' class='btn btn-info'>
-            Ask
-          </button>
-        </form>
-      </div>
+  <div id="item-questions-box" class="well vv-well item-show-left">
+    <h4>Questions?</h4>
+  
+    <div class="panel">
+      <ul id="item-questions">
+        <% @item.questions.each do |question| %>
+          <li>
+            <small><text class="lead"><%= question.body %></text></small>
+            <br>From: <%= link_to question.user.username, user_url(question.user) %>
+          </li>
+        <% end %>
+      </ul>
+      
+      <form id="item-question-form" role="form" data-id="<%= @item.id %>">
+        <input type="text"
+          class="form-control"
+          placeholder="Hmmm..."
+          id="question_body"
+          name="question[body]">
+          
+        <button type='submit' class='btn btn-info'>
+          Ask
+        </button>
+      </form>
     </div>
-  <% end %>
+  </div>
 </div>
 
 <div class="pull-right">
