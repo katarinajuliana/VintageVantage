@@ -26,7 +26,8 @@ class ItemsController < ApplicationController
   end
   
   def index
-    @items = Item.all
+    @items = Item.all.select{ |item| !item.sold }
+    @items.shuffle!
     
     respond_to do |format|
       format.json { render 'items.rabl' }

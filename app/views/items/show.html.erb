@@ -63,7 +63,9 @@
 
       <p class="lead"><%= @item.era.decade %></p>
 
-      <h3>$<%= @item.price %></h3>
+      <% unless @item.sold %>
+        <h3>$<%= @item.price %>.00</h3>
+      <% end %>
     </div>
     
     <div class="cart-buttons">
@@ -125,7 +127,7 @@
     </h4>
   
     <div id="item-shop-items" class="panel">
-      <% @item.shop.items[0..7].each do |item| %>
+      <% @item.shop.items.select{ |item| !item.sold }.shuffle[0..7].each do |item| %>
         <%= render :partial => 'listing', :locals => { :item => item } %>
       <% end %>
     </div>

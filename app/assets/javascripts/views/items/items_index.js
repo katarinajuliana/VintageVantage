@@ -5,12 +5,15 @@ VV.Views.ItemsIndex = Backbone.View.extend({
     that.listenTo(that.collection, "add", that.paginateCallback);
     that.listenTo(that.collection, "change", that.paginateCallback);
     that.listenTo(that.collection, "remove", that.paginateCallback);
-    that.listenTo(that.collection, "reset sort", that.paginateCallback);
+    that.listenTo(that.collection, "sort", that.paginateCallback);
   },
   
   events: {
     "click .page-link": "pageClickCallback",
-    "click .item-fav": "favoriteCallback"
+    "click .item-fav": "favoriteCallback",
+    "click #most-recent": "sortMostRecent",
+    "click #lowest-price": "sortLowestPrice",
+    "click #highest-price": "sortHighestPrice"
   },
   
   template: JST['items/index'],
@@ -26,30 +29,6 @@ VV.Views.ItemsIndex = Backbone.View.extend({
     
     this.$el.html(renderedContent);
     return this;
-  },
-  
-  paginate: function (page) {
-    if (!page) {
-      var page = 0
-    }
-    
-    this.page = page;
-    
-    var firstItem = page * 16;
-    var lastItem = firstItem + 16;
-
-    var items = this.collection.slice(firstItem, lastItem);
-    return this.render(items)
-  },
-  
-  paginateCallback: function(event) {
-    this.paginate(0);
-  },
-  
-  pageClickCallback: function (event) {
-    event.preventDefault();
-    var pageNumber = $(event.target).data("page");
-    this.paginate(pageNumber);
   },
   
   favoriteCallback: function (event) {
@@ -84,5 +63,62 @@ VV.Views.ItemsIndex = Backbone.View.extend({
   
       $("#auth-modal").modal({fadeDuration: 250}); 
     }
-  }
+  },
+  
+  paginate: function (page) {
+    if (!page) {
+      var page = 0
+    }
+    
+    this.page = page;
+    
+    var firstItem = page * 16;
+    var lastItem = firstItem + 16;
+
+    var items = this.collection.slice(firstItem, lastItem);
+    return this.render(items)
+  },
+  
+  paginateCallback: function(event) {
+    this.paginate(0);
+  },
+  
+  pageClickCallback: function (event) {
+    event.preventDefault();
+    var pageNumber = $(event.target).data("page");
+    this.paginate(pageNumber);
+  },
+  
+  sortHighestPrice: function (event) {
+    event.preventDefault();
+    
+    this.collection.comparator = function (item) {
+      var price = item.get("price");
+      return price * -1
+    }
+    
+    this.collection.sort();
+  },
+  
+  sortLowestPrice: function (event) {
+    event.preventDefault();
+    
+    this.collection.comparator = function (item) {
+      return item.get("price");
+    }
+    
+    this.collection.sort();
+  },
+  
+  sortMostRecent: function (event) {
+    this.collection.comparator = function (item1, item2) {
+      if (item1.get("updated_at") > item2.get("updated_at")) {
+        return -1
+      } else {
+        return 1
+      }
+    }
+    
+    this.collection.sort();
+  },
 });

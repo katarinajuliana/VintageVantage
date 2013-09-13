@@ -15,7 +15,11 @@
     </a>
     
     <div class="item-listing-price">
-      $<%= item.price %>.00
+      <% if item.sold %>
+        SOLD
+      <% else %>
+        $<%= item.price %>.00
+      <% end %>
     </div>
   </div>
   

@@ -35,7 +35,7 @@
           <p><%= link_to shop.owner.username, user_url(shop.owner) %></p>
         </div>
       
-        <% shop.items[0..4].each do |item|%>
+        <% shop.items.shuffle[0..4].each do |item|%>
           <a href="<%= item_url(item) %>" class="thumbnail">
             <img src="<%= item.primary_photo.url(:thumb) %>">
           </a>

@@ -28,7 +28,7 @@
       </a>
     
       <div id="user-shop-items" class="panel">      
-        <% @user.shop.items.shuffle[0..14].each do |item| %>
+        <% @user.shop.items.select{ |item| !item.sold }.shuffle[0..14].each do |item| %>
           <a href="<%= item_url(item) %>" class="thumbnail">
             <img src="<%= item.primary_photo.url(:thumb) %>">
           </a>
