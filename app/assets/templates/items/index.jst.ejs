@@ -32,8 +32,12 @@
                 <text class="text-muted"><%= item.escape("shopName") %></text>
               </a>
   
-              <div class="item-listing-price">  
-                $<%= item.escape("price") %>.00
+              <div class="item-listing-price"> 
+                <% if (item.get("sold")) { %>
+                  SOLD
+                <% } else { %>
+                  $<%= item.escape("price") %>.00
+                <% } %>
               </div>
             </div>
             

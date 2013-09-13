@@ -87,17 +87,19 @@
       <% end %>
     </div>
     
-    <button type="submit"
-      class="btn btn-default btn-fav fav item-fav <%= 'hidden' if fav_item %>"
-      data-id="<%= @item.id %>">
-      ❤ Favorite
-    </button>
+    <span>
+      <button type="submit"
+        class="btn btn-default btn-fav fav item-fav <%= 'hidden' if fav_item %>"
+        data-id="<%= @item.id %>">
+        ❤ Favorite
+      </button>
 
-    <button type="submit"
-      class="btn btn-default btn-fav unfav item-fav <%= 'hidden' unless fav_item %>"
-      data-id="<%= @item.id %>">
-      <span class="heart">❤</span> Favorited
-    </button>
+      <button type="submit"
+        class="btn btn-default btn-fav unfav item-fav <%= 'hidden' unless fav_item %>"
+        data-id="<%= @item.id %>">
+        <span class="heart">❤</span> Favorited
+      </button>
+    </span>
     
     <t class="text-muted">
       <t id="fav-count"><%= @item.item_favorites.count %></t> Admirers

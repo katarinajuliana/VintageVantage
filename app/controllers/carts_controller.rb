@@ -15,14 +15,34 @@ class CartsController < ApplicationController
       end
     else
       @shops = {}
+      @items = []
     end
   end
   
   def update
-    @item = Item.find(params[:item_id])
+    @items = []
     
-    @item.sold = true
+    session[:cart_item_ids].each do |id|
+      item = Item.find(id)
+      
+      if item.shop.id == params[:shop_id].to_i  
+        session[:cart_item_ids].delete(id)
+        @items << item
+      end
+    end
     
-    render :json => @item
+    begin
+      ActiveRecord::Base.transaction do
+        @items.each do |item| 
+          item.update_attributes(:sold => true)
+        end
+        
+        raise "invalid" unless @items.all? { |item| item.valid? }
+      end
+    rescue
+      render :json => @items.map(&:errors).flatten, :status => 422
+    else
+      render :json => true, :status => 200
+    end
   end
 end

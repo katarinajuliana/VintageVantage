@@ -5,7 +5,7 @@ class Item < ActiveRecord::Base
     validates attr, :presence => true
   end
   
-  attr_accessible :detail_photo_1, :detail_photo_2, :detail_photo_3, :detail_photo_4
+  attr_accessible :detail_photo_1, :detail_photo_2, :detail_photo_3, :detail_photo_4, :sold
   
   has_attached_file :primary_photo, :styles => { :list => "170x135#", :thumb => "100x100#" }
   has_attached_file :detail_photo_1, :styles => { :list => "170x135#", :thumb => "100x100#" } 

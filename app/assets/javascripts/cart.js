@@ -16,18 +16,23 @@ $(function () {
     });
   });
   
-  // $(".checkout").on("click", function (event) {
-  //   event.preventDefault();
-  //   var shopId = 
-  //   
-  //   var itemIds = serializeJSON()
-  //   
-  //   $.ajax({
-  //     url: "/cart.json",
-  //     method: "put"
-  //     data: 
-  //   })
-  // });
+  $(".checkout").on("click", function (event) {
+    event.preventDefault();
+    
+    var $button = $(event.target);
+    var shopId = $button.data("id");
+    
+    $.ajax({
+      url: "/cart.json",
+      method: "put",
+      data: { shop_id: shopId },
+      success: function (response) {
+        $button.removeClass("btn-success")
+          .addClass("btn-danger")
+          .html("They're yours!");
+      }
+    })
+  });
   
   $(".in-cart").hover(function () {
       $(this).removeClass("btn-success")
@@ -41,6 +46,7 @@ $(function () {
     
   $(".remove-cart").on("click", function (event) {
     event.preventDefault();
+    
     var itemId = $(event.currentTarget).data("id");
     
     $.ajax({
@@ -53,8 +59,7 @@ $(function () {
         var numItems = parseInt($("#cart-num-items").html()) - 1;
         $("#cart-num-items").html(numItems);
         
-        var shopTotal = $(".cart-shop." + response.shop_id)
-          .find(".shop-total");
+        var shopTotal = $(".cart-shop." + response.shop_id).find(".shop-total");
         var newTotal = parseInt($(shopTotal).html()) - parseInt(response.price);
         
         if (newTotal == 0) {

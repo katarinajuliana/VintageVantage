@@ -7,7 +7,7 @@
 
 
 <% @shops.each do |shop, items| %>
-  <div data-id="<%= shop.id %>" class="well col-xs-7 cart-shop <%= shop.id %>">
+  <div class="well col-xs-7 cart-shop <%= shop.id %>">
     <h5>
       Order from <%= link_to shop.name, shop_url(shop) %>
       <t class="subtotal">
@@ -18,11 +18,12 @@
     <% items.each do |item| %>
       <%= render :partial => 'cart_item', :locals => { :item => item } %>
     <% end %>
-    
-    <button type="submit" 
-      class="btn btn-success checkout"
-      data-id="<%= shop.id %>">
-      Checkout
-    </button>
+    <div class="shop-checkout">
+      <button type="submit" 
+        class="btn btn-success checkout"
+        data-id="<%= shop.id %>">
+        Checkout
+      </button>
+    <div>
   </div>
 <% end %>

@@ -23,13 +23,15 @@
 }
 
 .checkout {
-  position: absolute;
-  top: 50%;
-  right: 7%;
+  margin-top: 20px;
 }
 
 .go-to-cart {
   display: none;
+}
+
+.shop-checkout {
+  text-align: center;
 }
 
 .subtotal {
