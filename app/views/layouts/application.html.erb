@@ -44,7 +44,7 @@
             <a class="cart-nav" href='/cart'>
               <span class="cart-link">Your Cart </span>
               <span class="cart-count label label-default">
-                <%= session[:cart_item_ids].size if session[:cart_item_ids] %></span>
+                <%= session[:cart_item_ids] ? session[:cart_item_ids].size : '0' %></span>
             </a>
           </li>
           
@@ -59,7 +59,7 @@
             <a href='/cart'>
               <span class="cart-link">Your Cart </span>
               <span class="cart-count label label-default">
-                <%= session[:cart_item_ids].size if session[:cart_item_ids] %></span>
+                <%= session[:cart_item_ids] ? session[:cart_item_ids].size : '0' %></span>
             </a>
           </li>
           <li><a href="" id="sign-up-link">Join Us</a></li>
