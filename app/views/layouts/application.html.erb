@@ -42,7 +42,9 @@
         class="nav navbar-nav navbar-right <%= 'hidden' unless current_user %>">
           <li>
             <a class="cart-nav" href='/cart'>
-              <span class="cart-link">Your Cart </span><span class="cart-count label label-default"><%= session[:cart_item_ids].size %></span>
+              <span class="cart-link">Your Cart </span>
+              <span class="cart-count label label-default">
+                <%= session[:cart_item_ids].size if session[:cart_item_ids] %></span>
             </a>
           </li>
           
@@ -55,7 +57,9 @@
         class="nav navbar-nav navbar-right <%= 'hidden' if current_user %>">
           <li>
             <a href='/cart'>
-              <span class="cart-link">Your Cart </span><span class="cart-count label label-default"><%= session[:cart_item_ids].size %></span>
+              <span class="cart-link">Your Cart </span>
+              <span class="cart-count label label-default">
+                <%= session[:cart_item_ids].size if session[:cart_item_ids] %></span>
             </a>
           </li>
           <li><a href="" id="sign-up-link">Join Us</a></li>
