@@ -51,6 +51,15 @@ class CartsController < ApplicationController
       render :json => @items.map(&:errors).flatten, :status => 422
     else
       render :json => true, :status => 200
+      
+      message = {
+        "from" => ENV['TWILIO_NUMBER'],
+        "to" => ENV['ADMIN_NUMBER'],
+        "body" => "A sale by #{current_user.username} has been made!"
+      }
+
+      twilio = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+      twilio.account.sms.messages.create(message)
     end
   end
 end

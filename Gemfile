@@ -28,3 +28,5 @@ gem 'kaminari'
 gem 'redcarpet'
 gem 'omniauth' 
 gem 'omniauth-facebook', '~>1.4.0'
+
+gem 'twilio-ruby'
