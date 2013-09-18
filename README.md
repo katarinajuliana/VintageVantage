@@ -6,7 +6,7 @@ of REST.
 
 Login is required to favorite/unfavorite & to utilize the mock checkout feature.  
 Feel free to login with the following demo account if you don't wish to sign up
-for your own:
+for your own:  
 **email -** fake@example.com  
 **password -** demo123  
 
