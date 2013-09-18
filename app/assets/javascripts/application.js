@@ -23,6 +23,7 @@
 //= require jquery.ui.draggable
 //= require jquery.ui.droppable
 //= require jquery.modal
+//= require jquery.scrolltofixed
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
