@@ -35,7 +35,7 @@ $(function () {
       type: 'post',
       data: formData,
       success: function (response) {
-        $('#auth-modal').close();
+        $.modal.close();
         $('#user-nav').removeClass('hidden');
         $('#anon-nav').addClass('hidden');
         
