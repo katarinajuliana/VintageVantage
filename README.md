@@ -10,8 +10,8 @@ for your own:
 **email -** fake@<nolink>example.com  
 **password -** demo123  
   
-
-Technologies used:  
+  
+**Technologies used:**  
 • BCrypt  
 • jQuery  
 • AJAX  
