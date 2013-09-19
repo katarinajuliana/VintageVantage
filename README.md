@@ -1,3 +1,6 @@
+VintageVantage  
+==============  
+  
 Etsy clone.  Backbone.js app consuming a custom-built RABL API.  Custom-built 
 authentication and Facebook OmniAuth.  PostreSQL database.  Shopping carts 
 preserved across requests using cookies.  Features rich user experience such as 
