@@ -16,6 +16,13 @@ VV.Routers.Items = Backbone.Router.extend({
     this._currentView && this._currentView.remove();
     this._currentView = newView;
     this.$rootEl.html(newView.paginate(0).$el);
+    
+    if (this.$rootEl.find("#items-index-well").height() < 420 ) {
+      this.$rootEl.find("#items-index-well").scrollToFixed({
+        marginTop: 50, 
+        dontSetWidth: true 
+      });
+    }
   },
   
   filterCategory: function (id) {

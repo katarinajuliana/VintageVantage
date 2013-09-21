@@ -29,8 +29,6 @@ VV.Views.ItemsIndex = Backbone.View.extend({
     
     this.$el.html(renderedContent);
     
-    this.$el.find("#items-index-well").scrollToFixed({marginTop: 50, dontSetWidth: true });
-    
     this.$el.find(".cart-link").droppable({
       accept: ".listing-card",
       drop: function (event, ui) {
