@@ -12,6 +12,9 @@ $(function () {
       success: function (response) {
         $button.addClass("hidden");
         $button.next().removeClass("hidden");
+        
+        var num = parseInt($(".cart-count").html()) + 1;
+        $(".cart-count").html(num);
       }
     });
   });
