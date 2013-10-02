@@ -58,22 +58,40 @@
         <% @item.questions.each do |question| %>
           <li>
             <small><text class="lead"><%= question.body %></text></small>
-            <br>From: <%= link_to question.user.username, user_url(question.user) %>
+            <br>
+            
+            From: <%= link_to question.user.username, user_url(question.user) %>
+            
+            <% if current_user == @item.owner %>
+              <br>
+              <a href="" class="answer" data-id="<%= question.id %>">Post an Answer</a>
+            <% end %>
+            
+            <% if question.answer %>
+              <br>
+              <span class="answered">Answer: <%= question.answer %></span>
+            <% else %>
+              <br>
+              <span class="answered hidden">Answer: </span>
+            <% end %>
+            <p></p>
           </li>
         <% end %>
       </ul>
       
-      <form id="item-question-form" role="form" data-id="<%= @item.id %>">
-        <input type="text"
-          class="form-control"
-          placeholder="Hmmm..."
-          id="question_body"
-          name="question[body]">
+      <% unless current_user == @item.owner %>
+        <form id="item-question-form" role="form" data-id="<%= @item.id %>">
+          <input type="text"
+            class="form-control"
+            placeholder="Hmmm..."
+            id="question_body"
+            name="question[body]">
           
-        <button type='submit' class='btn btn-info'>
-          Ask
-        </button>
-      </form>
+          <button type='submit' class='btn btn-info'>
+            Ask
+          </button>
+        </form>
+      <% end %>
     </div>
   </div>
 </div>

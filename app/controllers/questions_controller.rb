@@ -12,4 +12,15 @@ class QuestionsController < ApplicationController
       render :json => @question.errors.full_messages, :status => 422
     end
   end
+  
+  def update
+    @question = Question.find(params[:id])
+    @question.answer = params[:answer]
+    
+    if @question.save
+      render :json => @question
+    else
+      render :json => @question.errors.full_messages, :status => 422
+    end
+  end
 end

@@ -14,6 +14,8 @@ VintageVantage::Application.routes.draw do
     get 'favorites', :on => :member
   end
   
+  resources :questions, :only => [:update]
+  
   resource :cart, :only => [:show, :update]
   
   resource :cart_item, :only => [:create, :destroy]

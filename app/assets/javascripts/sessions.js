@@ -87,7 +87,7 @@ $(function () {
           if (favItem) {
             $(button).toggleClass('hidden');
           }
-        }); 
+        });
       },
       error: function (response) {
         $('#modal-errors').html(response.responseText).removeClass("hidden");

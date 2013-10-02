@@ -161,3 +161,8 @@
   display: inline-block;
   margin-bottom: 2px;
 }
+
+.question-answer-form {
+  width: 300px;
+  margin-left: 25px;
+}

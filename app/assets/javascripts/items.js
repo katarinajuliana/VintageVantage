@@ -1,4 +1,16 @@
 $(function () {
+  $(".answer").on("click", function (event) {
+    event.preventDefault();
+
+    if ($(event.target).siblings(".question-answer-form").length > 0) {
+      $(event.target).parent().find("form").remove();
+    } else {
+      questionId = $(event.target).data("id");   
+      form = $("<form class='question-answer-form' role='form' data-id='" + questionId + "'><input type='text' class='form-control question-answer'><button type='submit' class='btn btn-info'>Answer</button></form>")
+      $(event.target).parent().append(form);
+    }
+  });
+  
   $(".cart-link").droppable({
     accept: ".listing-card",
     drop: function (event, ui) {
@@ -31,17 +43,32 @@ $(function () {
   $("#item-question-form").on("submit", function (event) {
     event.preventDefault();
 
-    $.ajax({
-      url: "/items/" + $(event.target).data("id") + "/questions",
-      method: "post",
-      data: { body: $("#question_body")[0].value },
-      success: function (response) {
-        $("#item-questions").append("<li><small><text class='lead'>" + 
-          response.body + "</small><br>From: <a href='/users/" + 
-            window.currentUser.id + "'>" + window.currentUser.username + "</text></li>");
-        $("#question_body").val('');
-      }
-    })
+    if (window.currentUser) {
+      $.ajax({
+        url: "/items/" + $(event.target).data("id") + "/questions",
+        method: "post",
+        data: { body: $("#question_body")[0].value },
+        success: function (response) {
+          $("#item-questions").append("<li><small><text class='lead'>" + 
+            response.body + "</small><br>From: <a href='/users/" + 
+              window.currentUser.id + "'>" + window.currentUser.username + "</text></li>");
+          $("#question_body").val('');
+        }
+      })
+    } else {
+      $('#modal-errors').html("You must be logged in to do that!")
+        .removeClass("hidden");
+  
+      $.modal.close;
+
+      $("#sign-in-tab").addClass("active");
+      $("#sign-in-form").removeClass("hidden");
+
+      $("#sign-up-tab").removeClass("active");
+      $("#sign-up-form").addClass("hidden");
+
+      $("#auth-modal").modal({fadeDuration: 250}); 
+    }
   });
   
   $(".listing-card").draggable({
@@ -62,6 +89,21 @@ $(function () {
       $(".cart-count").removeClass("label-danger").addClass("label-default");
     },
     zIndex: 100
+  });
+  
+  $("body").on("submit", ".question-answer-form", function(event) {
+    event.preventDefault();
+    var form = event.currentTarget;
+
+    $.ajax({
+      url: "/questions/" + $(form).data("id"),
+      method: "put",
+      data: { answer: $(form).find(".question-answer").val() },
+      success: function (response) {
+        $(form).parent().find(".answered").html("Answer: " + response.answer).removeClass("hidden");
+        $(form).remove();
+      }
+    })
   });
   
   $("#search-form").on("submit", function (event) {

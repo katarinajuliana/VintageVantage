@@ -37,6 +37,11 @@ body {
   border: none;
 }
 
+.btn-info:focus {
+  background-image: none;
+  background-color: #7DAD9F;
+}
+
 .btn-info:hover {
   background-image: none;
   background-color: #609183;
