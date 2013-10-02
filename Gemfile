@@ -13,6 +13,8 @@ group :development do
   gem 'debugger'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'rspec'
+  gem 'rspec-rails'
 end
 
 gem 'bcrypt-ruby', :require => 'bcrypt'
@@ -28,5 +30,4 @@ gem 'kaminari'
 gem 'redcarpet'
 gem 'omniauth' 
 gem 'omniauth-facebook', '~>1.4.0'
-
 gem 'twilio-ruby'
