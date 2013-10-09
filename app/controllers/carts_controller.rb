@@ -21,14 +21,17 @@ class CartsController < ApplicationController
   
   def update
     @items = []
-    
+
     session[:cart_item_ids].each do |id|
       item = Item.find(id)
       
       if item.shop.id == params[:shop_id].to_i  
-        session[:cart_item_ids].delete(id)
         @items << item
       end
+    end
+    
+    session[:cart_item_ids].delete_if do |id|
+      @items.map{ |item| item.id.to_s }.include?(id)
     end
     
     total = @items.map{ |item| item.price }.inject(:+)
@@ -51,15 +54,6 @@ class CartsController < ApplicationController
       render :json => @items.map(&:errors).flatten, :status => 422
     else
       render :json => true, :status => 200
-      
-      message = {
-        "from" => ENV['TWILIO_NUMBER'],
-        "to" => ENV['ADMIN_NUMBER'],
-        "body" => "A sale by #{current_user.username} has been made!"
-      }
-
-      twilio = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
-      twilio.account.sms.messages.create(message)
     end
   end
 end

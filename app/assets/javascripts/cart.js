@@ -22,19 +22,34 @@ $(function () {
   $(".checkout").on("click", function (event) {
     event.preventDefault();
     
-    var $button = $(event.target);
-    var shopId = $button.data("id");
+    if (window.currentUser) {
+      var $button = $(event.target);
+      var shopId = $button.data("id");
     
-    $.ajax({
-      url: "/cart.json",
-      method: "put",
-      data: { shop_id: shopId },
-      success: function (response) {
-        $button.removeClass("btn-success")
-          .addClass("btn-danger")
-          .html("They're yours!");
-      }
-    })
+      $.ajax({
+        url: "/cart.json",
+        method: "put",
+        data: { shop_id: shopId },
+        success: function (response) {
+          $button.removeClass("btn-success")
+            .addClass("btn-danger")
+            .html("They're yours!");
+        }
+      })
+    } else {
+      $('#modal-errors').html("You must be logged in to do that!")
+        .removeClass("hidden");
+        
+      $.modal.close;
+  
+      $("#sign-in-tab").addClass("active");
+      $("#sign-in-form").removeClass("hidden");
+  
+      $("#sign-up-tab").removeClass("active");
+      $("#sign-up-form").addClass("hidden");
+  
+      $("#auth-modal").modal({fadeDuration: 250}); 
+    }
   });
   
   $(".in-cart").hover(function () {
